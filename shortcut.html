@@ -49,26 +49,6 @@
         .main-content { max-width: 1100px; margin: 0 auto; padding: 15px; }
         .card { background: var(--white); padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; border: 1px solid #e5e7eb; }
         h2 { color: var(--excel-green); font-size: 16px; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;}
-        
-        /* VIDEO CONTAINER RESPONSIVE */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* Ratio 16:9 */
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            background: #000;
-            margin-bottom: 10px;
-        }
-        .video-container iframe, .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .video-desc { font-size: 13px; color: #475569; text-align: center; margin-top: 10px; }
 
         /* SEARCH BAR */
         .search-container { margin-bottom: 20px; position: sticky; top: 50px; z-index: 900; background: var(--bg); padding: 10px 0; }
@@ -113,22 +93,6 @@
 
 <div class="main-content">
     
-    <!-- BAGIAN VIDEO PEMBELAJARAN -->
-    <div class="card">
-        <h2>🎥 Video Panduan Shortcut</h2>
-        
-        <div class="video-container">
-            <!-- GANTI LINK SRC DI BAWAH INI DENGAN LINK EMBED VIDEO GOOGLE DRIVE ATAU YOUTUBE ANDA -->
-            <!-- Contoh YouTube: src="https://www.youtube.com/embed/ID_VIDEO" -->
-            <!-- Contoh G-Drive: src="https://drive.google.com/file/d/ID_VIDEO/preview" -->
-            <iframe 
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <p class="video-desc">Tonton video di atas untuk melihat penerapan shortcut secara langsung.</p>
-    </div>
-
     <!-- PENCARIAN SHORTCUT -->
     <div class="search-container">
         <input type="text" id="shortcutSearch" class="search-input" placeholder="🔍 Cari tombol (misal: CTRL) atau fungsi (misal: jumlah)..." onkeyup="filterShortcuts()">
@@ -139,12 +103,28 @@
         <h2>🛠️ Umum & Pengeditan Dasar</h2>
         <div class="shortcut-grid">
             <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>O</kbd></div>
+                <span class="shortcut-desc">Membuka buku kerja (Open workbook).</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>S</kbd></div>
+                <span class="shortcut-desc">Menyimpan buku kerja (Save workbook).</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>W</kbd></div>
+                <span class="shortcut-desc">Menutup buku kerja (Close workbook).</span>
+            </div>
+            <div class="shortcut-item">
                 <div class="shortcut-keys"><kbd>ALT</kbd> <span class="plus">+</span> <kbd>=</kbd></div>
-                <span class="shortcut-desc"><b>AutoSum:</b> Menjumlahkan nilai sel di atas atau di sebelah kiri secara otomatis (Fungsi SUM cepat).</span>
+                <span class="shortcut-desc"><b>AutoSum:</b> Menjumlahkan nilai sel di atas atau di sebelah kiri secara otomatis.</span>
             </div>
             <div class="shortcut-item">
                 <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>C</kbd></div>
                 <span class="shortcut-desc">Menyalin (Copy) sel atau rentang yang dipilih.</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>X</kbd></div>
+                <span class="shortcut-desc">Memotong (Cut) bagian yang dipilih.</span>
             </div>
             <div class="shortcut-item">
                 <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>V</kbd></div>
@@ -159,12 +139,51 @@
                 <span class="shortcut-desc">Mengulang tindakan yang dibatalkan (Redo).</span>
             </div>
             <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>DELETE</kbd></div>
+                <span class="shortcut-desc">Menghapus konten sel (Remove cell contents).</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>SHIFT</kbd> <span class="plus">+</span> <kbd>F10</kbd></div>
+                <span class="shortcut-desc">Membuka menu konteks (Klik kanan). Bisa juga menekan tombol <b>Windows Menu</b>.</span>
+            </div>
+            <div class="shortcut-item">
                 <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>F</kbd></div>
                 <span class="shortcut-desc">Membuka kotak dialog Find untuk mencari data.</span>
             </div>
             <div class="shortcut-item">
                 <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>H</kbd></div>
                 <span class="shortcut-desc">Membuka kotak dialog Replace (Cari dan Ganti).</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- KATEGORI: NAVIGASI TAB (RIBBON) -->
+    <div class="card shortcut-section">
+        <h2>📑 Navigasi Tab (Ribbon)</h2>
+        <div class="shortcut-grid">
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>ALT</kbd> <span class="plus">,</span> <kbd>H</kbd></div>
+                <span class="shortcut-desc">Pergi ke tab <b>Beranda (Home)</b>.</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>ALT</kbd> <span class="plus">,</span> <kbd>N</kbd></div>
+                <span class="shortcut-desc">Pergi ke tab <b>Sisipkan (Insert)</b>.</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>ALT</kbd> <span class="plus">,</span> <kbd>P</kbd></div>
+                <span class="shortcut-desc">Pergi ke tab <b>Tata Letak Halaman (Page Layout)</b>.</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>ALT</kbd> <span class="plus">,</span> <kbd>M</kbd></div>
+                <span class="shortcut-desc">Pergi ke tab <b>Rumus (Formula)</b>.</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>ALT</kbd> <span class="plus">,</span> <kbd>A</kbd></div>
+                <span class="shortcut-desc">Pergi ke tab <b>Data</b>.</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>ALT</kbd> <span class="plus">,</span> <kbd>W</kbd></div>
+                <span class="shortcut-desc">Pergi ke tab <b>Tampilan (View)</b>.</span>
             </div>
         </div>
     </div>
@@ -184,6 +203,18 @@
             <div class="shortcut-item">
                 <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>I</kbd></div>
                 <span class="shortcut-desc">Memiringkan teks (Italic).</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>ALT</kbd> <span class="plus">,</span> <kbd>H</kbd> <span class="plus">,</span> <kbd>H</kbd></div>
+                <span class="shortcut-desc">Memilih warna isian (Choose fill color).</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>ALT</kbd> <span class="plus">,</span> <kbd>H</kbd> <span class="plus">,</span> <kbd>A</kbd> <span class="plus">,</span> <kbd>C</kbd></div>
+                <span class="shortcut-desc">Meratakan isi sel ke tengah (Center align).</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>ALT</kbd> <span class="plus">,</span> <kbd>H</kbd> <span class="plus">,</span> <kbd>B</kbd></div>
+                <span class="shortcut-desc">Menambahkan batas garis luar (Add borders).</span>
             </div>
             <div class="shortcut-item">
                 <div class="shortcut-keys"><kbd>ALT</kbd> <span class="plus">+</span> <kbd>ENTER</kbd></div>
@@ -215,6 +246,18 @@
             <div class="shortcut-item">
                 <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>SHIFT</kbd> <span class="plus">+</span> <kbd>L</kbd></div>
                 <span class="shortcut-desc">Mengaktifkan atau menonaktifkan fitur AutoFilter pada tabel.</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>9</kbd></div>
+                <span class="shortcut-desc">Menyembunyikan baris yang dipilih (Hide rows).</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>0</kbd></div>
+                <span class="shortcut-desc">Menyembunyikan kolom yang dipilih (Hide columns).</span>
+            </div>
+            <div class="shortcut-item">
+                <div class="shortcut-keys"><kbd>ALT</kbd> <span class="plus">,</span> <kbd>H</kbd> <span class="plus">,</span> <kbd>D</kbd> <span class="plus">,</span> <kbd>C</kbd></div>
+                <span class="shortcut-desc">Menghapus kolom (Delete column).</span>
             </div>
             <div class="shortcut-item">
                 <div class="shortcut-keys"><kbd>CTRL</kbd> <span class="plus">+</span> <kbd>;</kbd></div>
