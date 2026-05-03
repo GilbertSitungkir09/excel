@@ -3,84 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Excel Portal - Belajar Mandiri Lengkap</title>
+    <title>BelajarExcel - Portal Edukasi Spreadsheet Modern</title>
     
     <!-- Kode Google Ads -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9534373671983631" crossorigin="anonymous"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Syne untuk Heading & Inter untuk Body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --excel-green: #217346;
-            --excel-dark: #103822;
-            --bg: #f3f4f6;
+            --excel-primary: #107c41;
+            --excel-dark: #0a4d29;
+            --excel-light: #ecfdf5;
+            --slate-900: #0f172a;
+            --slate-600: #475569;
             --white: #ffffff;
-            --text: #1f2937;
-            --sidebar-width: 280px;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; padding-top: 60px; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            color: var(--slate-900); 
+            line-height: 1.7; 
+            padding-top: 70px;
+        }
 
+        /* Navbar Modern */
         header { 
-            background: var(--excel-green); color: white; padding: 10px 20px; 
-            display: flex; align-items: center; position: fixed; 
-            width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            height: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            color: var(--excel-primary); 
+            padding: 0 25px; 
+            display: flex; 
+            align-items: center; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            height: 65px;
         }
-        header h1 { font-size: 15px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
-        .menu-btn { font-size: 22px; background: none; border: none; color: white; cursor: pointer; margin-right: 15px; }
 
-        .sidebar {
-            position: fixed; left: -280px; top: 0; height: 100%; width: var(--sidebar-width);
-            background: var(--excel-dark); color: white; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-            z-index: 1100; padding-top: 10px;
+        header h1 { 
+            font-family: 'Syne', sans-serif;
+            font-size: 20px; 
+            font-weight: 800; 
+            letter-spacing: -0.5px;
         }
+
+        .menu-btn { 
+            font-size: 24px; 
+            background: none; 
+            border: none; 
+            color: var(--excel-primary); 
+            cursor: pointer; 
+            margin-right: 20px; 
+            display: flex;
+            align-items: center;
+        }
+
+        /* Sidebar Elegan */
+        .sidebar {
+            position: fixed; 
+            left: -300px; 
+            top: 0; 
+            height: 100%; 
+            width: 300px;
+            background: var(--slate-900); 
+            color: white; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            z-index: 1100;
+            box-shadow: 20px 0 50px rgba(0,0,0,0.1);
+        }
+        
         .sidebar.active { left: 0; }
 
-        /* Sidebar Header untuk tombol Tutup */
         .sidebar-header {
-            display: flex;
-            justify-content: flex-end;
-            padding: 10px 20px;
+            padding: 30px 25px;
+            background: linear-gradient(to bottom, rgba(16, 124, 65, 0.1), transparent);
         }
-        .close-btn {
-            background: none;
-            border: none;
-            color: #cbd5e1;
-            font-size: 30px;
-            cursor: pointer;
-            line-height: 1;
-        }
-        .close-btn:hover { color: white; }
 
         .sidebar a { 
             display: block; 
-            padding: 15px 25px; 
-            color: #cbd5e1; 
+            padding: 16px 30px; 
+            color: #94a3b8; 
             text-decoration: none; 
-            font-weight: 600; 
-            border-bottom: 1px solid rgba(255,255,255,0.05); 
-            font-size: 14px;
+            font-weight: 500; 
+            transition: 0.2s;
+            border-left: 4px solid transparent;
         }
-        .sidebar a:hover { background: var(--excel-green); color: white; }
-        
-        .overlay { position: fixed; display: none; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050; top: 0; left: 0; }
+
+        .sidebar a:hover { 
+            background: rgba(255,255,255,0.03); 
+            color: white; 
+            border-left: 4px solid var(--excel-primary);
+        }
+
+        .overlay { 
+            position: fixed; 
+            display: none; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(15, 23, 42, 0.6); 
+            backdrop-filter: blur(4px);
+            z-index: 1050; 
+            top: 0; 
+        }
         .overlay.active { display: block; }
 
-        .main-content { max-width: 1000px; margin: 0 auto; padding: 20px; }
-        .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #e5e7eb; }
-        
-        h2 { color: var(--excel-green); margin-bottom: 15px; font-size: 18px; border-left: 5px solid var(--excel-green); padding-left: 15px; text-transform: uppercase; }
-        h3 { color: var(--excel-dark); margin: 20px 0 10px 0; font-size: 16px; font-weight: 700; }
-        
-        p { margin-bottom: 15px; text-align: justify; font-size: 14px; color: #374151; }
-        
-        .grid-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 15px 0; }
-        .info-box { background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; font-size: 13px; }
-        .info-box b { color: var(--excel-green); display: block; margin-bottom: 5px; font-size: 14px; }
+        /* Konten Utama */
+        .main-content { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 40px 20px; 
+        }
 
-        footer { text-align: center; padding: 30px; font-size: 10px; color: #94a3b8; }
+        .card { 
+            background: var(--white); 
+            padding: 35px; 
+            border-radius: 20px; 
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 30px; 
+            border: 1px solid #f1f5f9;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+
+        h2 { 
+            font-family: 'Syne', sans-serif;
+            color: var(--excel-primary); 
+            margin-bottom: 20px; 
+            font-size: 22px; 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background: var(--excel-primary);
+            border-radius: 4px;
+        }
+
+        p { 
+            margin-bottom: 18px; 
+            font-size: 15px; 
+            color: var(--slate-600); 
+            font-weight: 400;
+        }
+
+        /* Grid Info Modern */
+        .grid-info { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 15px; 
+            margin-top: 25px; 
+        }
+
+        .info-box { 
+            background: var(--excel-light); 
+            padding: 20px; 
+            border-radius: 14px; 
+            border: 1px solid #dcfce7;
+            transition: 0.3s;
+        }
+
+        .info-box:hover { background: #dcfce7; }
+
+        .info-box b { 
+            color: var(--excel-dark); 
+            display: block; 
+            margin-bottom: 8px; 
+            font-size: 14px; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-box span { font-size: 13.5px; color: var(--slate-600); display: block; line-height: 1.5; }
+
+        footer { 
+            text-align: center; 
+            padding: 50px 20px; 
+            font-size: 13px; 
+            color: var(--slate-600); 
+            font-weight: 500;
+        }
+
+        /* Animasi Transisi */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -88,63 +215,51 @@
 <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
 <header>
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    <h1>Excel Master Class</h1>
+    <button class="menu-btn" onclick="toggleMenu()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <h1>BelajarExcel</h1>
 </header>
 
 <nav class="sidebar" id="sidebar">
     <div class="sidebar-header">
-        <button class="close-btn" onclick="toggleMenu()">&times;</button>
+        <h2 style="color: white; border: none; font-size: 18px;">Navigasi</h2>
     </div>
-    <a href="index.html">🏠 Halaman Utama</a>
-    <a href="rumus.html">🧮 Kamus Rumus & Fungsi</a>
-    <a href="shortcut.html">⌨️ Shortcut Keyboard</a>
+    <a href="index.html">🏠 Dashboard Utama</a>
+    <a href="rumus.html">🧮 Library Rumus</a>
+    <a href="shortcut.html">⌨️ Akselerasi Shortcut</a>
 </nav>
 
-<div class="main-content">
+<div class="main-content fade-in">
     
     <div class="card">
-        <h2>1. Apa Itu Microsoft Excel?</h2>
-        <p>Microsoft excel merupakan bagian dari Microsoft office yang berfungsi untuk pengolahan data dalam bentuk angka maupun perhitungan. Tampilan dari Microsoft excel ini berupa spreadsheet sehingga memudahkan penggunanya untuk mengoperasikannya.</p>
-        <p>Aplikasi Microsoft excel ini, merupakan pengolah data secara otomatis yang dapat berupa penghitungan dasar, penggunaan rumus-rumus, pemakaian fungsi, pembuatan grafik, pengolahan data dan table, serta manajemen data. Namun, dalam pemakaian fungsi anda harus paham betul arti dari fungsi tersebut serta logika excelnya. Karena jika salah dalam pemakaian fungsi, dapat menyebabkan kesalahan sewaktu membaca data.</p>
+        <h2>Apa Itu Microsoft Excel?</h2>
+        <p>Microsoft Excel merupakan ekosistem pengolahan data angka tercanggih yang menjadi standar industri global. Dengan format <i>spreadsheet</i> yang intuitif, Excel memungkinkan transformasi data mentah menjadi wawasan strategis melalui otomasi perhitungan.</p>
+        <p>Lebih dari sekadar tabel, platform ini mendukung analisis logika kompleks, visualisasi grafik dinamis, hingga manajemen data skala besar. Pemahaman mendalam terhadap fungsi dan logikanya adalah kunci utama untuk meminimalisir kesalahan interpretasi data di dunia profesional.</p>
     </div>
 
     <div class="card">
-        <h2>2. Sejarah Microsoft Excel</h2>
-        <p>Excel pertama kali hadir pada tahun 1985 dan dibuat oleh Doug Klunder. Fakta uniknya, Excel secara perdana dirilis tanpa memuat nama ‘Microsoft,’ melainkan hanya Excel saja. Munculnya Excel ternyata mendapat banyak komplain dari berbagai perusahaan yang memiliki produk dengan nama serupa. Sesaat setelahnya, Microsoft langsung mengubahnya menjadi ‘Microsoft Excel.’ Nama tersebut masih digunakan hingga sekarang.</p>
-        <p>Excel berbentuk spreadsheet dan biasa disebut ‘Multiplan’. Diketahui bahwa saat itu Excel sudah memiliki saingan, yaitu Lotus 1-2-3. Namun, Doug Klunder memiliki tekad untuk membuat temuan yang lebih canggih dari dari Lotus 1-2-3.</p>
-        <p>Pada tahun pertamanya, Excel hanya didistribusikan untuk perangkat dengan sistem operasi Macintosh atau yang sekarang lebih akrab dengan sebutan ‘Mac’. Tidak lain adalah komputer personal keluaran Apple. Dua tahun setelahnya, tepatnya pada November 1987, Microsoft merilis Excel untuk versi Windows dengan nama Excel Versi 2.0.</p>
-        <p>Tepat pada 1993, Microsoft Excel sudah dibekali bahasa pemrograman Visual Basic for Applications (VBA). Diketahui bahwa VBA-lah yang menjadi tonggak pertama Excel memiliki fitur rumus-rumus yang bisa digunakan secara otomatis dan akurat. Sejak 1987, tercatat hingga tahun 2016, sudah terdapat 13 versi Windows dan Mac.</p>
+        <h2>Sejarah & Evolusi</h2>
+        <p>Perjalanan dimulai pada tahun 1985 oleh <b>Doug Klunder</b>. Awalnya, aplikasi ini hadir tanpa embel-embel nama 'Microsoft'. Seiring kompetisi dengan Lotus 1-2-3, Microsoft akhirnya mematenkan nama 'Microsoft Excel' yang kita kenal hingga dekade ini.</p>
+        <p>Menariknya, Excel pertama kali justru populer di perangkat Macintosh (Apple) sebelum merambah ke Windows pada 1987. Titik balik revolusioner terjadi pada 1993 dengan integrasi <b>VBA (Visual Basic for Applications)</b>, yang menjadi fondasi otomasi rumus akurat hingga saat ini.</p>
     </div>
 
     <div class="card">
-        <h2>3. Mengenal Tampilan Excel</h2>
+        <h2>Komponen Struktur Utama</h2>
         <div class="grid-info">
-            <div class="info-box"><b>Ribbon</b>Kumpulan tab menu (Home, Insert, dll) yang berisi tool atau perintah.</div>
-            <div class="info-box"><b>Toolbar</b>Kumpulan tombol untuk akses cepat ke perintah tertentu.</div>
-            <div class="info-box"><b>Worksheet</b>Lembar kerja tunggal di dalam Excel yang terdiri dari sel.</div>
-            <div class="info-box"><b>Workbook</b>File Excel yang dapat menampung satu atau lebih Worksheet.</div>
-            <div class="info-box"><b>Rows</b>Baris horisontal yang diwakili oleh angka (1, 2, 3...).</div>
-            <div class="info-box"><b>Columns</b>Kolom vertikal yang diwakili oleh huruf (A, B, C...).</div>
-            <div class="info-box"><b>Cell</b>Pertemuan antara baris dan kolom (Contoh: A1).</div>
-            <div class="info-box"><b>Formula Bar</b>Tempat untuk melihat, mengetik, atau mengedit data/rumus di sel aktif.</div>
-            <div class="info-box"><b>Sheet Tabs</b>Tab di bagian bawah untuk berpindah antar lembar kerja.</div>
+            <div class="info-box"><b>Ribbon</b><span>Pusat kontrol yang menampung seluruh tab perintah dan fitur utama.</span></div>
+            <div class="info-box"><b>Worksheet</b><span>Lembar kerja tunggal yang terdiri dari jutaan sel interaktif.</span></div>
+            <div class="info-box"><b>Workbook</b><span>Kontainer utama (file) yang menyimpan kumpulan worksheet Anda.</span></div>
+            <div class="info-box"><b>Cell & Range</b><span>Unit terkecil (Cell) dan sekumpulan sel yang dipilih (Range).</span></div>
+            <div class="info-box"><b>Formula Bar</b><span>Area presisi untuk mengedit data atau logika pemrograman rumus.</span></div>
+            <div class="info-box"><b>Function</b><span>Algoritma siap pakai (seperti SUM/VLOOKUP) untuk solusi instan.</span></div>
         </div>
     </div>
 
-    <div class="card">
-        <h2>4. Istilah Dasar</h2>
-        <div class="grid-info">
-            <div class="info-box"><b>Cell</b>Satuan terkecil di worksheet tempat menginput data.</div>
-            <div class="info-box"><b>Range</b>Sekumpulan sel yang dipilih secara bersamaan (Contoh: A1:B10).</div>
-            <div class="info-box"><b>Formula</b>Persamaan matematis untuk menghitung nilai (Diawali tanda =).</div>
-            <div class="info-box"><b>Function</b>Rumus siap pakai dari Excel (Contoh: SUM, AVERAGE).</div>
-            <div class="info-box"><b>Autofill</b>Fitur untuk mengisi data secara otomatis berdasarkan pola.</div>
-            <div class="info-box"><b>Formatting</b>Mengatur tampilan data (Warna, Huruf, Border).</div>
-        </div>
-    </div>
-
-    <footer>© 2026 Master Excel Portal</footer>
+    <footer>
+        <p style="margin-bottom: 5px;">&copy; 2026 BelajarExcel | Precision in Every Cell</p>
+        <span>Dirancang untuk kemudahan belajar mandiri.</span>
+    </footer>
 </div>
 
 <script>
