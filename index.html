@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Excel Portal - Kamus Rumus Lengkap</title>
+    <title>Master Excel Portal - Belajar Mandiri Lengkap</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,66 +16,82 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; padding-top: 60px; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; padding-top: 60px; }
 
         header { 
             background: var(--excel-green); color: white; padding: 10px 20px; 
             display: flex; align-items: center; position: fixed; 
             width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 50px;
         }
-        /* Perkecil judul di header agar hemat ruang */
-        header h1 { font-size: 15px; font-weight: 700; letter-spacing: 0.5px; }
-        
-        .menu-btn { font-size: 20px; background: none; border: none; color: white; cursor: pointer; margin-right: 15px; }
-        
+        header h1 { font-size: 15px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+        .menu-btn { font-size: 22px; background: none; border: none; color: white; cursor: pointer; margin-right: 15px; }
+
         .sidebar {
             position: fixed; left: -280px; top: 0; height: 100%; width: var(--sidebar-width);
-            background: var(--excel-dark); color: white; transition: 0.3s; z-index: 1100; padding-top: 60px;
+            background: var(--excel-dark); color: white; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            z-index: 1100; padding-top: 10px;
         }
         .sidebar.active { left: 0; }
-        .sidebar a { display: block; padding: 15px 25px; color: #cbd5e1; text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .sidebar a:hover { background: var(--excel-green); color: white; }
 
-        .main-content { max-width: 1100px; margin: 0 auto; padding: 20px; }
-        
-        .search-container { margin-bottom: 25px; position: sticky; top: 55px; z-index: 900; background: var(--bg); padding: 10px 0; }
-        .search-input { 
-            width: 100%; padding: 14px 20px; border-radius: 12px; 
-            border: 2px solid var(--excel-green); outline: none; 
-            font-size: 15px; font-weight: 600;
-            box-shadow: 0 6px 15px rgba(33, 115, 70, 0.1); 
+        /* Tombol Tutup (X) di Sidebar */
+        .sidebar-header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 20px;
         }
+        .close-btn {
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 30px;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .close-btn:hover { color: white; }
 
-        .card { background: var(--white); padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; border: 1px solid #e5e7eb; }
+        .sidebar a { 
+            display: block; 
+            padding: 15px 25px; 
+            color: #cbd5e1; 
+            text-decoration: none; 
+            font-weight: 600; 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+            font-size: 14px;
+        }
+        .sidebar a:hover { background: var(--excel-green); color: white; }
         
-        .category-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
-        .category-icon { width: 35px; height: 35px; background: #dcfce7; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .overlay { position: fixed; display: none; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050; top: 0; left: 0; }
+        .overlay.active { display: block; }
+
+        .main-content { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #e5e7eb; }
         
-        /* Font Judul Rumus diperkecil sesuai permintaan */
-        h2 { color: var(--excel-green); font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
-
-        .formula-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
-        .formula-item { background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; transition: 0.2s; }
-        .formula-item:hover { border-color: var(--excel-green); background: #fff; }
-
-        .formula-name { color: var(--excel-green); font-weight: 800; font-family: monospace; font-size: 16px; display: block; margin-bottom: 4px; }
-        .formula-desc { font-size: 12.5px; color: #475569; margin-bottom: 10px; display: block; line-height: 1.4; }
+        h2 { color: var(--excel-green); margin-bottom: 15px; font-size: 18px; border-left: 5px solid var(--excel-green); padding-left: 15px; text-transform: uppercase; }
+        h3 { color: var(--excel-dark); margin: 20px 0 10px 0; font-size: 16px; font-weight: 700; }
         
-        .copy-box { display: flex; align-items: center; background: #e2e8f0; padding: 8px; border-radius: 6px; font-family: monospace; font-size: 11px; justify-content: space-between; border-left: 4px solid var(--excel-green); }
-        .copy-btn { background: var(--excel-green); color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: bold; }
+        p { margin-bottom: 15px; text-align: justify; font-size: 14px; color: #374151; }
+        
+        .grid-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 15px 0; }
+        .info-box { background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; font-size: 13px; }
+        .info-box b { color: var(--excel-green); display: block; margin-bottom: 5px; font-size: 14px; }
 
-        .hidden { display: none !important; }
         footer { text-align: center; padding: 30px; font-size: 10px; color: #94a3b8; }
     </style>
 </head>
 <body>
 
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
 <header>
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    <h1>KAMUS RUMUS EXCEL</h1>
+    <h1>Excel Master Class</h1>
 </header>
 
 <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <button class="close-btn" onclick="toggleMenu()">&times;</button>
+    </div>
     <a href="index.html">🏠 Halaman Utama</a>
     <a href="rumus.html">🧮 Kamus Rumus & Fungsi</a>
     <a href="shortcut.html">⌨️ Shortcut Keyboard</a>
@@ -83,85 +99,55 @@
 
 <div class="main-content">
     
-    <div class="search-container">
-        <input type="text" id="formulaSearch" class="search-input" placeholder="🔍 Cari nama rumus atau fungsinya..." onkeyup="filterFormulas()">
+    <div class="card">
+        <h2>1. Apa Itu Microsoft Excel?</h2>
+        <p>Microsoft excel merupakan bagian dari Microsoft office yang berfungsi untuk pengolahan data dalam bentuk angka maupun perhitungan. Tampilan dari Microsoft excel ini berupa spreadsheet sehingga memudahkan penggunanya untuk mengoperasikannya.</p>
+        <p>Aplikasi Microsoft excel ini, merupakan pengolah data secara otomatis yang dapat berupa penghitungan dasar, penggunaan rumus-rumus, pemakaian fungsi, pembuatan grafik, pengolahan data dan table, serta manajemen data. Namun, dalam pemakaian fungsi anda harus paham betul arti dari fungsi tersebut serta logika excelnya. Karena jika salah dalam pemakaian fungsi, dapat menyebabkan kesalahan sewaktu membaca data.</p>
     </div>
 
-    <!-- 1. MATH -->
-    <div class="card formula-section">
-        <div class="category-header"><div class="category-icon">📐</div><h2>1. Math & Arithmetic</h2></div>
-        <div class="formula-grid">
-            <div class="formula-item"><span class="formula-name">SUM</span><span class="formula-desc">Menjumlahkan angka.</span><div class="copy-box"><span>=SUM(A1:A10)</span><button class="copy-btn" onclick="copyText('=SUM(A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">SUMIF / SUMIFS</span><span class="formula-desc">Jumlahkan angka dengan kriteria.</span><div class="copy-box"><span>=SUMIF(A1:A10, ">50")</span><button class="copy-btn" onclick="copyText('=SUMIF(A1:A10, \'>50\')')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">PRODUCT</span><span class="formula-desc">Mengalikan angka.</span><div class="copy-box"><span>=PRODUCT(A1:A5)</span><button class="copy-btn" onclick="copyText('=PRODUCT(A1:A5)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">SUBTOTAL</span><span class="formula-desc">Subtotal dalam daftar.</span><div class="copy-box"><span>=SUBTOTAL(9, A1:A10)</span><button class="copy-btn" onclick="copyText('=SUBTOTAL(9, A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">ROUND / UP / DOWN</span><span class="formula-desc">Pembulatan angka.</span><div class="copy-box"><span>=ROUND(A1, 2)</span><button class="copy-btn" onclick="copyText('=ROUND(A1, 2)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">INT</span><span class="formula-desc">Bilangan bulat terdekat.</span><div class="copy-box"><span>=INT(8.9)</span><button class="copy-btn" onclick="copyText('=INT(8.9)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">ABS</span><span class="formula-desc">Nilai mutlak (positif).</span><div class="copy-box"><span>=ABS(-5)</span><button class="copy-btn" onclick="copyText('=ABS(-5)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">MOD</span><span class="formula-desc">Sisa hasil bagi.</span><div class="copy-box"><span>=MOD(10, 3)</span><button class="copy-btn" onclick="copyText('=MOD(10, 3)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">POWER</span><span class="formula-desc">Pangkat angka.</span><div class="copy-box"><span>=POWER(5, 2)</span><button class="copy-btn" onclick="copyText('=POWER(5, 2)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">SQRT</span><span class="formula-desc">Akar kuadrat.</span><div class="copy-box"><span>=SQRT(16)</span><button class="copy-btn" onclick="copyText('=SQRT(16)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">RAND / BETWEEN</span><span class="formula-desc">Angka acak.</span><div class="copy-box"><span>=RANDBETWEEN(1, 100)</span><button class="copy-btn" onclick="copyText('=RANDBETWEEN(1, 100)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">CEILING / FLOOR</span><span class="formula-desc">Pembulatan kelipatan.</span><div class="copy-box"><span>=CEILING(2.5, 1)</span><button class="copy-btn" onclick="copyText('=CEILING(2.5, 1)')">SALIN</button></div></div>
+    <div class="card">
+        <h2>2. Sejarah Microsoft Excel</h2>
+        <p>Excel pertama kali hadir pada tahun 1985 dan dibuat oleh Doug Klunder. Fakta uniknya, Excel secara perdana dirilis tanpa memuat nama ‘Microsoft,’ melainkan hanya Excel saja. Munculnya Excel ternyata mendapat banyak komplain dari berbagai perusahaan yang memiliki produk dengan nama serupa. Sesaat setelahnya, Microsoft langsung mengubahnya menjadi ‘Microsoft Excel’. Nama tersebut masih digunakan hingga sekarang.</p>
+        <p>Excel berbentuk spreadsheet dan biasa disebut ‘Multiplan’. Diketahui bahwa saat itu Excel sudah memiliki saingan, yaitu Lotus 1-2-3. Namun, Doug Klunder memiliki tekad untuk membuat temuan yang lebih canggih dari dari Lotus 1-2-3.</p>
+        <p>Pada tahun pertamanya, Excel hanya didistribusikan untuk perangkat dengan sistem operasi Macintosh atau yang sekarang lebih akrab dengan sebutan ‘Mac’. Tidak lain adalah komputer personal keluaran Apple. Dua tahun setelahnya, tepatnya pada November 1987, Microsoft merilis Excel untuk versi Windows dengan nama Excel Versi 2.0.</p>
+        <p>Tepat pada 1993, Microsoft Excel sudah dibekali bahasa pemrograman Visual Basic for Applications (VBA). Diketahui bahwa VBA-lah yang menjadi tonggak pertama Excel memiliki fitur rumus-rumus yang bisa digunakan secara otomatis dan akurat. Sejak 1987, tercatat hingga tahun 2016, sudah terdapat 13 versi Windows dan Mac.</p>
+        <p style="font-size: 11px; color: #9ca3af; font-style: italic;">Sumber: Ghina Aulia (Katadata.co.id)</p>
+    </div>
+
+    <div class="card">
+        <h2>3. Mengenal Tampilan Excel</h2>
+        <div class="grid-info">
+            <div class="info-box"><b>Ribbon</b>Kumpulan tab menu (Home, Insert, dll) yang berisi tool atau perintah.</div>
+            <div class="info-box"><b>Toolbar</b>Kumpulan tombol untuk akses cepat ke perintah tertentu.</div>
+            <div class="info-box"><b>Worksheet</b>Lembar kerja tunggal di dalam Excel yang terdiri dari sel.</div>
+            <div class="info-box"><b>Workbook</b>File Excel yang dapat menampung satu atau lebih Worksheet.</div>
+            <div class="info-box"><b>Rows</b>Baris horisontal yang diwakili oleh angka (1, 2, 3...).</div>
+            <div class="info-box"><b>Columns</b>Kolom vertikal yang diwakili oleh huruf (A, B, C...).</div>
+            <div class="info-box"><b>Cell</b>Pertemuan antara baris dan kolom (Contoh: A1).</div>
+            <div class="info-box"><b>Formula Bar</b>Tempat untuk melihat, mengetik, atau mengedit data/rumus di sel aktif.</div>
+            <div class="info-box"><b>Sheet Tabs</b>Tab di bagian bawah untuk berpindah antar lembar kerja.</div>
         </div>
     </div>
 
-    <!-- 2. STATISTICAL -->
-    <div class="card formula-section">
-        <div class="category-header"><div class="category-icon">📊</div><h2>2. Statistical</h2></div>
-        <div class="formula-grid">
-            <div class="formula-item"><span class="formula-name">AVERAGE / IF / IFS</span><span class="formula-desc">Rata-rata.</span><div class="copy-box"><span>=AVERAGE(A1:A10)</span><button class="copy-btn" onclick="copyText('=AVERAGE(A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">COUNT / COUNTA / BLANK</span><span class="formula-desc">Hitung jumlah sel.</span><div class="copy-box"><span>=COUNTA(A1:A10)</span><button class="copy-btn" onclick="copyText('=COUNTA(A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">COUNTIF / COUNTIFS</span><span class="formula-desc">Hitung dengan kriteria.</span><div class="copy-box"><span>=COUNTIF(A1:A10, "Apple")</span><button class="copy-btn" onclick="copyText('=COUNTIF(A1:A10, \'Apple\')')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">MAX / MIN</span><span class="formula-desc">Nilai tertinggi/terendah.</span><div class="copy-box"><span>=MAX(A1:A10)</span><button class="copy-btn" onclick="copyText('=MAX(A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">MEDIAN / MODE</span><span class="formula-desc">Nilai tengah/sering muncul.</span><div class="copy-box"><span>=MEDIAN(A1:A10)</span><button class="copy-btn" onclick="copyText('=MEDIAN(A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">LARGE / SMALL</span><span class="formula-desc">Nilai ke-n.</span><div class="copy-box"><span>=LARGE(A1:A10, 2)</span><button class="copy-btn" onclick="copyText('=LARGE(A1:A10, 2)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">RANK</span><span class="formula-desc">Peringkat angka.</span><div class="copy-box"><span>=RANK(A1, A1:A10)</span><button class="copy-btn" onclick="copyText('=RANK(A1, A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">PERCENTILE</span><span class="formula-desc">Nilai persentil.</span><div class="copy-box"><span>=PERCENTILE(A1:A10, 0.9)</span><button class="copy-btn" onclick="copyText('=PERCENTILE(A1:A10, 0.9)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">STDEV / VAR</span><span class="formula-desc">Standar deviasi.</span><div class="copy-box"><span>=STDEV(A1:A10)</span><button class="copy-btn" onclick="copyText('=STDEV(A1:A10)')">SALIN</button></div></div>
+    <div class="card">
+        <h2>4. Istilah Dasar</h2>
+        <div class="grid-info">
+            <div class="info-box"><b>Cell</b>Satuan terkecil di worksheet tempat menginput data.</div>
+            <div class="info-box"><b>Range</b>Sekumpulan sel yang dipilih secara bersamaan (Contoh: A1:B10).</div>
+            <div class="info-box"><b>Formula</b>Persamaan matematis untuk menghitung nilai (Diawali tanda =).</div>
+            <div class="info-box"><b>Function</b>Rumus siap pakai dari Excel (Contoh: SUM, AVERAGE).</div>
+            <div class="info-box"><b>Autofill</b>Fitur untuk mengisi data secara otomatis berdasarkan pola.</div>
+            <div class="info-box"><b>Formatting</b>Mengatur tampilan data (Warna, Huruf, Border).</div>
         </div>
     </div>
 
-    <!-- 3. LOGICAL -->
-    <div class="card formula-section">
-        <div class="category-header"><div class="category-icon">⚖️</div><h2>3. Logical</h2></div>
-        <div class="formula-grid">
-            <div class="formula-item"><span class="formula-name">IF / IFS</span><span class="formula-desc">Uji logika.</span><div class="copy-box"><span>=IF(A1>70, "Lulus", "Gagal")</span><button class="copy-btn" onclick="copyText('=IF(A1>70, \'Lulus\', \'Gagal\')')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">AND / OR / NOT / XOR</span><span class="formula-desc">Gabungan kriteria logika.</span><div class="copy-box"><span>=AND(A1>0, B1>0)</span><button class="copy-btn" onclick="copyText('=AND(A1>0, B1>0)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">IFERROR / IFNA</span><span class="formula-desc">Cegah error sel.</span><div class="copy-box"><span>=IFERROR(A1/B1, 0)</span><button class="copy-btn" onclick="copyText('=IFERROR(A1/B1, 0)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">SWITCH</span><span class="formula-desc">Evaluasi terhadap daftar.</span><div class="copy-box"><span>=SWITCH(A1, 1, "Senin")</span><button class="copy-btn" onclick="copyText('=SWITCH(A1, 1, \'Senin\')')">SALIN</button></div></div>
-        </div>
-    </div>
-
-    <!-- (Kategori 4-12 disesuaikan dengan pola yang sama agar tidak ada yang hilang) -->
-    
     <footer>© 2026 Master Excel Portal</footer>
 </div>
 
 <script>
-    function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
-    function copyText(text) { navigator.clipboard.writeText(text).then(() => { alert("Rumus disalin!"); }); }
-
-    function filterFormulas() {
-        let input = document.getElementById('formulaSearch').value.toUpperCase();
-        let items = document.querySelectorAll('.formula-item');
-        let sections = document.querySelectorAll('.formula-section');
-
-        items.forEach(item => {
-            let name = item.querySelector('.formula-name').innerText.toUpperCase();
-            let desc = item.querySelector('.formula-desc').innerText.toUpperCase();
-            if (name.indexOf(input) > -1 || desc.indexOf(input) > -1) {
-                item.classList.remove('hidden');
-            } else {
-                item.classList.add('hidden');
-            }
-        });
-
-        sections.forEach(section => {
-            let visible = section.querySelectorAll('.formula-item:not(.hidden)');
-            if (visible.length === 0) section.classList.add('hidden');
-            else section.classList.remove('hidden');
-        });
+    function toggleMenu() {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('overlay').classList.toggle('active');
     }
 </script>
 
