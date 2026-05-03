@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Excel Portal - Belajar Lengkap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --excel-green: #217346;
+            --excel-dark: #103822;
+            --bg: #f3f4f6;
+            --white: #ffffff;
+            --text: #1f2937;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+        header { background: var(--excel-green); color: white; padding: 40px 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        header h1 { font-size: 28px; font-weight: 800; margin-bottom: 10px; }
+        header p { font-size: 14px; opacity: 0.9; }
+
+        .container { max-width: 1000px; margin: -30px auto 50px; padding: 0 20px; }
+
+        /* Navigation Tabs */
+        .tabs { display: flex; background: var(--white); padding: 10px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; overflow-x: auto; gap: 10px; }
+        .tab-btn { flex: 1; padding: 12px; border: none; background: none; font-weight: 700; color: var(--text); cursor: pointer; border-radius: 10px; transition: 0.3s; white-space: nowrap; font-size: 13px; }
+        .tab-btn.active { background: var(--excel-green); color: white; }
+
+        .content-section { display: none; animation: fadeIn 0.5s ease; }
+        .content-section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Card Style */
+        .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #e5e7eb; }
+        .card h2 { color: var(--excel-green); font-size: 20px; margin-bottom: 15px; border-left: 5px solid var(--excel-green); padding-left: 12px; }
+        
+        /* Table Style */
+        .table-wrapper { overflow-x: auto; margin-top: 15px; }
+        table { width: 100%; border-collapse: collapse; min-width: 500px; }
+        th { background: #f9fafb; padding: 12px; text-align: left; font-size: 12px; border-bottom: 2px solid #e5e7eb; }
+        td { padding: 12px; border-bottom: 1px solid #f3f4f6; font-size: 14px; }
+        .code { font-family: monospace; background: #f1f1f1; padding: 2px 6px; border-radius: 4px; color: #d63384; font-weight: bold; }
+
+        .shortcut-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .kunci { background: #eee; padding: 4px 8px; border-radius: 5px; border-bottom: 3px solid #ccc; font-weight: bold; font-size: 12px; }
+
+        footer { text-align: center; padding: 30px; color: #6b7280; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Excel Master Class</h1>
+    <p>Panduan Lengkap Belajar Microsoft Excel dari Nol sampai Mahir</p>
+</header>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'materi')">📚 Materi Dasar</button>
+        <button class="tab-btn" onclick="openTab(event, 'rumus')">🧮 Rumus Utama</button>
+        <button class="tab-btn" onclick="openTab(event, 'shortcut')">⌨️ Shortcut Sakti</button>
+        <button class="tab-btn" onclick="openTab(event, 'video')">🎥 Video Tutorial</button>
+    </div>
+
+    <div id="materi" class="content-section active">
+        <div class="card">
+            <h2>Mengenal Area Kerja Excel</h2>
+            <p>Sebelum belajar rumus, kamu wajib tahu istilah-istilah ini:</p>
+            <ul>
+                <li><strong>Row:</strong> Baris yang memanjang horizontal (Angka 1, 2, 3).</li>
+                <li><strong>Column:</strong> Kolom yang memanjang vertikal (Huruf A, B, C).</li>
+                <li><strong>Cell:</strong> Pertemuan antara Row dan Column (Contoh: A1).</li>
+                <li><strong>Range:</strong> Kumpulan dari beberapa Cell (Contoh: A1:B10).</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>Tipe Data di Excel</h2>
+            <p>Excel mengenal beberapa tipe data utama agar perhitungan tidak error:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Tipe Data</th><th>Penjelasan</th></tr></thead>
+                    <tbody>
+                        <tr><td>Text</td><td>Data berupa huruf atau simbol (tidak bisa dihitung).</td></tr>
+                        <tr><td>Number</td><td>Data angka yang bisa diolah secara matematika.</td></tr>
+                        <tr><td>Date</td><td>Data tanggal, Excel menyimpan ini sebagai angka urutan.</td></tr>
+                        <tr><td>Formula</td><td>Data yang diawali tanda <span class="code">=</span> untuk melakukan perhitungan.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="rumus" class="content-section">
+        <div class="card">
+            <h2>Rumus Statistik Dasar</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Rumus</th><th>Kegunaan</th><th>Contoh Penggunaan</th></tr></thead>
+                    <tbody>
+                        <tr><td><span class="code">SUM</span></td><td>Menjumlahkan angka</td><td><span class="code">=SUM(A1:A10)</span></td></tr>
+                        <tr><td><span class="code">AVERAGE</span></td><td>Mencari nilai rata-rata</td><td><span class="code">=AVERAGE(B1:B20)</span></td></tr>
+                        <tr><td><span class="code">MAX/MIN</span></td><td>Mencari nilai tertinggi/terendah</td><td><span class="code">=MAX(C1:C10)</span></td></tr>
+                        <tr><td><span class="code">COUNT</span></td><td>Menghitung sel berisi angka</td><td><span class="code">=COUNT(D1:D10)</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Rumus Logika (IF) & Lookup</h2>
+            <p>Rumus ini paling sering digunakan di dunia kerja:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Rumus</th><th>Kegunaan</th></tr></thead>
+                    <tbody>
+                        <tr><td><span class="code">IF</span></td><td>Memberikan hasil berdasarkan kondisi (Lulus/Gagal).</td></tr>
+                        <tr><td><span class="code">VLOOKUP</span></td><td>Mencari data secara vertikal di tabel lain.</td></tr>
+                        <tr><td><span class="code">CONCATENATE</span></td><td>Menggabungkan beberapa teks menjadi satu.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="shortcut" class="content-section">
+        <div class="card">
+            <h2>Shortcut Keyboard Paling Berguna</h2>
+            <div class="shortcut-grid">
+                <div class="card" style="padding:15px; margin:0;">
+                    <p><span class="kunci">CTRL</span> + <span class="kunci">;</span></p>
+                    <small>Input Tanggal Hari Ini</small>
+                </div>
+                <div class="card" style="padding:15px; margin:0;">
+                    <p><span class="kunci">ALT</span> + <span class="kunci">=</span></p>
+                    <small>Auto SUM Otomatis</small>
+                </div>
+                <div class="card" style="padding:15px; margin:0;">
+                    <p><span class="kunci">CTRL</span> + <span class="kunci">SHIFT</span> + <span class="kunci">L</span></p>
+                    <small>Pasang/Hapus Filter</small>
+                </div>
+                <div class="card" style="padding:15px; margin:0;">
+                    <p><span class="kunci">F4</span></p>
+                    <small>Mengunci Cell (Simbol $)</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="video" class="content-section">
+        <div class="card">
+            <h2>Video Belajar Terpilih</h2>
+            <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px;">
+                <iframe 
+                    style="position:absolute; top:0; left:0; width:100%; height:100%;" 
+                    src="https://www.youtube.com/embed/Vl0h_YInp-M" 
+                    frameborder="0" allowfullscreen loading="lazy">
+                </iframe>
+            </div>
+            <p style="margin-top:15px; font-size:13px; color:#666;">Video oleh: Ignasius Ryan (Rekomendasi untuk pemula)</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Belajar Excel Portal - Dibuat untuk FH UHN</p>
+    </footer>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, content, tablinks;
+        content = document.getElementsByClassName("content-section");
+        for (i = 0; i < content.length; i++) {
+            content[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+
+</body>
+</html>
