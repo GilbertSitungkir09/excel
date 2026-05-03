@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Excel Portal - Belajar & Praktek</title>
+    <title>Master Excel Portal - Kamus Rumus Lengkap</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -38,7 +38,7 @@
         .overlay { position: fixed; display: none; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050; top: 0; left: 0; }
         .overlay.active { display: block; }
 
-        .main-content { max-width: 900px; margin: 0 auto; padding: 80px 20px 40px; }
+        .main-content { max-width: 1000px; margin: 0 auto; padding: 80px 20px 40px; }
         .section { display: none; animation: slideUp 0.4s ease-out; }
         .section.active { display: block; }
 
@@ -46,31 +46,23 @@
 
         .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #e5e7eb; }
         h2 { color: var(--excel-green); margin-bottom: 15px; font-size: 20px; border-left: 5px solid var(--excel-green); padding-left: 15px; }
-        h3 { color: var(--excel-dark); margin: 20px 0 10px 0; font-size: 17px; background: #e8f5e9; padding: 5px 10px; border-radius: 5px; }
+        h3 { color: var(--excel-dark); margin: 20px 0 10px 0; font-size: 17px; background: #e8f5e9; padding: 8px 12px; border-radius: 8px; }
         
-        p { margin-bottom: 15px; font-size: 14.5px; text-align: justify; }
-        
-        /* SEARCH BAR STYLE */
+        /* SEARCH BAR */
         .search-container { margin-bottom: 20px; position: sticky; top: 70px; z-index: 99; }
-        .search-input { width: 100%; padding: 12px 15px; border-radius: 10px; border: 2px solid var(--excel-green); outline: none; font-family: inherit; font-size: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .search-input { width: 100%; padding: 14px 20px; border-radius: 12px; border: 2px solid var(--excel-green); outline: none; font-size: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 
-        /* RUMUS GRID */
-        .formula-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-        .formula-badge { background: #f1f5f9; padding: 4px 10px; border-radius: 5px; font-size: 12px; font-weight: 600; color: #475569; border: 1px solid #e2e8f0; }
-        .formula-badge.popular { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+        /* FORMULA BOX STYLE */
+        .formula-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 10px; }
+        .formula-item { background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; transition: 0.2s; }
+        .formula-item:hover { border-color: var(--excel-green); background: #fff; transform: translateY(-2px); }
+        .formula-name { color: var(--excel-green); font-weight: 800; font-family: monospace; font-size: 15px; display: block; margin-bottom: 5px; }
+        .formula-desc { font-size: 13px; color: #475569; line-height: 1.4; }
 
         .excel-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; }
         .excel-table th, .excel-table td { border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 14px; }
         .excel-table th { background: #f1f1f1; font-weight: bold; width: 50px; }
         .excel-table td input { width: 100%; border: none; outline: none; text-align: center; font-family: inherit; font-size: 14px; background: transparent; }
-
-        .tutorial-item { border: 1px solid #e5e7eb; padding: 15px; border-radius: 12px; margin-bottom: 15px; background: #fff; }
-        .btn-vid { display: inline-block; margin-top: 10px; padding: 8px 15px; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; }
-        .video-box { display: none; margin-top: 15px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; background: #000; }
-        .video-box.shorts { padding-bottom: 177.77%; max-width: 350px; margin: 15px auto; }
-        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-        .code-block { background: #1e293b; color: #f8fafc; padding: 15px; border-radius: 10px; font-family: monospace; font-size: 13px; margin: 10px 0; overflow-x: auto; }
 
         footer { text-align: center; padding: 30px; font-size: 11px; color: #94a3b8; }
     </style>
@@ -87,7 +79,7 @@
 <nav class="sidebar" id="sidebar">
     <a href="#" onclick="showPage('home')">🏠 Halaman Utama</a>
     <a href="#" onclick="showPage('praktek')">✍️ Ruang Praktek</a>
-    <a href="#" onclick="showPage('rumus')">🧮 Rumus & Fungsi</a>
+    <a href="#" onclick="showPage('rumus')">🧮 Kamus Rumus Lengkap</a>
     <a href="#" onclick="showPage('shortcut')">⌨️ Shortcut Keyboard</a>
 </nav>
 
@@ -95,21 +87,10 @@
     
     <!-- HALAMAN UTAMA -->
     <div id="home" class="section active">
-        <div class="hero">
-            <h2>Excel Learning Center</h2>
-            <p>“Microsoft Excel adalah alat pengolah data paling populer di dunia yang membantu jutaan orang bekerja lebih cepat, lebih akurat, dan lebih profesional.”</p>
-        </div>
-
         <div class="card">
-            <h2>1. Apa Itu Microsoft Excel?</h2>
+            <h2>Apa Itu Microsoft Excel?</h2>
             <p>Microsoft excel merupakan bagian dari Microsoft office yang berfungsi untuk pengolahan data dalam bentuk angka maupun perhitungan. Tampilan dari Microsoft excel ini berupa spreadsheet sehingga memudahkan penggunanya untuk mengoperasikannya.</p>
-            <p>Aplikasi Microsoft excel ini, merupakan pengolah data secara otomatis yang dapat berupa penghitungan dasar, penggunaan rumus-rumus, pemakaian fungsi, pembuatan grafik, pengolahan data dan table, serta manajemen data. Namun, dalam pemakaian fungsi anda harus paham betul arti dari fungsi tersebut serta logika excelnya. Karena jika salah dalam pemakaian fungsi, dapat menyebabkan kesalahan sewaktu membaca data.</p>
-        </div>
-
-        <div class="card">
-            <h2>2. Sejarah Microsoft Excel</h2>
-            <p>Excel pertama kali hadir pada tahun 1985 dan dibuat oleh Doug Klunder. Fakta uniknya, Excel secara perdana dirilis tanpa memuat nama ‘Microsoft.’ Melainkan hanya Excel saja. Munculnya Excel ternyata mendapat banyak komplain dari berbagai perusahaan yang memiliki produk dengan nama serupa. Sesaat setelahnya, Microsoft langsung mengubahnya menjadi ‘Microsoft Excel.’ Nama tersebut masih digunakan hingga sekarang.</p>
-            <p>Pada tahun pertamanya, Excel hanya didistribusikan untuk perangkat dengan sistem operasi Macintosh (Mac). Dua tahun setelahnya, tepatnya pada November 1987, Microsoft merilis Excel untuk versi Windows dengan nama Excel Versi 2.0. Keberhasilan Excel merebut pasar terjadi karena kompetitor utama saat itu, Lotus 1-2-3, terlambat masuk ke Windows.</p>
+            <p>Aplikasi Microsoft excel ini, merupakan pengolah data secara otomatis yang dapat berupa penghitungan dasar, penggunaan rumus-rumus, pemakaian fungsi, pembuatan grafik, pengolahan data dan table, serta manajemen data. Namun, dalam pemakaian fungsi anda harus paham betul arti dari fungsi tersebut serta logika excelnya.</p>
         </div>
     </div>
 
@@ -117,7 +98,6 @@
     <div id="praktek" class="section">
         <div class="card">
             <h2>Simulasi Excel Interaktif</h2>
-            <p>Cobalah mengetik di sel di bawah ini untuk mensimulasikan pengisian data:</p>
             <div style="overflow-x: auto;">
                 <table class="excel-table">
                     <thead><tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead>
@@ -130,134 +110,157 @@
         </div>
     </div>
 
-    <!-- RUMUS & FUNGSI (DENGAN SEARCH BAR) -->
+    <!-- KAMUS RUMUS LENGKAP -->
     <div id="rumus" class="section">
         <div class="search-container">
-            <input type="text" id="formulaSearch" class="search-input" placeholder="🔍 Cari rumus excel (contoh: VLOOKUP, SUM, IF)..." onkeyup="filterFormulas()">
+            <input type="text" id="formulaSearch" class="search-input" placeholder="🔍 Cari rumus (contoh: VLOOKUP, SUM, IF)..." onkeyup="filterFormulas()">
         </div>
 
-        <div class="card" id="must-know">
-            <h2>Rumus Wajib (Paling Sering Dipakai)</h2>
-            <h3>Pemula</h3>
-            <div class="formula-list">
-                <span class="formula-badge popular">SUM</span><span class="formula-badge popular">AVERAGE</span><span class="formula-badge popular">COUNT</span><span class="formula-badge popular">IF</span><span class="formula-badge popular">MAX/MIN</span>
-            </div>
-            <h3>Menengah</h3>
-            <div class="formula-list">
-                <span class="formula-badge popular">VLOOKUP</span><span class="formula-badge popular">XLOOKUP</span><span class="formula-badge popular">INDEX MATCH</span><span class="formula-badge popular">SUMIF</span><span class="formula-badge popular">COUNTIF</span><span class="formula-badge popular">IFERROR</span>
-            </div>
-            <h3>Mahir</h3>
-            <div class="formula-list">
-                <span class="formula-badge popular">FILTER</span><span class="formula-badge popular">UNIQUE</span><span class="formula-badge popular">SORT</span><span class="formula-badge popular">Pivot tools</span><span class="formula-badge popular">Power Query</span><span class="formula-badge popular">VBA</span>
-            </div>
-        </div>
-
-        <div id="all-formulas">
-            <!-- 1. Math -->
+        <div id="formula-content">
+            <!-- 1. Math & Arithmetic -->
             <div class="card formula-section">
                 <h2>1. Math & Arithmetic (Matematika)</h2>
-                <div class="formula-list">
-                    <span class="formula-badge">SUM</span><span class="formula-badge">SUMIF</span><span class="formula-badge">SUMIFS</span><span class="formula-badge">PRODUCT</span><span class="formula-badge">SUBTOTAL</span><span class="formula-badge">ROUND</span><span class="formula-badge">ROUNDUP</span><span class="formula-badge">ROUNDDOWN</span><span class="formula-badge">INT</span><span class="formula-badge">ABS</span><span class="formula-badge">MOD</span><span class="formula-badge">POWER</span><span class="formula-badge">SQRT</span><span class="formula-badge">RAND</span><span class="formula-badge">RANDBETWEEN</span><span class="formula-badge">CEILING</span><span class="formula-badge">FLOOR</span>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">SUM</span><p class="formula-desc">Menjumlahkan seluruh angka dalam rentang sel.</p></div>
+                    <div class="formula-item"><span class="formula-name">SUMIF / SUMIFS</span><p class="formula-desc">Menjumlahkan angka berdasarkan satu atau banyak kriteria tertentu.</p></div>
+                    <div class="formula-item"><span class="formula-name">PRODUCT</span><p class="formula-desc">Mengalikan seluruh angka yang ada di dalam argumen.</p></div>
+                    <div class="formula-item"><span class="formula-name">SUBTOTAL</span><p class="formula-desc">Menghasilkan subtotal dalam daftar atau database (bisa mengabaikan sel tersembunyi).</p></div>
+                    <div class="formula-item"><span class="formula-name">ROUND / UP / DOWN</span><p class="formula-desc">Membulatkan angka ke jumlah digit tertentu (biasa, ke atas, atau ke bawah).</p></div>
+                    <div class="formula-item"><span class="formula-name">INT</span><p class="formula-desc">Membulatkan angka ke bawah ke bilangan bulat terdekat.</p></div>
+                    <div class="formula-item"><span class="formula-name">ABS</span><p class="formula-desc">Menghasilkan nilai mutlak (positif) dari suatu angka.</p></div>
+                    <div class="formula-item"><span class="formula-name">MOD</span><p class="formula-desc">Menghasilkan sisa hasil bagi dari dua angka.</p></div>
+                    <div class="formula-item"><span class="formula-name">POWER</span><p class="formula-desc">Menghasilkan hasil angka yang dipangkatkan.</p></div>
+                    <div class="formula-item"><span class="formula-name">SQRT</span><p class="formula-desc">Menghasilkan akar kuadrat dari suatu angka.</p></div>
+                    <div class="formula-item"><span class="formula-name">RAND / BETWEEN</span><p class="formula-desc">Menghasilkan angka acak (biasa atau di antara rentang tertentu).</p></div>
+                    <div class="formula-item"><span class="formula-name">CEILING / FLOOR</span><p class="formula-desc">Membulatkan angka ke atas atau ke bawah ke kelipatan terdekat.</p></div>
                 </div>
             </div>
 
             <!-- 2. Statistical -->
             <div class="card formula-section">
                 <h2>2. Statistical (Statistik)</h2>
-                <div class="formula-list">
-                    <span class="formula-badge">AVERAGE</span><span class="formula-badge">AVERAGEIF</span><span class="formula-badge">AVERAGEIFS</span><span class="formula-badge">COUNT</span><span class="formula-badge">COUNTA</span><span class="formula-badge">COUNTBLANK</span><span class="formula-badge">COUNTIF</span><span class="formula-badge">COUNTIFS</span><span class="formula-badge">MAX</span><span class="formula-badge">MIN</span><span class="formula-badge">MEDIAN</span><span class="formula-badge">MODE</span><span class="formula-badge">LARGE</span><span class="formula-badge">SMALL</span><span class="formula-badge">RANK</span><span class="formula-badge">PERCENTILE</span><span class="formula-badge">STDEV</span><span class="formula-badge">VAR</span>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">AVERAGE / IF / IFS</span><p class="formula-desc">Menghitung rata-rata (biasa atau berdasarkan kriteria tertentu).</p></div>
+                    <div class="formula-item"><span class="formula-name">COUNT / COUNTA / BLANK</span><p class="formula-desc">Menghitung sel berisi angka, sel tidak kosong, atau sel yang kosong.</p></div>
+                    <div class="formula-item"><span class="formula-name">COUNTIF / COUNTIFS</span><p class="formula-desc">Menghitung jumlah sel berdasarkan satu atau banyak kriteria.</p></div>
+                    <div class="formula-item"><span class="formula-name">MAX / MIN</span><p class="formula-desc">Mencari nilai tertinggi atau terendah dalam suatu rentang.</p></div>
+                    <div class="formula-item"><span class="formula-name">MEDIAN / MODE</span><p class="formula-desc">Mencari nilai tengah atau nilai yang paling sering muncul.</p></div>
+                    <div class="formula-item"><span class="formula-name">LARGE / SMALL</span><p class="formula-desc">Mencari nilai terbesar ke-k atau terkecil ke-k.</p></div>
+                    <div class="formula-item"><span class="formula-name">RANK</span><p class="formula-desc">Menentukan peringkat suatu angka dalam daftar.</p></div>
+                    <div class="formula-item"><span class="formula-name">PERCENTILE</span><p class="formula-desc">Menghasilkan persentil ke-k dari nilai dalam rentang.</p></div>
+                    <div class="formula-item"><span class="formula-name">STDEV / VAR</span><p class="formula-desc">Menghitung standar deviasi atau varians (simpangan data).</p></div>
                 </div>
             </div>
 
             <!-- 3. Logical -->
             <div class="card formula-section">
                 <h2>3. Logical (Logika)</h2>
-                <div class="formula-list">
-                    <span class="formula-badge">IF</span><span class="formula-badge">IFS</span><span class="formula-badge">AND</span><span class="formula-badge">OR</span><span class="formula-badge">NOT</span><span class="formula-badge">IFERROR</span><span class="formula-badge">IFNA</span><span class="formula-badge">SWITCH</span><span class="formula-badge">XOR</span>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">IF / IFS</span><p class="formula-desc">Melakukan uji logika tunggal atau bertumpuk.</p></div>
+                    <div class="formula-item"><span class="formula-name">AND / OR / NOT</span><p class="formula-desc">Uji apakah semua syarat terpenuhi, salah satu terpenuhi, atau membalikkan hasil logika.</p></div>
+                    <div class="formula-item"><span class="formula-name">IFERROR / IFNA</span><p class="formula-desc">Menangani pesan error (#VALUE!, #N/A) dengan teks kustom.</p></div>
+                    <div class="formula-item"><span class="formula-name">SWITCH</span><p class="formula-desc">Mengevaluasi satu ekspresi terhadap daftar nilai dan hasilkan hasil pertama yang cocok.</p></div>
+                    <div class="formula-item"><span class="formula-name">XOR</span><p class="formula-desc">Logika eksklusif (bernilai benar jika jumlah argumen yang benar adalah ganjil).</p></div>
                 </div>
             </div>
 
-            <!-- 4. Lookup -->
+            <!-- 4. Lookup & Reference -->
             <div class="card formula-section">
                 <h2>4. Lookup & Reference (Pencarian Data)</h2>
-                <div class="formula-list">
-                    <span class="formula-badge">VLOOKUP</span><span class="formula-badge">HLOOKUP</span><span class="formula-badge">XLOOKUP</span><span class="formula-badge">LOOKUP</span><span class="formula-badge">INDEX</span><span class="formula-badge">MATCH</span><span class="formula-badge">XMATCH</span><span class="formula-badge">OFFSET</span><span class="formula-badge">CHOOSE</span><span class="formula-badge">INDIRECT</span><span class="formula-badge">ADDRESS</span><span class="formula-badge">ROW</span><span class="formula-badge">COLUMN</span>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">VLOOKUP / HLOOKUP</span><p class="formula-desc">Mencari data secara vertikal (kolom) atau horizontal (baris).</p></div>
+                    <div class="formula-item"><span class="formula-name">XLOOKUP</span><p class="formula-desc">Fungsi pencarian modern yang lebih kuat dan fleksibel dari VLOOKUP.</p></div>
+                    <div class="formula-item"><span class="formula-name">INDEX / MATCH / XMATCH</span><p class="formula-desc">Kombinasi pencarian data yang paling fleksibel melampaui kemampuan VLOOKUP.</p></div>
+                    <div class="formula-item"><span class="formula-name">CHOOSE</span><p class="formula-desc">Memilih satu nilai dari daftar berdasarkan nomor indeks.</p></div>
+                    <div class="formula-item"><span class="formula-name">OFFSET / INDIRECT</span><p class="formula-desc">Mengacu pada rentang secara dinamis atau berdasarkan teks alamat sel.</p></div>
+                    <div class="formula-item"><span class="formula-name">ROW / COLUMN</span><p class="formula-desc">Menampilkan nomor baris atau nomor kolom dari suatu sel.</p></div>
                 </div>
             </div>
 
             <!-- 5. Text -->
             <div class="card formula-section">
                 <h2>5. Text Functions (Teks)</h2>
-                <div class="formula-list">
-                    <span class="formula-badge">LEFT</span><span class="formula-badge">RIGHT</span><span class="formula-badge">MID</span><span class="formula-badge">LEN</span><span class="formula-badge">TRIM</span><span class="formula-badge">UPPER</span><span class="formula-badge">LOWER</span><span class="formula-badge">PROPER</span><span class="formula-badge">CONCAT</span><span class="formula-badge">CONCATENATE</span><span class="formula-badge">TEXTJOIN</span><span class="formula-badge">TEXT</span><span class="formula-badge">FIND</span><span class="formula-badge">SEARCH</span><span class="formula-badge">REPLACE</span><span class="formula-badge">SUBSTITUTE</span><span class="formula-badge">VALUE</span>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">LEFT / RIGHT / MID</span><p class="formula-desc">Mengambil karakter dari kiri, kanan, atau tengah teks.</p></div>
+                    <div class="formula-item"><span class="formula-name">LEN / TRIM</span><p class="formula-desc">Menghitung jumlah karakter atau menghapus spasi berlebih.</p></div>
+                    <div class="formula-item"><span class="formula-name">UPPER / LOWER / PROPER</span><p class="formula-desc">Mengubah teks jadi huruf besar, kecil, atau huruf besar di awal kata.</p></div>
+                    <div class="formula-item"><span class="formula-name">CONCAT / TEXTJOIN</span><p class="formula-desc">Menggabungkan teks (TEXTJOIN bisa menggunakan pembatas otomatis).</p></div>
+                    <div class="formula-item"><span class="formula-name">FIND / SEARCH</span><p class="formula-desc">Mencari posisi karakter tertentu dalam teks.</p></div>
+                    <div class="formula-item"><span class="formula-name">SUBSTITUTE / REPLACE</span><p class="formula-desc">Mengganti teks lama dengan teks baru.</p></div>
                 </div>
             </div>
 
-            <!-- 6. Date -->
+            <!-- 6. Date & Time -->
             <div class="card formula-section">
                 <h2>6. Date & Time (Tanggal & Waktu)</h2>
-                <div class="formula-list">
-                    <span class="formula-badge">TODAY</span><span class="formula-badge">NOW</span><span class="formula-badge">DATE</span><span class="formula-badge">TIME</span><span class="formula-badge">DAY</span><span class="formula-badge">MONTH</span><span class="formula-badge">YEAR</span><span class="formula-badge">HOUR</span><span class="formula-badge">MINUTE</span><span class="formula-badge">SECOND</span><span class="formula-badge">DATEDIF</span><span class="formula-badge">EDATE</span><span class="formula-badge">EOMONTH</span><span class="formula-badge">WORKDAY</span><span class="formula-badge">NETWORKDAYS</span>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">TODAY / NOW</span><p class="formula-desc">Menampilkan tanggal hari ini atau waktu saat ini (real-time).</p></div>
+                    <div class="formula-item"><span class="formula-name">DATE / TIME</span><p class="formula-desc">Membuat format tanggal atau waktu dari angka terpisah.</p></div>
+                    <div class="formula-item"><span class="formula-name">DAY / MONTH / YEAR</span><p class="formula-desc">Mengambil angka hari, bulan, atau tahun dari sebuah tanggal.</p></div>
+                    <div class="formula-item"><span class="formula-name">DATEDIF</span><p class="formula-desc">Menghitung selisih antara dua tanggal (dalam hari, bulan, atau tahun).</p></div>
+                    <div class="formula-item"><span class="formula-name">NETWORKDAYS</span><p class="formula-desc">Menghitung jumlah hari kerja (senin-jumat) di antara dua tanggal.</p></div>
                 </div>
             </div>
 
             <!-- 7. Financial -->
             <div class="card formula-section">
                 <h2>7. Financial (Keuangan)</h2>
-                <div class="formula-list">
-                    <span class="formula-badge">PMT</span><span class="formula-badge">FV</span><span class="formula-badge">PV</span><span class="formula-badge">RATE</span><span class="formula-badge">NPV</span><span class="formula-badge">IRR</span><span class="formula-badge">XIRR</span><span class="formula-badge">XNPV</span><span class="formula-badge">SLN</span><span class="formula-badge">DB</span>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">PMT</span><p class="formula-desc">Menghitung pembayaran angsuran pinjaman secara berkala.</p></div>
+                    <div class="formula-item"><span class="formula-name">FV / PV</span><p class="formula-desc">Menghitung nilai masa depan (Future Value) atau nilai saat ini (Present Value).</p></div>
+                    <div class="formula-item"><span class="formula-name">NPV / IRR / XIRR</span><p class="formula-desc">Analisis investasi (Net Present Value dan Internal Rate of Return).</p></div>
+                    <div class="formula-item"><span class="formula-name">SLN / DB</span><p class="formula-desc">Menghitung penyusutan aset (garis lurus atau saldo menurun).</p></div>
                 </div>
             </div>
 
-            <!-- 8. Dynamic Array -->
+            <!-- 8. Dynamic Array (Excel Modern) -->
             <div class="card formula-section">
                 <h2>8. Dynamic Array (Excel Modern)</h2>
-                <div class="formula-list">
-                    <span class="formula-badge">FILTER</span><span class="formula-badge">SORT</span><span class="formula-badge">SORTBY</span><span class="formula-badge">UNIQUE</span><span class="formula-badge">SEQUENCE</span><span class="formula-badge">RANDARRAY</span><span class="formula-badge">TAKE</span><span class="formula-badge">DROP</span><span class="formula-badge">CHOOSECOLS</span><span class="formula-badge">TOCOL</span><span class="formula-badge">TOROW</span>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">FILTER</span><p class="formula-desc">Menampilkan data yang memenuhi kriteria secara dinamis.</p></div>
+                    <div class="formula-item"><span class="formula-name">UNIQUE</span><p class="formula-desc">Mengambil daftar nilai yang unik (tanpa duplikat) dari suatu rentang.</p></div>
+                    <div class="formula-item"><span class="formula-name">SORT / SORTBY</span><p class="formula-desc">Mengurutkan data secara otomatis.</p></div>
+                    <div class="formula-item"><span class="formula-name">SEQUENCE</span><p class="formula-desc">Membuat daftar angka berurutan secara otomatis.</p></div>
+                    <div class="formula-item"><span class="formula-name">TAKE / DROP</span><p class="formula-desc">Mengambil atau menghapus baris/kolom tertentu dari array.</p></div>
                 </div>
             </div>
 
-            <!-- 9. Database -->
+            <!-- 9. Database Functions -->
             <div class="card formula-section">
                 <h2>9. Database Functions</h2>
-                <div class="formula-list">
-                    <span class="formula-badge">DSUM</span><span class="formula-badge">DCOUNT</span><span class="formula-badge">DAVERAGE</span><span class="formula-badge">DMAX</span><span class="formula-badge">DMIN</span>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">DSUM / DAVERAGE</span><p class="formula-desc">Menghitung total atau rata-rata pada database berdasarkan kriteria tabel.</p></div>
+                    <div class="formula-item"><span class="formula-name">DMAX / DMIN</span><p class="formula-desc">Mencari nilai tertinggi/terendah dalam database.</p></div>
                 </div>
             </div>
 
             <!-- 10. Information -->
             <div class="card formula-section">
                 <h2>10. Information Functions</h2>
-                <div class="formula-list">
-                    <span class="formula-badge">ISBLANK</span><span class="formula-badge">ISNUMBER</span><span class="formula-badge">ISTEXT</span><span class="formula-badge">ISERROR</span><span class="formula-badge">ISNA</span><span class="formula-badge">TYPE</span><span class="formula-badge">CELL</span>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">ISBLANK / ISNUMBER / ISTEXT</span><p class="formula-desc">Memeriksa apakah sel kosong, berisi angka, atau teks (menghasilkan TRUE/FALSE).</p></div>
+                    <div class="formula-item"><span class="formula-name">ISERROR / ISNA</span><p class="formula-desc">Memeriksa apakah sel mengandung error.</p></div>
+                    <div class="formula-item"><span class="formula-name">CELL</span><p class="formula-desc">Mendapatkan informasi tentang format, lokasi, atau isi sel.</p></div>
                 </div>
             </div>
 
             <!-- 11. Engineering -->
             <div class="card formula-section">
                 <h2>11. Engineering</h2>
-                <div class="formula-list">
-                    <span class="formula-badge">CONVERT</span><span class="formula-badge">DEC2BIN</span><span class="formula-badge">BIN2DEC</span><span class="formula-badge">COMPLEX</span>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">CONVERT</span><p class="formula-desc">Mengonversi angka dari satu sistem pengukuran ke sistem lain.</p></div>
+                    <div class="formula-item"><span class="formula-name">DEC2BIN / BIN2DEC</span><p class="formula-desc">Mengonversi bilangan Desimal ke Biner atau sebaliknya.</p></div>
                 </div>
             </div>
 
-            <!-- 12. Web -->
+            <!-- 12. Web / Advanced Data -->
             <div class="card formula-section">
                 <h2>12. Web / Advanced Data</h2>
-                <div class="formula-list">
-                    <span class="formula-badge">WEBSERVICE</span><span class="formula-badge">FILTERXML</span>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">WEBSERVICE</span><p class="formula-desc">Mengambil data dari layanan web di internet.</p></div>
+                    <div class="formula-item"><span class="formula-name">FILTERXML</span><p class="formula-desc">Mengambil data spesifik dari XML menggunakan XPath.</p></div>
                 </div>
             </div>
-        </div>
-
-        <div class="card">
-            <h2>Contoh Formula Populer</h2>
-            <div class="code-block">=SUM(A1:A10)</div>
-            <div class="code-block">=IF(A1>70,"Lulus","Tidak")</div>
-            <div class="code-block">=VLOOKUP(A2,$F$2:$G$10,2,FALSE)</div>
-            <div class="code-block">=XLOOKUP(A2,F2:F10,G2:G10)</div>
-            <div class="code-block">=COUNTIF(B:B,"Laki-laki")</div>
-            <div class="code-block">=TEXT(TODAY(),"dd-mm-yyyy")</div>
         </div>
     </div>
 
@@ -265,17 +268,12 @@
     <div id="shortcut" class="section">
         <div class="card">
             <h2>Shortcut Keyboard</h2>
-            <div class="tutorial-item">
-                <p><b>ALT + =</b> (Auto Sum)</p>
-                <button class="btn-vid" onclick="toggleVideo('s-sum')">🎥 Lihat Shorts</button>
-                <div id="s-sum" class="video-box shorts">
-                    <iframe src="https://www.youtube.com/embed/m67OXXvoB7s" frameborder="0" allowfullscreen></iframe>
-                </div>
-            </div>
+            <div class="formula-item" style="margin-bottom: 10px;"><b>ALT + =</b> : Auto Sum Kilat</div>
+            <div class="formula-item" style="margin-bottom: 10px;"><b>CTRL + SHIFT + L</b> : Pasang Filter</div>
         </div>
     </div>
 
-    <footer>© 2026 Excel Master Portal</footer>
+    <footer>© 2026 Master Excel Portal</footer>
 </div>
 
 <script>
@@ -291,40 +289,27 @@
         document.getElementById('overlay').classList.toggle('active');
     }
 
-    function toggleVideo(id) {
-        const vBox = document.getElementById(id);
-        vBox.style.display = (vBox.style.display === "block") ? "none" : "block";
-    }
-
     // FUNGSI SEARCH REAL-TIME
     function filterFormulas() {
         let input = document.getElementById('formulaSearch').value.toUpperCase();
+        let items = document.querySelectorAll('.formula-item');
         let sections = document.querySelectorAll('.formula-section');
-        let badges = document.querySelectorAll('.formula-badge');
 
-        // Filter badges
-        badges.forEach(badge => {
-            if (badge.innerText.toUpperCase().indexOf(input) > -1) {
-                badge.style.display = "";
+        items.forEach(item => {
+            let name = item.querySelector('.formula-name') ? item.querySelector('.formula-name').innerText : "";
+            let desc = item.querySelector('.formula-desc') ? item.querySelector('.formula-desc').innerText : "";
+            
+            if (name.toUpperCase().indexOf(input) > -1 || desc.toUpperCase().indexOf(input) > -1) {
+                item.style.display = "";
             } else {
-                badge.style.display = "none";
+                item.style.display = "none";
             }
         });
 
-        // Sembunyikan section jika tidak ada badge yang cocok di dalamnya
         sections.forEach(section => {
-            let visibleBadges = section.querySelectorAll('.formula-badge[style="display: px;"], .formula-badge:not([style*="display: none"])');
-            if (visibleBadges.length > 0) {
-                section.style.display = "";
-            } else {
-                section.style.display = "none";
-            }
+            let visibleItems = section.querySelectorAll('.formula-item[style=""]:not([style*="display: none"])');
+            section.style.display = visibleItems.length > 0 ? "" : "none";
         });
-        
-        // Sembunyikan section 'Must Know' saat mencari agar hasil lebih fokus
-        let mustKnow = document.getElementById('must-know');
-        if(input.length > 0) mustKnow.style.display = "none";
-        else mustKnow.style.display = "block";
     }
 </script>
 
