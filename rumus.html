@@ -61,8 +61,8 @@
         
         .search-container { margin-bottom: 20px; position: sticky; top: 50px; z-index: 900; background: var(--bg); padding: 10px 0; }
         .search-input { 
-            width: 100%; padding: 12px 20px; border-radius: 10px; border: 2px solid var(--excel-green); 
-            outline: none; font-size: 14px; font-weight: 600; box-shadow: 0 4px 10px rgba(33, 115, 70, 0.1); 
+            width: 100%; padding: 14px 20px; border-radius: 10px; border: 2px solid var(--excel-green); 
+            outline: none; font-size: 15px; font-weight: 600; box-shadow: 0 4px 10px rgba(33, 115, 70, 0.1); 
         }
 
         .card { background: var(--white); padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; border: 1px solid #e5e7eb; }
@@ -71,7 +71,7 @@
         
         h2 { color: var(--excel-green); font-size: 16px; font-weight: 700; text-transform: uppercase; }
 
-        .formula-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+        .formula-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 12px; }
         .formula-item { background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; transition: 0.2s; }
         .formula-item:hover { border-color: var(--excel-green); background: #fff; }
 
@@ -79,10 +79,10 @@
         .formula-desc { font-size: 12.5px; color: #475569; margin-bottom: 10px; display: block; line-height: 1.4; }
         
         .copy-box { display: flex; align-items: center; background: #e2e8f0; padding: 8px; border-radius: 6px; font-family: monospace; font-size: 11px; justify-content: space-between; border-left: 4px solid var(--excel-green); }
-        .copy-btn { background: var(--excel-green); color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: bold; }
+        .copy-btn { background: var(--excel-green); color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: bold; }
 
         .hidden { display: none !important; }
-        footer { text-align: center; padding: 30px; font-size: 10px; color: #94a3b8; }
+        footer { text-align: center; padding: 30px; font-size: 11px; color: #94a3b8; }
     </style>
 </head>
 <body>
@@ -113,18 +113,30 @@
     <div class="card formula-section">
         <div class="category-header"><div class="category-icon">📐</div><h2>1. Math & Arithmetic (Matematika)</h2></div>
         <div class="formula-grid">
-            <div class="formula-item"><span class="formula-name">SUM</span><span class="formula-desc">Menjumlahkan seluruh angka dalam rentang sel.</span><div class="copy-box"><span>=SUM(A1:A10)</span><button class="copy-btn" onclick="copyText('=SUM(A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">SUMIF, SUMIFS</span><span class="formula-desc">Menjumlahkan angka berdasarkan satu atau banyak kriteria.</span><div class="copy-box"><span>=SUMIF(A1:A10, ">100")</span><button class="copy-btn" onclick="copyText('=SUMIF(A1:A10, \'>100\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SUM</span><span class="formula-desc">Menjumlahkan nilai-nilai di sel-sel tertentu.</span><div class="copy-box"><span>=SUM(A1:A5)</span><button class="copy-btn" onclick="copyText('=SUM(A1:A5)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SUMIF</span><span class="formula-desc">Menjumlahkan nilai berdasarkan 1 kriteria.</span><div class="copy-box"><span>=SUMIF(R1:R10, "Dunia", S1:S10)</span><button class="copy-btn" onclick="copyText('=SUMIF(R1:R10, \'Dunia\', S1:S10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SUMIFS</span><span class="formula-desc">Menjumlahkan nilai menurut beberapa kriteria.</span><div class="copy-box"><span>=SUMIFS(AE1:AE68, AF1:AF8, "X", AG1:AG8, ">1")</span><button class="copy-btn" onclick="copyText('=SUMIFS(AE1:AE68, AF1:AF8, \'X\', AG1:AG8, \'>1\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SUMPRODUCT</span><span class="formula-desc">Perkalian nilai dalam rentang sel lalu dijumlahkan.</span><div class="copy-box"><span>=SUMPRODUCT(AZ1:AZ5, BA1:BA5)</span><button class="copy-btn" onclick="copyText('=SUMPRODUCT(AZ1:AZ5, BA1:BA5)')">SALIN</button></div></div>
             <div class="formula-item"><span class="formula-name">PRODUCT</span><span class="formula-desc">Mengalikan seluruh angka dalam argumen.</span><div class="copy-box"><span>=PRODUCT(A1, B1)</span><button class="copy-btn" onclick="copyText('=PRODUCT(A1, B1)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">SUBTOTAL</span><span class="formula-desc">Subtotal dalam daftar (bisa mengabaikan sel tersembunyi).</span><div class="copy-box"><span>=SUBTOTAL(9, A1:A10)</span><button class="copy-btn" onclick="copyText('=SUBTOTAL(9, A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">ROUND, ROUNDUP, ROUNDDOWN</span><span class="formula-desc">Membulatkan angka (biasa/atas/bawah).</span><div class="copy-box"><span>=ROUND(A1, 2)</span><button class="copy-btn" onclick="copyText('=ROUND(A1, 2)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">INT</span><span class="formula-desc">Membulatkan angka ke bawah ke bilangan bulat terdekat.</span><div class="copy-box"><span>=INT(8.9)</span><button class="copy-btn" onclick="copyText('=INT(8.9)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">ABS</span><span class="formula-desc">Menghasilkan nilai mutlak (positif).</span><div class="copy-box"><span>=ABS(-5)</span><button class="copy-btn" onclick="copyText('=ABS(-5)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">MOD</span><span class="formula-desc">Menghasilkan sisa hasil bagi.</span><div class="copy-box"><span>=MOD(10, 3)</span><button class="copy-btn" onclick="copyText('=MOD(10, 3)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">POWER</span><span class="formula-desc">Hasil angka yang dipangkatkan.</span><div class="copy-box"><span>=POWER(5, 2)</span><button class="copy-btn" onclick="copyText('=POWER(5, 2)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">SQRT</span><span class="formula-desc">Menghasilkan akar kuadrat.</span><div class="copy-box"><span>=SQRT(16)</span><button class="copy-btn" onclick="copyText('=SQRT(16)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">RAND, RANDBETWEEN</span><span class="formula-desc">Menghasilkan angka acak.</span><div class="copy-box"><span>=RANDBETWEEN(1, 10)</span><button class="copy-btn" onclick="copyText('=RANDBETWEEN(1, 10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">CEILING, FLOOR</span><span class="formula-desc">Membulatkan ke kelipatan terdekat.</span><div class="copy-box"><span>=CEILING(2.5, 1)</span><button class="copy-btn" onclick="copyText('=CEILING(2.5, 1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SUBTOTAL</span><span class="formula-desc">Hitung jumlah sel yang terlihat di rentang (bisa mengabaikan yang di-filter).</span><div class="copy-box"><span>=SUBTOTAL(1, AQ1:AQ10)</span><button class="copy-btn" onclick="copyText('=SUBTOTAL(1, AQ1:AQ10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">ROUND</span><span class="formula-desc">Membulatkan nilai ke tempat desimal tertentu.</span><div class="copy-box"><span>=ROUND(P1, 2)</span><button class="copy-btn" onclick="copyText('=ROUND(P1, 2)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">ROUNDUP / ROUNDDOWN</span><span class="formula-desc">Membulatkan angka paksa ke atas atau ke bawah.</span><div class="copy-box"><span>=ROUNDUP(A1, 2)</span><button class="copy-btn" onclick="copyText('=ROUNDUP(A1, 2)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">INT</span><span class="formula-desc">Membulatkan angka dalam sel ke integer terdekat.</span><div class="copy-box"><span>=INT(DC1)</span><button class="copy-btn" onclick="copyText('=INT(DC1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">ABS</span><span class="formula-desc">Mengembalikan nilai absolut dari suatu angka.</span><div class="copy-box"><span>=ABS(-20)</span><button class="copy-btn" onclick="copyText('=ABS(-20)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">MOD</span><span class="formula-desc">Mengembalikan sisa pembagian angka dalam sel.</span><div class="copy-box"><span>=MOD(DD1, 7)</span><button class="copy-btn" onclick="copyText('=MOD(DD1, 7)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">POWER</span><span class="formula-desc">Menaikkan angka dalam sel ke sel lain (Pangkat).</span><div class="copy-box"><span>=POWER(CX1, CY1)</span><button class="copy-btn" onclick="copyText('=POWER(CX1, CY1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SQRT</span><span class="formula-desc">Menghitung akar kuadrat dari angka dalam sel.</span><div class="copy-box"><span>=SQRT(CZ1)</span><button class="copy-btn" onclick="copyText('=SQRT(CZ1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">LOG</span><span class="formula-desc">Menghitung logaritma alami dari angka dalam sel.</span><div class="copy-box"><span>=LOG(DA1)</span><button class="copy-btn" onclick="copyText('=LOG(DA1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">RAND</span><span class="formula-desc">Mengembalikan angka acak antara 0 dan 1.</span><div class="copy-box"><span>=RAND()</span><button class="copy-btn" onclick="copyText('=RAND()')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">RANDBETWEEN</span><span class="formula-desc">Menghasilkan angka acak (misal 1-100).</span><div class="copy-box"><span>=RANDBETWEEN(1, 100)</span><button class="copy-btn" onclick="copyText('=RANDBETWEEN(1, 100)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">CEILING</span><span class="formula-desc">Membulatkan ke atas ke kelipatan tertentu.</span><div class="copy-box"><span>=CEILING(S1, 10)</span><button class="copy-btn" onclick="copyText('=CEILING(S1, 10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">FLOOR</span><span class="formula-desc">Membulatkan ke bawah ke kelipatan tertentu.</span><div class="copy-box"><span>=FLOOR(T1, 5)</span><button class="copy-btn" onclick="copyText('=FLOOR(T1, 5)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">PI</span><span class="formula-desc">Mengembalikan nilai π (pi).</span><div class="copy-box"><span>=PI()</span><button class="copy-btn" onclick="copyText('=PI()')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">RADIANS</span><span class="formula-desc">Mengonversi derajat menjadi radian.</span><div class="copy-box"><span>=RADIANS(X1)</span><button class="copy-btn" onclick="copyText('=RADIANS(X1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">DEGREES</span><span class="formula-desc">Mengonversi radian menjadi derajat.</span><div class="copy-box"><span>=DEGREES(Y1)</span><button class="copy-btn" onclick="copyText('=DEGREES(Y1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SIN</span><span class="formula-desc">Menghitung nilai sinus (dalam radian).</span><div class="copy-box"><span>=SIN(Z1)</span><button class="copy-btn" onclick="copyText('=SIN(Z1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">COS</span><span class="formula-desc">Menghitung nilai kosinus (dalam radian).</span><div class="copy-box"><span>=COS(AA1)</span><button class="copy-btn" onclick="copyText('=COS(AA1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">TAN</span><span class="formula-desc">Menghitung nilai tangen (dalam radian).</span><div class="copy-box"><span>=TAN(AB1)</span><button class="copy-btn" onclick="copyText('=TAN(AB1)')">SALIN</button></div></div>
         </div>
     </div>
 
@@ -132,15 +144,27 @@
     <div class="card formula-section">
         <div class="category-header"><div class="category-icon">📊</div><h2>2. Statistical (Statistik)</h2></div>
         <div class="formula-grid">
-            <div class="formula-item"><span class="formula-name">AVERAGE, AVERAGEIF, AVERAGEIFS</span><span class="formula-desc">Menghitung rata-rata.</span><div class="copy-box"><span>=AVERAGE(A1:A5)</span><button class="copy-btn" onclick="copyText('=AVERAGE(A1:A5)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">COUNT, COUNTA, COUNTBLANK</span><span class="formula-desc">Menghitung sel berisi data.</span><div class="copy-box"><span>=COUNTA(A1:A10)</span><button class="copy-btn" onclick="copyText('=COUNTA(A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">COUNTIF, COUNTIFS</span><span class="formula-desc">Menghitung jumlah sel berdasarkan kriteria.</span><div class="copy-box"><span>=COUNTIF(B:B, "Lulus")</span><button class="copy-btn" onclick="copyText('=COUNTIF(B:B, \'Lulus\')')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">MAX, MIN</span><span class="formula-desc">Mencari nilai tertinggi atau terendah.</span><div class="copy-box"><span>=MAX(A1:A10)</span><button class="copy-btn" onclick="copyText('=MAX(A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">MEDIAN, MODE</span><span class="formula-desc">Mencari nilai tengah atau nilai sering muncul.</span><div class="copy-box"><span>=MEDIAN(A1:A10)</span><button class="copy-btn" onclick="copyText('=MEDIAN(A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">LARGE, SMALL</span><span class="formula-desc">Nilai terbesar/terkecil ke-k.</span><div class="copy-box"><span>=LARGE(A1:A10, 2)</span><button class="copy-btn" onclick="copyText('=LARGE(A1:A10, 2)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">RANK</span><span class="formula-desc">Menentukan peringkat angka.</span><div class="copy-box"><span>=RANK(A1, A1:A10)</span><button class="copy-btn" onclick="copyText('=RANK(A1, A1:A10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">PERCENTILE</span><span class="formula-desc">Menghasilkan persentil ke-k.</span><div class="copy-box"><span>=PERCENTILE(A1:A10, 0.9)</span><button class="copy-btn" onclick="copyText('=PERCENTILE(A1:A10, 0.9)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">STDEV, VAR</span><span class="formula-desc">Menghitung standar deviasi atau varians.</span><div class="copy-box"><span>=STDEV(A1:A10)</span><button class="copy-btn" onclick="copyText('=STDEV(A1:A10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">AVERAGE</span><span class="formula-desc">Menghitung rata-rata dari nilai di sel tertentu.</span><div class="copy-box"><span>=AVERAGE(B1:B10)</span><button class="copy-btn" onclick="copyText('=AVERAGE(B1:B10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">AVERAGEIF</span><span class="formula-desc">Menghitung rata-rata nilai menurut kriteria.</span><div class="copy-box"><span>=AVERAGEIF(T1:T10, "Merah", U1:U10)</span><button class="copy-btn" onclick="copyText('=AVERAGEIF(T1:T10, \'Merah\', U1:U10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">AVERAGEIFS</span><span class="formula-desc">Rata-rata nilai menurut beberapa kriteria.</span><div class="copy-box"><span>=AVERAGEIFS(AH1:AH7, "Y", AJ1:AJ7, "<>0")</span><button class="copy-btn" onclick="copyText('=AVERAGEIFS(AH1:AH7, \'Y\', AJ1:AJ7, \'<>0\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">COUNT</span><span class="formula-desc">Menghitung jumlah sel nilai numerik.</span><div class="copy-box"><span>=COUNT(C1:C8)</span><button class="copy-btn" onclick="copyText('=COUNT(C1:C8)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">COUNTA</span><span class="formula-desc">Menghitung jumlah sel yang tidak kosong.</span><div class="copy-box"><span>=COUNTA(J1:J50)</span><button class="copy-btn" onclick="copyText('=COUNTA(J1:J50)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">COUNTBLANK</span><span class="formula-desc">Menghitung jumlah sel kosong.</span><div class="copy-box"><span>=COUNTBLANK(CR1:CR10)</span><button class="copy-btn" onclick="copyText('=COUNTBLANK(CR1:CR10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">COUNTIF</span><span class="formula-desc">Menghitung sel berdasarkan kondisi.</span><div class="copy-box"><span>=COUNTIF(Q1:Q10, ">50")</span><button class="copy-btn" onclick="copyText('=COUNTIF(Q1:Q10, \'>50\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">COUNTIFS</span><span class="formula-desc">Menghitung sel yang memenuhi beberapa kriteria.</span><div class="copy-box"><span>=COUNTIFS(AC1:AC10, ">50", AD1:AD10, "<100")</span><button class="copy-btn" onclick="copyText('=COUNTIFS(AC1:AC10, \'>50\', AD1:AD10, \'<100\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">MAX</span><span class="formula-desc">Mencari nilai maksimum dalam rentang tertentu.</span><div class="copy-box"><span>=MAX(D1:D6)</span><button class="copy-btn" onclick="copyText('=MAX(D1:D6)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">MIN</span><span class="formula-desc">Mencari nilai minimum dalam rentang tertentu.</span><div class="copy-box"><span>=MIN(E1:E4)</span><button class="copy-btn" onclick="copyText('=MIN(E1:E4)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">MEDIAN</span><span class="formula-desc">Menghitung nilai tengah dari rentang sel.</span><div class="copy-box"><span>=MEDIAN(BE1:BE10)</span><button class="copy-btn" onclick="copyText('=MEDIAN(BE1:BE10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">MODE</span><span class="formula-desc">Menghitung nilai modus dalam rentang sel.</span><div class="copy-box"><span>=MODE(BF1:BF10)</span><button class="copy-btn" onclick="copyText('=MODE(BF1:BF10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">LARGE, SMALL</span><span class="formula-desc">Nilai terbesar atau terkecil ke-n.</span><div class="copy-box"><span>=LARGE(A1:A10, 2)</span><button class="copy-btn" onclick="copyText('=LARGE(A1:A10, 2)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">RANK</span><span class="formula-desc">Memberikan peringkat pada rentang sel.</span><div class="copy-box"><span>=RANK(I1, I1:I10)</span><button class="copy-btn" onclick="copyText('=RANK(I1, I1:I10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">RANK.EQ</span><span class="formula-desc">Kasih peringkat dalam rentang secara setara.</span><div class="copy-box"><span>=RANK.EQ(AU1, AU1:AU100, 1)</span><button class="copy-btn" onclick="copyText('=RANK.EQ(AU1, AU1:AU100, 1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">QUARTILE</span><span class="formula-desc">Menghitung kuartil ketiga dalam rentang sel.</span><div class="copy-box"><span>=QUARTILE(BG1:BG10, 3)</span><button class="copy-btn" onclick="copyText('=QUARTILE(BG1:BG10, 3)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">PERCENTILE</span><span class="formula-desc">Menghitung persen dari rentang sel.</span><div class="copy-box"><span>=PERCENTILE(BH1:BH10, 90%)</span><button class="copy-btn" onclick="copyText('=PERCENTILE(BH1:BH10, 90%)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">STDEV</span><span class="formula-desc">Hitung deviasi standar dari nilai.</span><div class="copy-box"><span>=STDEV(BC1:BC10)</span><button class="copy-btn" onclick="copyText('=STDEV(BC1:BC10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">STDEVP</span><span class="formula-desc">Hitung deviasi standar dari nilai rentang sel.</span><div class="copy-box"><span>=STDEVP(BD1:BD10)</span><button class="copy-btn" onclick="copyText('=STDEVP(BD1:BD10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">VAR (VARIANCE)</span><span class="formula-desc">Hitung varian sample dalam rentang sel.</span><div class="copy-box"><span>=VAR(BI1:BI10)</span><button class="copy-btn" onclick="copyText('=VAR(BI1:BI10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">VARP</span><span class="formula-desc">Hitung varian seluruh populasi dalam rentang sel.</span><div class="copy-box"><span>=VARP(BJ1:BJ10)</span><button class="copy-btn" onclick="copyText('=VARP(BJ1:BJ10)')">SALIN</button></div></div>
         </div>
     </div>
 
@@ -148,24 +172,32 @@
     <div class="card formula-section">
         <div class="category-header"><div class="category-icon">⚖️</div><h2>3. Logical (Logika)</h2></div>
         <div class="formula-grid">
-            <div class="formula-item"><span class="formula-name">IF, IFS</span><span class="formula-desc">Uji logika benar atau salah.</span><div class="copy-box"><span>=IF(A1>70, "Lulus", "Gagal")</span><button class="copy-btn" onclick="copyText('=IF(A1>70, \'Lulus\', \'Gagal\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">IF</span><span class="formula-desc">Memeriksa & memberikan hasil berdasarkan kondisi.</span><div class="copy-box"><span>=IF(F1>10, "Lulus", "Gagal")</span><button class="copy-btn" onclick="copyText('=IF(F1>10, \'Lulus\', \'Gagal\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">IFS</span><span class="formula-desc">Mengembalikan nilai menurut kondisi yang benar.</span><div class="copy-box"><span>=IFS(AR1>10, "A", AR1>5, "B")</span><button class="copy-btn" onclick="copyText('=IFS(AR1>10, \'A\', AR1>5, \'B\')')">SALIN</button></div></div>
             <div class="formula-item"><span class="formula-name">AND, OR, NOT</span><span class="formula-desc">Operator logika penggabung kriteria.</span><div class="copy-box"><span>=AND(A1>0, B1>0)</span><button class="copy-btn" onclick="copyText('=AND(A1>0, B1>0)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">IFERROR, IFNA</span><span class="formula-desc">Menangani pesan error pada rumus.</span><div class="copy-box"><span>=IFERROR(A1/B1, 0)</span><button class="copy-btn" onclick="copyText('=IFERROR(A1/B1, 0)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">SWITCH</span><span class="formula-desc">Mengevaluasi nilai terhadap daftar nilai.</span><div class="copy-box"><span>=SWITCH(A1, 1, "Senin")</span><button class="copy-btn" onclick="copyText('=SWITCH(A1, 1, \'Senin\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">IFERROR</span><span class="formula-desc">Mengembalikan nilai jika salah rumus / error.</span><div class="copy-box"><span>=IFERROR(V1/W1, "Error")</span><button class="copy-btn" onclick="copyText('=IFERROR(V1/W1, \'Error\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">IFNA</span><span class="formula-desc">Menetapkan nilai jika terjadi kesalahan #N/A.</span><div class="copy-box"><span>=IFNA(S1/T1, "Not Available")</span><button class="copy-btn" onclick="copyText('=IFNA(S1/T1, \'Not Available\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SWITCH</span><span class="formula-desc">Kembalikan nilai menurut kasus yang cocok.</span><div class="copy-box"><span>=SWITCH(AS1, 1, "Satu", 2, "Dua")</span><button class="copy-btn" onclick="copyText('=SWITCH(AS1, 1, \'Satu\', 2, \'Dua\')')">SALIN</button></div></div>
             <div class="formula-item"><span class="formula-name">XOR</span><span class="formula-desc">Logika OR Eksklusif.</span><div class="copy-box"><span>=XOR(A1>0, B1>0)</span><button class="copy-btn" onclick="copyText('=XOR(A1>0, B1>0)')">SALIN</button></div></div>
         </div>
     </div>
 
     <!-- 4. LOOKUP -->
     <div class="card formula-section">
-        <div class="category-header"><div class="category-icon">🔍</div><h2>4. Lookup & Reference (Pencarian Data)</h2></div>
+        <div class="category-header"><div class="category-icon">🔍</div><h2>4. Lookup & Reference (Pencarian)</h2></div>
         <div class="formula-grid">
-            <div class="formula-item"><span class="formula-name">VLOOKUP, HLOOKUP</span><span class="formula-desc">Pencarian vertikal atau horizontal.</span><div class="copy-box"><span>=VLOOKUP(A1, F1:G10, 2, 0)</span><button class="copy-btn" onclick="copyText('=VLOOKUP(A1, F1:G10, 2, 0)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">XLOOKUP, LOOKUP</span><span class="formula-desc">Pencarian modern fleksibel.</span><div class="copy-box"><span>=XLOOKUP(A1, F:F, G:G)</span><button class="copy-btn" onclick="copyText('=XLOOKUP(A1, F:F, G:G)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">INDEX, MATCH, XMATCH</span><span class="formula-desc">Pencarian tingkat lanjut fleksibel.</span><div class="copy-box"><span>=INDEX(G1:G10, MATCH(A1, F1:F10, 0))</span><button class="copy-btn" onclick="copyText('=INDEX(G1:G10, MATCH(A1, F1:F10, 0))')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">OFFSET, CHOOSE</span><span class="formula-desc">Referensi sel dinamis.</span><div class="copy-box"><span>=CHOOSE(1, "A", "B")</span><button class="copy-btn" onclick="copyText('=CHOOSE(1, \'A\', \'B\')')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">INDIRECT, ADDRESS</span><span class="formula-desc">Referensi teks sel.</span><div class="copy-box"><span>=INDIRECT("A1")</span><button class="copy-btn" onclick="copyText('=INDIRECT(\'A1\')')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">ROW, COLUMN</span><span class="formula-desc">Nomor baris atau kolom.</span><div class="copy-box"><span>=ROW(A10)</span><button class="copy-btn" onclick="copyText('=ROW(A10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">VLOOKUP</span><span class="formula-desc">Mencari nilai dalam baris pertama secara vertikal.</span><div class="copy-box"><span>=VLOOKUP(G1, A1:B10, 2, FALSE)</span><button class="copy-btn" onclick="copyText('=VLOOKUP(G1, A1:B10, 2, FALSE)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">HLOOKUP</span><span class="formula-desc">Mencari nilai dalam kolom pertama secara horizontal.</span><div class="copy-box"><span>=HLOOKUP(F1, A1:F5, 3, FALSE)</span><button class="copy-btn" onclick="copyText('=HLOOKUP(F1, A1:F5, 3, FALSE)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">XLOOKUP, LOOKUP</span><span class="formula-desc">Pencarian data modern fleksibel.</span><div class="copy-box"><span>=XLOOKUP(A1, F:F, G:G)</span><button class="copy-btn" onclick="copyText('=XLOOKUP(A1, F:F, G:G)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">INDEX</span><span class="formula-desc">Mengembalikan nilai pada posisi tertentu.</span><div class="copy-box"><span>=INDEX(X1:Y10, 3, 2)</span><button class="copy-btn" onclick="copyText('=INDEX(X1:Y10, 3, 2)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">MATCH, XMATCH</span><span class="formula-desc">Mencari posisi suatu nilai dalam suatu rentang.</span><div class="copy-box"><span>=MATCH(Z1, AA1:AA10, 0)</span><button class="copy-btn" onclick="copyText('=MATCH(Z1, AA1:AA10, 0)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">INDEX-MATCH</span><span class="formula-desc">Mencari nilai dalam data (Kombinasi Super VLOOKUP).</span><div class="copy-box"><span>=INDEX(AV1:AX10, MATCH("X", AW1:AW10, 0), 2)</span><button class="copy-btn" onclick="copyText('=INDEX(AV1:AX10, MATCH(\'X\', AW1:AW10, 0), 2)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">OFFSET</span><span class="formula-desc">Mengembalikan rentang sel dari titik referensi.</span><div class="copy-box"><span>=OFFSET(AY1, 3, 2, 2, 1)</span><button class="copy-btn" onclick="copyText('=OFFSET(AY1, 3, 2, 2, 1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">CHOOSE</span><span class="formula-desc">Memilih nilai dari daftar berdasarkan indeks.</span><div class="copy-box"><span>=CHOOSE(CS1, "A", "B", "C", "D")</span><button class="copy-btn" onclick="copyText('=CHOOSE(CS1, \'A\', \'B\', \'C\', \'D\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">INDIRECT</span><span class="formula-desc">Membuat referensi sel menurut nilai sel lain/teks.</span><div class="copy-box"><span>=INDIRECT("A"&AB1)</span><button class="copy-btn" onclick="copyText('=INDIRECT(\'A\'&AB1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">ADDRESS</span><span class="formula-desc">Referensi teks sel dari baris & kolom.</span><div class="copy-box"><span>=ADDRESS(1, 1)</span><button class="copy-btn" onclick="copyText('=ADDRESS(1, 1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">ROW, COLUMN</span><span class="formula-desc">Nomor baris atau kolom posisi sel.</span><div class="copy-box"><span>=ROW(A10)</span><button class="copy-btn" onclick="copyText('=ROW(A10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">TRANSPOSE</span><span class="formula-desc">Ubah nilai dari baris menjadi kolom atau sebaliknya.</span><div class="copy-box"><span>=TRANSPOSE(AR1:AT1)</span><button class="copy-btn" onclick="copyText('=TRANSPOSE(AR1:AT1)')">SALIN</button></div></div>
         </div>
     </div>
 
@@ -173,11 +205,23 @@
     <div class="card formula-section">
         <div class="category-header"><div class="category-icon">🔡</div><h2>5. Text Functions (Teks)</h2></div>
         <div class="formula-grid">
-            <div class="formula-item"><span class="formula-name">LEFT, RIGHT, MID, LEN</span><span class="formula-desc">Manipulasi karakter teks.</span><div class="copy-box"><span>=LEFT("EXCEL", 2)</span><button class="copy-btn" onclick="copyText('=LEFT(\'EXCEL\', 2)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">TRIM, UPPER, LOWER, PROPER</span><span class="formula-desc">Format huruf teks.</span><div class="copy-box"><span>=UPPER("halo")</span><button class="copy-btn" onclick="copyText('=UPPER(\'halo\')')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">CONCAT, CONCATENATE, TEXTJOIN</span><span class="formula-desc">Menggabungkan teks.</span><div class="copy-box"><span>=TEXTJOIN(", ", TRUE, A1, B1)</span><button class="copy-btn" onclick="copyText('=TEXTJOIN(\', \', TRUE, A1, B1)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">TEXT, VALUE</span><span class="formula-desc">Konversi format data.</span><div class="copy-box"><span>=TEXT(TODAY(), "DD/MM/YY")</span><button class="copy-btn" onclick="copyText('=TEXT(TODAY(), \'DD/MM/YY\')')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">FIND, SEARCH, REPLACE, SUBSTITUTE</span><span class="formula-desc">Ganti atau cari teks.</span><div class="copy-box"><span>=SUBSTITUTE(A1, "X", "Y")</span><button class="copy-btn" onclick="copyText('=SUBSTITUTE(A1, \'X\', \'Y\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">LEFT</span><span class="formula-desc">Mengambil sejumlah karakter pertama dari teks.</span><div class="copy-box"><span>=LEFT(J1, 5)</span><button class="copy-btn" onclick="copyText('=LEFT(J1, 5)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">RIGHT</span><span class="formula-desc">Mengambil sejumlah karakter terakhir dari teks.</span><div class="copy-box"><span>=RIGHT(K1, 3)</span><button class="copy-btn" onclick="copyText('=RIGHT(K1, 3)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">MID</span><span class="formula-desc">Mengambil sejumlah karakter tengah dari teks.</span><div class="copy-box"><span>=MID(L1, 3, 5)</span><button class="copy-btn" onclick="copyText('=MID(L1, 3, 5)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">LEN</span><span class="formula-desc">Menghitung jumlah karakter dalam teks di sel.</span><div class="copy-box"><span>=LEN(H1)</span><button class="copy-btn" onclick="copyText('=LEN(H1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">TRIM</span><span class="formula-desc">Menghilangkan spasi berlebihan dari teks.</span><div class="copy-box"><span>=TRIM(I1)</span><button class="copy-btn" onclick="copyText('=TRIM(I1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">UPPER</span><span class="formula-desc">Mengonversi teks menjadi huruf kapital.</span><div class="copy-box"><span>=UPPER(M1)</span><button class="copy-btn" onclick="copyText('=UPPER(M1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">LOWER</span><span class="formula-desc">Mengonversi teks menjadi huruf kecil.</span><div class="copy-box"><span>=LOWER(N1)</span><button class="copy-btn" onclick="copyText('=LOWER(N1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">PROPER</span><span class="formula-desc">Ubah huruf pertama kata jadi huruf kapital.</span><div class="copy-box"><span>=PROPER(O1)</span><button class="copy-btn" onclick="copyText('=PROPER(O1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">CONCATENATE</span><span class="formula-desc">Menggabungkan teks atau nilai-nilai.</span><div class="copy-box"><span>=CONCATENATE("Halo ", "Dunia")</span><button class="copy-btn" onclick="copyText('=CONCATENATE(\'Halo \', \'Dunia\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">CONCAT</span><span class="formula-desc">Menggabungkan teks dalam sel jadi satu.</span><div class="copy-box"><span>=CONCAT(CS1:CT10)</span><button class="copy-btn" onclick="copyText('=CONCAT(CS1:CT10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">TEXTJOIN</span><span class="formula-desc">Menggabungkan teks dalam sel dengan pemisah.</span><div class="copy-box"><span>=TEXTJOIN(", ", TRUE, BT1:BT10)</span><button class="copy-btn" onclick="copyText('=TEXTJOIN(\', \', TRUE, BT1:BT10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">TEXT</span><span class="formula-desc">Mengonversi tanggal/angka dalam sel ke format teks.</span><div class="copy-box"><span>=TEXT(AL1, "dd-mmm-yyyy")</span><button class="copy-btn" onclick="copyText('=TEXT(AL1, \'dd-mmm-yyyy\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">FIND</span><span class="formula-desc">Menemukan posisi huruf tertentu dalam teks.</span><div class="copy-box"><span>=FIND("e", BO1)</span><button class="copy-btn" onclick="copyText('=FIND(\'e\', BO1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SEARCH</span><span class="formula-desc">Mencari huruf tertentu dalam teks.</span><div class="copy-box"><span>=SEARCH("e", BP1)</span><button class="copy-btn" onclick="copyText('=SEARCH(\'e\', BP1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">REPLACE</span><span class="formula-desc">Menggantikan bagian dari teks.</span><div class="copy-box"><span>=REPLACE(BQ1, 3, 2, "xyz")</span><button class="copy-btn" onclick="copyText('=REPLACE(BQ1, 3, 2, \'xyz\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SUBSTITUTE</span><span class="formula-desc">Menggantikan teks dengan teks lain.</span><div class="copy-box"><span>=SUBSTITUTE(BN1, "Apel", "Jeruk")</span><button class="copy-btn" onclick="copyText('=SUBSTITUTE(BN1, \'Apel\', \'Jeruk\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">VALUE / N</span><span class="formula-desc">Mengonversi teks ke nilai angka.</span><div class="copy-box"><span>=N(AT1)</span><button class="copy-btn" onclick="copyText('=N(AT1)')">SALIN</button></div></div>
         </div>
     </div>
 
@@ -185,11 +229,17 @@
     <div class="card formula-section">
         <div class="category-header"><div class="category-icon">📅</div><h2>6. Date & Time (Tanggal & Waktu)</h2></div>
         <div class="formula-grid">
-            <div class="formula-item"><span class="formula-name">TODAY, NOW</span><span class="formula-desc">Tanggal atau waktu saat ini.</span><div class="copy-box"><span>=TODAY()</span><button class="copy-btn" onclick="copyText('=TODAY()')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">DATE, TIME, DAY, MONTH, YEAR</span><span class="formula-desc">Ekstrak atau susun waktu.</span><div class="copy-box"><span>=YEAR(TODAY())</span><button class="copy-btn" onclick="copyText('=YEAR(TODAY())')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">HOUR, MINUTE, SECOND</span><span class="formula-desc">Ekstrak angka jam/menit/detik.</span><div class="copy-box"><span>=HOUR(NOW())</span><button class="copy-btn" onclick="copyText('=HOUR(NOW())')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">DATEDIF, EDATE, EOMONTH</span><span class="formula-desc">Hitung selisih atau manipulasi bulan.</span><div class="copy-box"><span>=EOMONTH(TODAY(), 0)</span><button class="copy-btn" onclick="copyText('=EOMONTH(TODAY(), 0)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">WORKDAY, NETWORKDAYS</span><span class="formula-desc">Hitung hari kerja efektif.</span><div class="copy-box"><span>=NETWORKDAYS(A1, B1)</span><button class="copy-btn" onclick="copyText('=NETWORKDAYS(A1, B1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">TODAY</span><span class="formula-desc">Mengembalikan tanggal saat ini.</span><div class="copy-box"><span>=TODAY()</span><button class="copy-btn" onclick="copyText('=TODAY()')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">NOW</span><span class="formula-desc">Mengembalikkan tanggal dan waktu saat ini.</span><div class="copy-box"><span>=NOW()</span><button class="copy-btn" onclick="copyText('=NOW()')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">DATE</span><span class="formula-desc">Membuat tanggal dengan tahun, bulan, dan hari.</span><div class="copy-box"><span>=DATE(2022, 3, 15)</span><button class="copy-btn" onclick="copyText('=DATE(2022, 3, 15)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">MONTH</span><span class="formula-desc">Mengembalikan bulan dari suatu tanggal.</span><div class="copy-box"><span>=MONTH(P1)</span><button class="copy-btn" onclick="copyText('=MONTH(P1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">DAY, YEAR, TIME, HOUR, MINUTE, SECOND</span><span class="formula-desc">Ekstrak atau susun waktu dan tanggal.</span><div class="copy-box"><span>=YEAR(TODAY())</span><button class="copy-btn" onclick="copyText('=YEAR(TODAY())')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">DATEDIF</span><span class="formula-desc">Hitung jumlah tahun/bulan/hari antara tanggal.</span><div class="copy-box"><span>=DATEDIF(AU1, AU10, "y")</span><button class="copy-btn" onclick="copyText('=DATEDIF(AU1, AU10, \'y\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">EOMONTH</span><span class="formula-desc">Mengembalikan hari terakhir bulan.</span><div class="copy-box"><span>=EOMONTH(AT1, 3)</span><button class="copy-btn" onclick="copyText('=EOMONTH(AT1, 3)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">EDATE</span><span class="formula-desc">Manipulasi atau maju/mundur bulan.</span><div class="copy-box"><span>=EDATE(TODAY(), 1)</span><button class="copy-btn" onclick="copyText('=EDATE(TODAY(), 1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">NETWORKDAYS</span><span class="formula-desc">Hitung jumlah hari kerja dari 2 tanggal.</span><div class="copy-box"><span>=NETWORKDAYS(AM1, AM10)</span><button class="copy-btn" onclick="copyText('=NETWORKDAYS(AM1, AM10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">WORKDAY</span><span class="formula-desc">Mendapatkan tanggal hari kerja masa depan.</span><div class="copy-box"><span>=WORKDAY(TODAY(), 10)</span><button class="copy-btn" onclick="copyText('=WORKDAY(TODAY(), 10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">WEEKDAY</span><span class="formula-desc">Kembalikan hari sesuai tanggal dalam sel.</span><div class="copy-box"><span>=WEEKDAY(AS1)</span><button class="copy-btn" onclick="copyText('=WEEKDAY(AS1)')">SALIN</button></div></div>
         </div>
     </div>
 
@@ -197,19 +247,32 @@
     <div class="card formula-section">
         <div class="category-header"><div class="category-icon">💰</div><h2>7. Financial (Keuangan)</h2></div>
         <div class="formula-grid">
-            <div class="formula-item"><span class="formula-name">PMT, FV, PV, RATE</span><span class="formula-desc">Hitung cicilan, bunga, atau nilai masa depan.</span><div class="copy-box"><span>=PMT(0.1/12, 12, -1000)</span><button class="copy-btn" onclick="copyText('=PMT(0.1/12, 12, -1000)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">NPV, IRR, XIRR, XNPV</span><span class="formula-desc">Analisis arus kas investasi.</span><div class="copy-box"><span>=IRR(A1:A5)</span><button class="copy-btn" onclick="copyText('=IRR(A1:A5)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">SLN, DB</span><span class="formula-desc">Hitung penyusutan aset.</span><div class="copy-box"><span>=SLN(100, 10, 5)</span><button class="copy-btn" onclick="copyText('=SLN(100, 10, 5)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">PMT</span><span class="formula-desc">Hitung pembayaran bulanan pinjaman/anuitas.</span><div class="copy-box"><span>=PMT(0.05/12, 60, -20000)</span><button class="copy-btn" onclick="copyText('=PMT(0.05/12, 60, -20000)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">FV</span><span class="formula-desc">Mengitung nilai masa depan investasi.</span><div class="copy-box"><span>=FV(0.1, 10, 100, -500)</span><button class="copy-btn" onclick="copyText('=FV(0.1, 10, 100, -500)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">PV</span><span class="formula-desc">Menghitung nilai investasi sekarang.</span><div class="copy-box"><span>=PV(0.08, 5, -100, 0, 1)</span><button class="copy-btn" onclick="copyText('=PV(0.08, 5, -100, 0, 1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">RATE</span><span class="formula-desc">Menghitung bunga per periode.</span><div class="copy-box"><span>=RATE(12, -100, 1000)</span><button class="copy-btn" onclick="copyText('=RATE(12, -100, 1000)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">NPV</span><span class="formula-desc">Hitung nilai bersih arus kas & investasi awal.</span><div class="copy-box"><span>=NPV(0.1, A1:A5)+A1</span><button class="copy-btn" onclick="copyText('=NPV(0.1, A1:A5)+A1')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">IRR</span><span class="formula-desc">Hitung tingkat pengembalian internal arus kas.</span><div class="copy-box"><span>=IRR(A1:A5)</span><button class="copy-btn" onclick="copyText('=IRR(A1:A5)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">XNPV</span><span class="formula-desc">Hitung nilai arus kas bersih secara spesifik.</span><div class="copy-box"><span>=XNPV(0.1, CV1:CV5, CW1:CW5)</span><button class="copy-btn" onclick="copyText('=XNPV(0.1, CV1:CV5, CW1:CW5)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">XIRR</span><span class="formula-desc">Hitung pengembalian arus kas secara spesifik.</span><div class="copy-box"><span>=XIRR(CV1:CV5, CW1:CW5)</span><button class="copy-btn" onclick="copyText('=XIRR(CV1:CV5, CW1:CW5)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">CUMIPMT</span><span class="formula-desc">Menghitung jumlah bunga kumulatif.</span><div class="copy-box"><span>=CUMIPMT(0.05/12, 60, -20000, 1, 36)</span><button class="copy-btn" onclick="copyText('=CUMIPMT(0.05/12, 60, -20000, 1, 36)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">CUMPRINC</span><span class="formula-desc">Menghitung jumlah pokok kumulatif.</span><div class="copy-box"><span>=CUMPRINC(0.05/12, 60, -20000, 1, 36)</span><button class="copy-btn" onclick="copyText('=CUMPRINC(0.05/12, 60, -20000, 1, 36)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">VDB</span><span class="formula-desc">Hitung penyusutan suatu aset untuk periode.</span><div class="copy-box"><span>=VDB(1000, 100, 5, 1, 3)</span><button class="copy-btn" onclick="copyText('=VDB(1000, 100, 5, 1, 3)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SLN, DB</span><span class="formula-desc">Hitung penyusutan aset linier/menurun.</span><div class="copy-box"><span>=SLN(100, 10, 5)</span><button class="copy-btn" onclick="copyText('=SLN(100, 10, 5)')">SALIN</button></div></div>
         </div>
     </div>
 
     <!-- 8. DYNAMIC ARRAY -->
     <div class="card formula-section">
-        <div class="category-header"><div class="category-icon">⚡</div><h2>8. Dynamic Array (Excel Modern)</h2></div>
+        <div class="category-header"><div class="category-icon">⚡</div><h2>8. Dynamic Array (Modern)</h2></div>
         <div class="formula-grid">
-            <div class="formula-item"><span class="formula-name">FILTER, SORT, SORTBY, UNIQUE</span><span class="formula-desc">Otomatisasi daftar data dinamis.</span><div class="copy-box"><span>=UNIQUE(A1:A100)</span><button class="copy-btn" onclick="copyText('=UNIQUE(A1:A100)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">SEQUENCE, RANDARRAY</span><span class="formula-desc">Buat daftar angka urut atau acak.</span><div class="copy-box"><span>=SEQUENCE(10)</span><button class="copy-btn" onclick="copyText('=SEQUENCE(10)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">TAKE, DROP, CHOOSECOLS</span><span class="formula-desc">Ambil atau buang bagian array.</span><div class="copy-box"><span>=TAKE(A1:C10, 5)</span><button class="copy-btn" onclick="copyText('=TAKE(A1:C10, 5)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">FILTER</span><span class="formula-desc">Filter rentang sel berdasarkan kondisi tertentu.</span><div class="copy-box"><span>=FILTER(AQ1:AQ10, AR1:AR10="A")</span><button class="copy-btn" onclick="copyText('=FILTER(AQ1:AQ10, AR1:AR10=\'A\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SORT</span><span class="formula-desc">Mengurutkan rentang sel.</span><div class="copy-box"><span>=SORT(AP1:AP10, 1, TRUE)</span><button class="copy-btn" onclick="copyText('=SORT(AP1:AP10, 1, TRUE)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SORTBY</span><span class="formula-desc">Mengurutkan berdasarkan array yang lain.</span><div class="copy-box"><span>=SORTBY(A1:A10, B1:B10)</span><button class="copy-btn" onclick="copyText('=SORTBY(A1:A10, B1:B10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">UNIQUE</span><span class="formula-desc">Mengembalikan nilai unik dari rentang sel.</span><div class="copy-box"><span>=UNIQUE(A1:A10)</span><button class="copy-btn" onclick="copyText('=UNIQUE(A1:A10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">SEQUENCE</span><span class="formula-desc">Buat daftar urutan angka.</span><div class="copy-box"><span>=SEQUENCE(10)</span><button class="copy-btn" onclick="copyText('=SEQUENCE(10)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">RANDARRAY</span><span class="formula-desc">Membuat array angka acak secara dinamis.</span><div class="copy-box"><span>=RANDARRAY(5, 5)</span><button class="copy-btn" onclick="copyText('=RANDARRAY(5, 5)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">TAKE, DROP, CHOOSECOLS</span><span class="formula-desc">Ambil atau buang bagian array tertentu.</span><div class="copy-box"><span>=TAKE(A1:C10, 5)</span><button class="copy-btn" onclick="copyText('=TAKE(A1:C10, 5)')">SALIN</button></div></div>
             <div class="formula-item"><span class="formula-name">TOCOL, TOROW</span><span class="formula-desc">Ubah array menjadi satu kolom/baris.</span><div class="copy-box"><span>=TOCOL(A1:C10)</span><button class="copy-btn" onclick="copyText('=TOCOL(A1:C10)')">SALIN</button></div></div>
         </div>
     </div>
@@ -218,7 +281,7 @@
     <div class="card formula-section">
         <div class="category-header"><div class="category-icon">🗄️</div><h2>9. Database Functions</h2></div>
         <div class="formula-grid">
-            <div class="formula-item"><span class="formula-name">DSUM, DCOUNT, DAVERAGE</span><span class="formula-desc">Fungsi statistik database kriteria.</span><div class="copy-box"><span>=DSUM(A1:C10, "Harga", E1:E2)</span><button class="copy-btn" onclick="copyText('=DSUM(A1:C10, \'Harga\', E1:E2)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">DSUM, DAVERAGE, DCOUNT</span><span class="formula-desc">Fungsi statistik database kriteria.</span><div class="copy-box"><span>=DSUM(A1:C10, "Harga", E1:E2)</span><button class="copy-btn" onclick="copyText('=DSUM(A1:C10, \'Harga\', E1:E2)')">SALIN</button></div></div>
             <div class="formula-item"><span class="formula-name">DMAX, DMIN</span><span class="formula-desc">Nilai tertinggi/terendah di database.</span><div class="copy-box"><span>=DMAX(A1:C10, "Nilai", E1:E2)</span><button class="copy-btn" onclick="copyText('=DMAX(A1:C10, \'Nilai\', E1:E2)')">SALIN</button></div></div>
         </div>
     </div>
@@ -228,7 +291,8 @@
         <div class="category-header"><div class="category-icon">ℹ️</div><h2>10. Information Functions</h2></div>
         <div class="formula-grid">
             <div class="formula-item"><span class="formula-name">ISBLANK, ISNUMBER, ISTEXT</span><span class="formula-desc">Pengecekan tipe isi sel.</span><div class="copy-box"><span>=ISNUMBER(A1)</span><button class="copy-btn" onclick="copyText('=ISNUMBER(A1)')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">ISERROR, ISNA, TYPE, CELL</span><span class="formula-desc">Informasi status properti sel.</span><div class="copy-box"><span>=ISERROR(A1)</span><button class="copy-btn" onclick="copyText('=ISERROR(A1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">ISERROR, ISNA, TYPE</span><span class="formula-desc">Pengecekan jika terjadi error sel.</span><div class="copy-box"><span>=ISERROR(A1)</span><button class="copy-btn" onclick="copyText('=ISERROR(A1)')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">CELL</span><span class="formula-desc">Mengembalikan informasi tentang sel tertentu.</span><div class="copy-box"><span>=CELL("address", AE1)</span><button class="copy-btn" onclick="copyText('=CELL(\'address\', AE1)')">SALIN</button></div></div>
         </div>
     </div>
 
@@ -236,8 +300,10 @@
     <div class="card formula-section">
         <div class="category-header"><div class="category-icon">⚙️</div><h2>11. Engineering</h2></div>
         <div class="formula-grid">
+            <div class="formula-item"><span class="formula-name">DECIMAL</span><span class="formula-desc">Konversi teks ke desimal.</span><div class="copy-box"><span>=DECIMAL(DY1, 2)</span><button class="copy-btn" onclick="copyText('=DECIMAL(DY1, 2)')">SALIN</button></div></div>
             <div class="formula-item"><span class="formula-name">CONVERT</span><span class="formula-desc">Konversi sistem pengukuran.</span><div class="copy-box"><span>=CONVERT(1, "m", "cm")</span><button class="copy-btn" onclick="copyText('=CONVERT(1, \'m\', \'cm\')')">SALIN</button></div></div>
-            <div class="formula-item"><span class="formula-name">DEC2BIN, BIN2DEC, COMPLEX</span><span class="formula-desc">Konversi sistem bilangan/kompleks.</span><div class="copy-box"><span>=BIN2DEC("1010")</span><button class="copy-btn" onclick="copyText('=BIN2DEC(\'1010\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">DEC2BIN, BIN2DEC</span><span class="formula-desc">Konversi sistem bilangan biner.</span><div class="copy-box"><span>=BIN2DEC("1010")</span><button class="copy-btn" onclick="copyText('=BIN2DEC(\'1010\')')">SALIN</button></div></div>
+            <div class="formula-item"><span class="formula-name">COMPLEX</span><span class="formula-desc">Konversi atau buat bilangan kompleks.</span><div class="copy-box"><span>=COMPLEX(3, 4)</span><button class="copy-btn" onclick="copyText('=COMPLEX(3, 4)')">SALIN</button></div></div>
         </div>
     </div>
 
@@ -245,6 +311,7 @@
     <div class="card formula-section">
         <div class="category-header"><div class="category-icon">🌐</div><h2>12. Web / Advanced Data</h2></div>
         <div class="formula-grid">
+            <div class="formula-item"><span class="formula-name">HYPERLINK</span><span class="formula-desc">Membuat tautan hyperlink web/lokal.</span><div class="copy-box"><span>=HYPERLINK("http://web.com", "Klik")</span><button class="copy-btn" onclick="copyText('=HYPERLINK(\'http://web.com\', \'Klik\')')">SALIN</button></div></div>
             <div class="formula-item"><span class="formula-name">WEBSERVICE, FILTERXML</span><span class="formula-desc">Pengambilan data dari web atau XML.</span><div class="copy-box"><span>=WEBSERVICE("http://api.com")</span><button class="copy-btn" onclick="copyText('=WEBSERVICE(\'http://api.com\')')">SALIN</button></div></div>
         </div>
     </div>
@@ -260,7 +327,9 @@
 
     function copyText(text) {
         navigator.clipboard.writeText(text).then(() => {
-            alert("Rumus disalin!");
+            alert("Rumus disalin ke clipboard!");
+        }).catch(err => {
+            console.error('Gagal menyalin: ', err);
         });
     }
 
@@ -281,8 +350,11 @@
 
         sections.forEach(section => {
             let visible = section.querySelectorAll('.formula-item:not(.hidden)');
-            if (visible.length === 0) section.classList.add('hidden');
-            else section.classList.remove('hidden');
+            if (visible.length === 0) {
+                section.classList.add('hidden');
+            } else {
+                section.classList.remove('hidden');
+            }
         });
     }
 </script>
