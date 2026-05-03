@@ -46,18 +46,18 @@
 
         .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #e5e7eb; }
         h2 { color: var(--excel-green); margin-bottom: 15px; font-size: 20px; border-left: 5px solid var(--excel-green); padding-left: 15px; }
-        h3 { color: var(--excel-dark); margin: 15px 0 10px 0; font-size: 17px; }
+        h3 { color: var(--excel-dark); margin: 20px 0 10px 0; font-size: 17px; background: #e8f5e9; padding: 5px 10px; border-radius: 5px; }
         
         p { margin-bottom: 15px; font-size: 14.5px; text-align: justify; }
-        ul, ol { margin-left: 20px; margin-bottom: 15px; font-size: 14px; }
-        li { margin-bottom: 5px; }
+        
+        /* SEARCH BAR STYLE */
+        .search-container { margin-bottom: 20px; position: sticky; top: 70px; z-index: 99; }
+        .search-input { width: 100%; padding: 12px 15px; border-radius: 10px; border: 2px solid var(--excel-green); outline: none; font-family: inherit; font-size: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
 
-        .hero { background: var(--excel-green); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 25px; }
-        .hero h2 { color: white; border: none; padding: 0; font-size: 24px; }
-
-        .grid-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .info-box { background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; }
-        .info-box b { color: var(--excel-green); display: block; margin-bottom: 5px; }
+        /* RUMUS GRID */
+        .formula-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .formula-badge { background: #f1f5f9; padding: 4px 10px; border-radius: 5px; font-size: 12px; font-weight: 600; color: #475569; border: 1px solid #e2e8f0; }
+        .formula-badge.popular { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
 
         .excel-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; }
         .excel-table th, .excel-table td { border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 14px; }
@@ -70,7 +70,8 @@
         .video-box.shorts { padding-bottom: 177.77%; max-width: 350px; margin: 15px auto; }
         .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .source-tag { font-size: 10px; color: #94a3b8; display: block; margin-top: 10px; font-style: italic; }
+        .code-block { background: #1e293b; color: #f8fafc; padding: 15px; border-radius: 10px; font-family: monospace; font-size: 13px; margin: 10px 0; overflow-x: auto; }
+
         footer { text-align: center; padding: 30px; font-size: 11px; color: #94a3b8; }
     </style>
 </head>
@@ -94,7 +95,6 @@
     
     <!-- HALAMAN UTAMA -->
     <div id="home" class="section active">
-        
         <div class="hero">
             <h2>Excel Learning Center</h2>
             <p>“Microsoft Excel adalah alat pengolah data paling populer di dunia yang membantu jutaan orang bekerja lebih cepat, lebih akurat, dan lebih profesional.”</p>
@@ -102,143 +102,172 @@
 
         <div class="card">
             <h2>1. Apa Itu Microsoft Excel?</h2>
-            <p>
-                Microsoft excel merupakan bagian dari Microsoft office yang berfungsi untuk pengolahan data dalam bentuk angka maupun perhitungan. Tampilan dari Microsoft excel ini berupa spreadsheet sehingga memudahkan penggunanya untuk mengoperasikannya.
-            </p>
-            <p>
-                Aplikasi Microsoft excel ini, merupakan pengolah data secara otomatis yang dapat berupa penghitungan dasar, penggunaan rumus-rumus, pemakaian fungsi, pembuatan grafik, pengolahan data dan table, serta manajemen data. Namun, dalam pemakaian fungsi anda harus paham betul arti dari fungsi tersebut serta logika excelnya. Karena jika salah dalam pemakaian fungsi, dapat menyebabkan kesalahan sewaktu membaca data.
-            </p>
+            <p>Microsoft excel merupakan bagian dari Microsoft office yang berfungsi untuk pengolahan data dalam bentuk angka maupun perhitungan. Tampilan dari Microsoft excel ini berupa spreadsheet sehingga memudahkan penggunanya untuk mengoperasikannya.</p>
+            <p>Aplikasi Microsoft excel ini, merupakan pengolah data secara otomatis yang dapat berupa penghitungan dasar, penggunaan rumus-rumus, pemakaian fungsi, pembuatan grafik, pengolahan data dan table, serta manajemen data. Namun, dalam pemakaian fungsi anda harus paham betul arti dari fungsi tersebut serta logika excelnya. Karena jika salah dalam pemakaian fungsi, dapat menyebabkan kesalahan sewaktu membaca data.</p>
         </div>
 
         <div class="card">
             <h2>2. Sejarah Microsoft Excel</h2>
-            <p>
-                Excel pertama kali hadir pada tahun 1985 dan dibuat oleh Doug Klunder. Fakta uniknya, Excel secara perdana dirilis tanpa memuat nama ‘Microsoft.’ Melainkan hanya Excel saja. Munculnya Excel ternyata mendapat banyak komplain dari berbagai perusahaan yang memiliki produk dengan nama serupa. Sesaat setelahnya, Microsoft langsung mengubahnya menjadi ‘Microsoft Excel.’ Nama tersebut masih digunakan hingga sekarang. Excel berbentuk spreadsheet dan biasa disebut ‘Multiplan.’ Diketahui bahwa saat itu Excel sudah memiliki saingan, yaitu Lotus 1-2-3. Namun, Doug Klunder memiliki tekad untuk membuat temuan yang lebih canggih dari dari Lotus 1-2-3.
-            </p>
-            <p>
-                Pada tahun pertamanya, Excel hanya didistribusikan untuk perangkat dengan sistem operasi Macintosh atau yang sekarang lebih akrab dengan sebutan ‘Mac.’ Tidak lain adalah komputer personal keluaran Apple. Dua tahun setelahnya, tepatnya pada November 1985, Microsoft merilis Excel untuk versi Windows dengan nama Excel Versi 2.0. Pasalnya, saat itu Lotus 1-2-3 terlambat didistribusikan untuk Windows karena masih menggunakan MS-DOS. Kelalaian Lotus 1-2-3 menjadi kesempatan emas untuk Microsoft Excel.
-            </p>
-            <p>
-                Benar saja, setelah itu Excel berhasil merebut pasar perangkat lunak untuk spreadsheet. Dilansir dari situs Kelas Excel, software ini pertama kali termasuk di bundel Microsoft Office pada tahun 1993. Dilakukan pembaharuan dari segi tampilan untuk Microsoft Word dan Microsoft PowerPoint agar sesuai dengan Microsoft Excel. Tepat pada 1993, Microsoft Excel sudah dibekali bahasa pemrograman Visual Basic for Applications (VBA). Diketahui bahwa VBA-lah yang menjadi tonggak pertama Excel memiliki fitur rumus-rumus yang bisa digunakan secara otomatis dan akurat.
-            </p>
-            <span class="source-tag">Sumber: Ghina Aulia (Katadata.co.id)</span>
+            <p>Excel pertama kali hadir pada tahun 1985 dan dibuat oleh Doug Klunder. Fakta uniknya, Excel secara perdana dirilis tanpa memuat nama ‘Microsoft.’ Melainkan hanya Excel saja. Munculnya Excel ternyata mendapat banyak komplain dari berbagai perusahaan yang memiliki produk dengan nama serupa. Sesaat setelahnya, Microsoft langsung mengubahnya menjadi ‘Microsoft Excel.’ Nama tersebut masih digunakan hingga sekarang.</p>
+            <p>Pada tahun pertamanya, Excel hanya didistribusikan untuk perangkat dengan sistem operasi Macintosh (Mac). Dua tahun setelahnya, tepatnya pada November 1987, Microsoft merilis Excel untuk versi Windows dengan nama Excel Versi 2.0. Keberhasilan Excel merebut pasar terjadi karena kompetitor utama saat itu, Lotus 1-2-3, terlambat masuk ke Windows.</p>
         </div>
-
-        <div class="card">
-            <h2>3. Mengenal Tampilan Excel</h2>
-            <div class="grid-info">
-                <div class="info-box"><b>Ribbon</b>Kumpulan tab menu (Home, Insert, dll) yang berisi tool atau perintah.</div>
-                <div class="info-box"><b>Toolbar</b>Kumpulan tombol untuk akses cepat ke perintah tertentu.</div>
-                <div class="info-box"><b>Worksheet</b>Lembar kerja tunggal di dalam Excel yang terdiri dari sel.</div>
-                <div class="info-box"><b>Workbook</b>File Excel yang dapat menampung satu atau lebih Worksheet.</div>
-                <div class="info-box"><b>Rows</b>Baris horisontal yang diwakili oleh angka (1, 2, 3...).</div>
-                <div class="info-box"><b>Columns</b>Kolom vertikal yang diwakili oleh huruf (A, B, C...).</div>
-                <div class="info-box"><b>Cell</b>Pertemuan antara baris dan kolom (Contoh: A1).</div>
-                <div class="info-box"><b>Formula Bar</b>Tempat untuk melihat, mengetik, atau mengedit data/rumus di sel aktif.</div>
-                <div class="info-box"><b>Sheet Tabs</b>Tab di bagian bawah untuk berpindah antar lembar kerja.</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>4. Istilah Dasar Excel</h2>
-            <div class="grid-info">
-                <div class="info-box"><b>Cell</b>Satuan terkecil di worksheet tempat menginput data.</div>
-                <div class="info-box"><b>Range</b>Sekumpulan sel yang dipilih secara bersamaan (Contoh: A1:B10).</div>
-                <div class="info-box"><b>Formula</b>Persamaan matematis untuk menghitung nilai (Diawali tanda =).</div>
-                <div class="info-box"><b>Function</b>Rumus siap pakai dari Excel (Contoh: SUM, AVERAGE).</div>
-                <div class="info-box"><b>Workbook</b>Satu file Excel utuh.</div>
-                <div class="info-box"><b>Worksheet</b>Halaman atau lembar kerja di dalam file.</div>
-                <div class="info-box"><b>Autofill</b>Fitur untuk mengisi data secara otomatis berdasarkan pola.</div>
-                <div class="info-box"><b>Formatting</b>Mengatur tampilan data (Warna, Huruf, Border).</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>5. Perkembangan Versi Excel</h2>
-            <div class="grid-info">
-                <div class="info-box">
-                    <b>Excel untuk Windows</b>
-                    <ol style="font-size: 11px;">
-                        <li>Excel 2 – 1987</li>
-                        <li>Excel 3 – 1990</li>
-                        <li>Excel 4 – 1992</li>
-                        <li>Excel 5 – 1993</li>
-                        <li>Excel 95 – 1995</li>
-                        <li>Excel 97 – 1997</li>
-                        <li>Excel 2000 – 2000</li>
-                        <li>Excel 2002 – 2002</li>
-                        <li>Excel 2003 – 2003</li>
-                        <li>Excel 2007 – 2007</li>
-                        <li>Excel 2012 – 2012</li>
-                        <li>Excel 2013 – 2013</li>
-                        <li>Excel 2016 – 2016</li>
-                    </ol>
-                </div>
-                <div class="info-box">
-                    <b>Excel untuk Mac</b>
-                    <ol style="font-size: 11px;">
-                        <li>Excel 1 – 1985</li>
-                        <li>Excel 1.5 – 1988</li>
-                        <li>Excel 2 – 1989</li>
-                        <li>Excel 3 – 1990</li>
-                        <li>Excel 4 – 1992</li>
-                        <li>Excel 5 – 1993</li>
-                        <li>Excel 98 – 1998</li>
-                        <li>Excel 2000 – 2000</li>
-                        <li>Excel 2001 – 2001</li>
-                        <li>Excel 2004 – 2004</li>
-                        <li>Excel 2008 – 2008</li>
-                        <li>Excel 2011 – 2011</li>
-                        <li>Excel 2016 – 2016</li>
-                    </ol>
-                </div>
-            </div>
-            <p style="margin-top:15px; font-size: 13px;">
-                Sampai sekarang, Microsoft Excel masih banyak digunakan untuk mengolah data. Perlu diketahui bahwa sekarang bundel yang tersebar bernama <b>Microsoft 365</b>. Di dalamnya terdapat Word, PowerPoint, Outlook, Teams, OneNote dan Excel. Sekarang rentetan perangkat lunak tersebut tidak lagi menggunakan embel-embel ‘Microsoft.’
-            </p>
-        </div>
-
     </div>
 
     <!-- RUANG PRAKTEK -->
     <div id="praktek" class="section">
         <div class="card">
             <h2>Simulasi Excel Interaktif</h2>
-            <p>Pahami struktur kolom (A, B, C) dan baris (1, 2, 3) di bawah ini:</p>
+            <p>Cobalah mengetik di sel di bawah ini untuk mensimulasikan pengisian data:</p>
             <div style="overflow-x: auto;">
                 <table class="excel-table">
                     <thead><tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead>
                     <tbody>
                         <tr><th>1</th><td><input type="text" placeholder="No"></td><td><input type="text" placeholder="Nama"></td><td><input type="text" placeholder="Nilai"></td><td><input type="text" placeholder="Status"></td></tr>
                         <tr><th>2</th><td><input type="text" value="1"></td><td><input type="text" value="Andi"></td><td><input type="text" value="85"></td><td><input type="text" value="Lulus"></td></tr>
-                        <tr><th>3</th><td><input type="text" value="2"></td><td><input type="text" value="Budi"></td><td><input type="text" value="60"></td><td><input type="text" value="Gagal"></td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-    <!-- RUMUS -->
+    <!-- RUMUS & FUNGSI (DENGAN SEARCH BAR) -->
     <div id="rumus" class="section">
-        <div class="card">
-            <h2>Rumus Wajib Kerja</h2>
-            <div class="tutorial-item">
-                <p><b>Fungsi VLOOKUP</b> (Mencari Data Vertikal)</p>
-                <button class="btn-vid" onclick="toggleVideo('v-vlookup')">🎥 Lihat Tutorial</button>
-                <div id="v-vlookup" class="video-box">
-                    <iframe src="https://www.youtube.com/embed/fA9V_Z-7fIs" frameborder="0" allowfullscreen></iframe>
+        <div class="search-container">
+            <input type="text" id="formulaSearch" class="search-input" placeholder="🔍 Cari rumus excel (contoh: VLOOKUP, SUM, IF)..." onkeyup="filterFormulas()">
+        </div>
+
+        <div class="card" id="must-know">
+            <h2>Rumus Wajib (Paling Sering Dipakai)</h2>
+            <h3>Pemula</h3>
+            <div class="formula-list">
+                <span class="formula-badge popular">SUM</span><span class="formula-badge popular">AVERAGE</span><span class="formula-badge popular">COUNT</span><span class="formula-badge popular">IF</span><span class="formula-badge popular">MAX/MIN</span>
+            </div>
+            <h3>Menengah</h3>
+            <div class="formula-list">
+                <span class="formula-badge popular">VLOOKUP</span><span class="formula-badge popular">XLOOKUP</span><span class="formula-badge popular">INDEX MATCH</span><span class="formula-badge popular">SUMIF</span><span class="formula-badge popular">COUNTIF</span><span class="formula-badge popular">IFERROR</span>
+            </div>
+            <h3>Mahir</h3>
+            <div class="formula-list">
+                <span class="formula-badge popular">FILTER</span><span class="formula-badge popular">UNIQUE</span><span class="formula-badge popular">SORT</span><span class="formula-badge popular">Pivot tools</span><span class="formula-badge popular">Power Query</span><span class="formula-badge popular">VBA</span>
+            </div>
+        </div>
+
+        <div id="all-formulas">
+            <!-- 1. Math -->
+            <div class="card formula-section">
+                <h2>1. Math & Arithmetic (Matematika)</h2>
+                <div class="formula-list">
+                    <span class="formula-badge">SUM</span><span class="formula-badge">SUMIF</span><span class="formula-badge">SUMIFS</span><span class="formula-badge">PRODUCT</span><span class="formula-badge">SUBTOTAL</span><span class="formula-badge">ROUND</span><span class="formula-badge">ROUNDUP</span><span class="formula-badge">ROUNDDOWN</span><span class="formula-badge">INT</span><span class="formula-badge">ABS</span><span class="formula-badge">MOD</span><span class="formula-badge">POWER</span><span class="formula-badge">SQRT</span><span class="formula-badge">RAND</span><span class="formula-badge">RANDBETWEEN</span><span class="formula-badge">CEILING</span><span class="formula-badge">FLOOR</span>
                 </div>
             </div>
+
+            <!-- 2. Statistical -->
+            <div class="card formula-section">
+                <h2>2. Statistical (Statistik)</h2>
+                <div class="formula-list">
+                    <span class="formula-badge">AVERAGE</span><span class="formula-badge">AVERAGEIF</span><span class="formula-badge">AVERAGEIFS</span><span class="formula-badge">COUNT</span><span class="formula-badge">COUNTA</span><span class="formula-badge">COUNTBLANK</span><span class="formula-badge">COUNTIF</span><span class="formula-badge">COUNTIFS</span><span class="formula-badge">MAX</span><span class="formula-badge">MIN</span><span class="formula-badge">MEDIAN</span><span class="formula-badge">MODE</span><span class="formula-badge">LARGE</span><span class="formula-badge">SMALL</span><span class="formula-badge">RANK</span><span class="formula-badge">PERCENTILE</span><span class="formula-badge">STDEV</span><span class="formula-badge">VAR</span>
+                </div>
+            </div>
+
+            <!-- 3. Logical -->
+            <div class="card formula-section">
+                <h2>3. Logical (Logika)</h2>
+                <div class="formula-list">
+                    <span class="formula-badge">IF</span><span class="formula-badge">IFS</span><span class="formula-badge">AND</span><span class="formula-badge">OR</span><span class="formula-badge">NOT</span><span class="formula-badge">IFERROR</span><span class="formula-badge">IFNA</span><span class="formula-badge">SWITCH</span><span class="formula-badge">XOR</span>
+                </div>
+            </div>
+
+            <!-- 4. Lookup -->
+            <div class="card formula-section">
+                <h2>4. Lookup & Reference (Pencarian Data)</h2>
+                <div class="formula-list">
+                    <span class="formula-badge">VLOOKUP</span><span class="formula-badge">HLOOKUP</span><span class="formula-badge">XLOOKUP</span><span class="formula-badge">LOOKUP</span><span class="formula-badge">INDEX</span><span class="formula-badge">MATCH</span><span class="formula-badge">XMATCH</span><span class="formula-badge">OFFSET</span><span class="formula-badge">CHOOSE</span><span class="formula-badge">INDIRECT</span><span class="formula-badge">ADDRESS</span><span class="formula-badge">ROW</span><span class="formula-badge">COLUMN</span>
+                </div>
+            </div>
+
+            <!-- 5. Text -->
+            <div class="card formula-section">
+                <h2>5. Text Functions (Teks)</h2>
+                <div class="formula-list">
+                    <span class="formula-badge">LEFT</span><span class="formula-badge">RIGHT</span><span class="formula-badge">MID</span><span class="formula-badge">LEN</span><span class="formula-badge">TRIM</span><span class="formula-badge">UPPER</span><span class="formula-badge">LOWER</span><span class="formula-badge">PROPER</span><span class="formula-badge">CONCAT</span><span class="formula-badge">CONCATENATE</span><span class="formula-badge">TEXTJOIN</span><span class="formula-badge">TEXT</span><span class="formula-badge">FIND</span><span class="formula-badge">SEARCH</span><span class="formula-badge">REPLACE</span><span class="formula-badge">SUBSTITUTE</span><span class="formula-badge">VALUE</span>
+                </div>
+            </div>
+
+            <!-- 6. Date -->
+            <div class="card formula-section">
+                <h2>6. Date & Time (Tanggal & Waktu)</h2>
+                <div class="formula-list">
+                    <span class="formula-badge">TODAY</span><span class="formula-badge">NOW</span><span class="formula-badge">DATE</span><span class="formula-badge">TIME</span><span class="formula-badge">DAY</span><span class="formula-badge">MONTH</span><span class="formula-badge">YEAR</span><span class="formula-badge">HOUR</span><span class="formula-badge">MINUTE</span><span class="formula-badge">SECOND</span><span class="formula-badge">DATEDIF</span><span class="formula-badge">EDATE</span><span class="formula-badge">EOMONTH</span><span class="formula-badge">WORKDAY</span><span class="formula-badge">NETWORKDAYS</span>
+                </div>
+            </div>
+
+            <!-- 7. Financial -->
+            <div class="card formula-section">
+                <h2>7. Financial (Keuangan)</h2>
+                <div class="formula-list">
+                    <span class="formula-badge">PMT</span><span class="formula-badge">FV</span><span class="formula-badge">PV</span><span class="formula-badge">RATE</span><span class="formula-badge">NPV</span><span class="formula-badge">IRR</span><span class="formula-badge">XIRR</span><span class="formula-badge">XNPV</span><span class="formula-badge">SLN</span><span class="formula-badge">DB</span>
+                </div>
+            </div>
+
+            <!-- 8. Dynamic Array -->
+            <div class="card formula-section">
+                <h2>8. Dynamic Array (Excel Modern)</h2>
+                <div class="formula-list">
+                    <span class="formula-badge">FILTER</span><span class="formula-badge">SORT</span><span class="formula-badge">SORTBY</span><span class="formula-badge">UNIQUE</span><span class="formula-badge">SEQUENCE</span><span class="formula-badge">RANDARRAY</span><span class="formula-badge">TAKE</span><span class="formula-badge">DROP</span><span class="formula-badge">CHOOSECOLS</span><span class="formula-badge">TOCOL</span><span class="formula-badge">TOROW</span>
+                </div>
+            </div>
+
+            <!-- 9. Database -->
+            <div class="card formula-section">
+                <h2>9. Database Functions</h2>
+                <div class="formula-list">
+                    <span class="formula-badge">DSUM</span><span class="formula-badge">DCOUNT</span><span class="formula-badge">DAVERAGE</span><span class="formula-badge">DMAX</span><span class="formula-badge">DMIN</span>
+                </div>
+            </div>
+
+            <!-- 10. Information -->
+            <div class="card formula-section">
+                <h2>10. Information Functions</h2>
+                <div class="formula-list">
+                    <span class="formula-badge">ISBLANK</span><span class="formula-badge">ISNUMBER</span><span class="formula-badge">ISTEXT</span><span class="formula-badge">ISERROR</span><span class="formula-badge">ISNA</span><span class="formula-badge">TYPE</span><span class="formula-badge">CELL</span>
+                </div>
+            </div>
+
+            <!-- 11. Engineering -->
+            <div class="card formula-section">
+                <h2>11. Engineering</h2>
+                <div class="formula-list">
+                    <span class="formula-badge">CONVERT</span><span class="formula-badge">DEC2BIN</span><span class="formula-badge">BIN2DEC</span><span class="formula-badge">COMPLEX</span>
+                </div>
+            </div>
+
+            <!-- 12. Web -->
+            <div class="card formula-section">
+                <h2>12. Web / Advanced Data</h2>
+                <div class="formula-list">
+                    <span class="formula-badge">WEBSERVICE</span><span class="formula-badge">FILTERXML</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Contoh Formula Populer</h2>
+            <div class="code-block">=SUM(A1:A10)</div>
+            <div class="code-block">=IF(A1>70,"Lulus","Tidak")</div>
+            <div class="code-block">=VLOOKUP(A2,$F$2:$G$10,2,FALSE)</div>
+            <div class="code-block">=XLOOKUP(A2,F2:F10,G2:G10)</div>
+            <div class="code-block">=COUNTIF(B:B,"Laki-laki")</div>
+            <div class="code-block">=TEXT(TODAY(),"dd-mm-yyyy")</div>
         </div>
     </div>
 
     <!-- SHORTCUT -->
     <div id="shortcut" class="section">
         <div class="card">
-            <h2>Shortcuts Keyboard</h2>
+            <h2>Shortcut Keyboard</h2>
             <div class="tutorial-item">
                 <p><b>ALT + =</b> (Auto Sum)</p>
-                <button class="btn-vid" onclick="toggleVideo('s-sum')">🎥 Lihat Video Shorts</button>
+                <button class="btn-vid" onclick="toggleVideo('s-sum')">🎥 Lihat Shorts</button>
                 <div id="s-sum" class="video-box shorts">
                     <iframe src="https://www.youtube.com/embed/m67OXXvoB7s" frameborder="0" allowfullscreen></iframe>
                 </div>
@@ -253,20 +282,49 @@
     function showPage(pageId) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.getElementById(pageId).classList.add('active');
-        toggleMenu();
+        if(window.innerWidth < 1000) toggleMenu();
         window.scrollTo(0,0);
     }
 
     function toggleMenu() {
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
-        sidebar.classList.toggle('active');
-        overlay.classList.toggle('active');
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('overlay').classList.toggle('active');
     }
 
     function toggleVideo(id) {
         const vBox = document.getElementById(id);
         vBox.style.display = (vBox.style.display === "block") ? "none" : "block";
+    }
+
+    // FUNGSI SEARCH REAL-TIME
+    function filterFormulas() {
+        let input = document.getElementById('formulaSearch').value.toUpperCase();
+        let sections = document.querySelectorAll('.formula-section');
+        let badges = document.querySelectorAll('.formula-badge');
+
+        // Filter badges
+        badges.forEach(badge => {
+            if (badge.innerText.toUpperCase().indexOf(input) > -1) {
+                badge.style.display = "";
+            } else {
+                badge.style.display = "none";
+            }
+        });
+
+        // Sembunyikan section jika tidak ada badge yang cocok di dalamnya
+        sections.forEach(section => {
+            let visibleBadges = section.querySelectorAll('.formula-badge[style="display: px;"], .formula-badge:not([style*="display: none"])');
+            if (visibleBadges.length > 0) {
+                section.style.display = "";
+            } else {
+                section.style.display = "none";
+            }
+        });
+        
+        // Sembunyikan section 'Must Know' saat mencari agar hasil lebih fokus
+        let mustKnow = document.getElementById('must-know');
+        if(input.length > 0) mustKnow.style.display = "none";
+        else mustKnow.style.display = "block";
     }
 </script>
 
