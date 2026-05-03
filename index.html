@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Excel Portal - All-in-One Learning</title>
+    <title>Master Excel Portal - Belajar Mandiri</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -36,7 +36,7 @@
         .sidebar a { display: block; padding: 15px 25px; color: #cbd5e1; text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.2s; }
         .sidebar a:hover { background: var(--excel-green); color: white; }
         
-        .overlay { position: fixed; display: none; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050; top: 0; }
+        .overlay { position: fixed; display: none; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050; top: 0; left: 0; }
         .overlay.active { display: block; }
 
         /* MAIN CONTENT AREA */
@@ -55,7 +55,7 @@
         .grid-item { background: #f9fafb; padding: 15px; border-radius: 10px; border: 1px solid #e5e7eb; }
         .grid-item b { color: var(--excel-green); display: block; margin-bottom: 5px; }
 
-        /* TUTORIAL BOX (SHORTCUTS & RUMUS) */
+        /* TUTORIAL BOX */
         .tutorial-item { border: 1px solid #e5e7eb; padding: 15px; border-radius: 12px; margin-bottom: 15px; background: #fff; }
         .keys { font-weight: 800; color: var(--excel-green); background: #ecfdf5; padding: 3px 8px; border-radius: 4px; }
         
@@ -71,6 +71,8 @@
             padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; 
             background: #000;
         }
+        /* Style khusus untuk Shorts (Vertikal) */
+        .video-box.shorts { padding-bottom: 177.77%; max-width: 400px; margin-left: auto; margin-right: auto; }
         .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
         footer { text-align: center; padding: 30px; font-size: 11px; color: #94a3b8; }
@@ -96,43 +98,44 @@
     
     <div id="home" class="section active">
         <div class="card">
-            <h2>Pengenalan Microsoft Excel</h2>
+            <h2>Apa itu Microsoft Excel?</h2>
             <p>
-                <b>Microsoft Excel</b> adalah aplikasi <i>spreadsheet</i> atau lembar kerja elektronik yang paling populer di dunia. Secara fungsional, Excel digunakan untuk mengolah data angka menggunakan baris dan kolom. 
+                Berdasarkan literatur teknologi informasi, <b>Microsoft Excel</b> adalah aplikasi lembar kerja (spreadsheet) yang memungkinkan pengguna untuk mengorganisir, memformat, dan menghitung data dengan rumus melalui sistem sel.
             </p>
             <p>
-                Dalam jurnal teknologi, Excel sering disebut sebagai alat pengolah data <i>grid-based</i> yang memungkinkan pengguna melakukan perhitungan matematis, statistika, hingga analisis data finansial secara otomatis melalui sistem formula.
+                Excel berfungsi sebagai alat analisis data primer yang digunakan di berbagai bidang—mulai dari akuntansi keuangan hingga manajemen data legal—karena kemampuannya dalam memproses ribuan data secara otomatis dan akurat.
             </p>
         </div>
 
         <div class="card">
-            <h2>Komponen Utama Antarmuka</h2>
+            <h2>Elemen Penting di Halaman Utama</h2>
+            <p>Berikut adalah navigasi dasar yang akan Anda temui di Excel:</p>
             <div class="grid">
-                <div class="grid-item"><b>Ribbon Menu</b>Pusat kendali fitur (Home, Insert, Page Layout).</div>
-                <div class="grid-item"><b>Formula Bar</b>Tempat menuliskan dan mengedit rumus/data.</div>
-                <div class="grid-item"><b>Worksheet</b>Area sel (A1, B1, dst) tempat data diolah.</div>
-                <div class="grid-item"><b>Workbook</b>Satu file Excel yang bisa berisi banyak Sheet.</div>
+                <div class="grid-item"><b>1. Ribbon Menu</b>Tab berisi perintah seperti Home, Insert, dan Data.</div>
+                <div class="grid-item"><b>2. Formula Bar</b>Area untuk menuliskan rumus kompleks.</div>
+                <div class="grid-item"><b>3. Name Box</b>Menunjukkan alamat sel (misal: A1).</div>
+                <div class="grid-item"><b>4. Worksheet Grid</b>Kumpulan Baris (Angka) dan Kolom (Huruf).</div>
             </div>
         </div>
     </div>
 
     <div id="rumus" class="section">
         <div class="card">
-            <h2>Kumpulan Rumus Populer</h2>
+            <h2>Rumus Wajib Kerja</h2>
             
             <div class="tutorial-item">
-                <p><b>Rumus VLOOKUP</b></p>
-                <p style="font-size: 13px; color: #666;">Digunakan untuk mencari data di tabel referensi secara vertikal.</p>
-                <button class="btn-vid" onclick="toggleVideo('v-vlookup')">🎥 Lihat Tutorial VLOOKUP</button>
+                <p><b>Fungsi VLOOKUP</b></p>
+                <p style="font-size: 13px; color: #666;">Mencari data secara vertikal dalam sebuah tabel referensi.</p>
+                <button class="btn-vid" onclick="toggleVideo('v-vlookup')">🎥 Lihat Tutorial</button>
                 <div id="v-vlookup" class="video-box">
                     <iframe src="https://www.youtube.com/embed/fA9V_Z-7fIs" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
 
             <div class="tutorial-item">
-                <p><b>Rumus IF (Logika)</b></p>
-                <p style="font-size: 13px; color: #666;">Memberikan hasil berdasarkan kondisi tertentu (Contoh: Lulus/Gagal).</p>
-                <button class="btn-vid" onclick="toggleVideo('v-if')">🎥 Lihat Tutorial IF</button>
+                <p><b>Fungsi IF</b></p>
+                <p style="font-size: 13px; color: #666;">Memberikan hasil berdasarkan perbandingan logika (Benar/Salah).</p>
+                <button class="btn-vid" onclick="toggleVideo('v-if')">🎥 Lihat Tutorial</button>
                 <div id="v-if" class="video-box">
                     <iframe src="https://www.youtube.com/embed/D35t8T09uY4" frameborder="0" allowfullscreen></iframe>
                 </div>
@@ -142,21 +145,21 @@
 
     <div id="shortcut" class="section">
         <div class="card">
-            <h2>Shortcut Keyboard (Video)</h2>
+            <h2>Shortcuts Terpopuler</h2>
             
             <div class="tutorial-item">
                 <p><span class="keys">ALT + =</span> (Auto Sum)</p>
-                <p style="font-size: 13px; color: #666;">Menjumlahkan ribuan angka dalam 1 detik.</p>
-                <button class="btn-vid" onclick="toggleVideo('s-sum')">🎥 Tutorial Shortcut</button>
-                <div id="s-sum" class="video-box">
-                    <iframe src="https://www.youtube.com/embed/A8U5Z1p_N58" frameborder="0" allowfullscreen></iframe>
+                <p style="font-size: 13px; color: #666;">Cara tercepat menjumlahkan angka di Excel.</p>
+                <button class="btn-vid" onclick="toggleVideo('s-sum')">🎥 Lihat Video Shorts</button>
+                <div id="s-sum" class="video-box shorts">
+                    <iframe src="https://www.youtube.com/embed/m67OXXvoB7s" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
 
             <div class="tutorial-item">
-                <p><span class="keys">CTRL + T</span> (Tabel Otomatis)</p>
-                <p style="font-size: 13px; color: #666;">Mengubah kumpulan data menjadi tabel rapi & profesional.</p>
-                <button class="btn-vid" onclick="toggleVideo('s-table')">🎥 Tutorial Shortcut</button>
+                <p><span class="keys">CTRL + T</span> (Create Table)</p>
+                <p style="font-size: 13px; color: #666;">Merapikan data menjadi format tabel secara instan.</p>
+                <button class="btn-vid" onclick="toggleVideo('s-table')">🎥 Lihat Tutorial</button>
                 <div id="s-table" class="video-box">
                     <iframe src="https://www.youtube.com/embed/8K87-p2V_Hw" frameborder="0" allowfullscreen></iframe>
                 </div>
@@ -166,50 +169,37 @@
 
     <div id="tips" class="section">
         <div class="card">
-            <h2>Tips Mahir Excel</h2>
-            <ul>
-                <li>Gunakan <b>Conditional Formatting</b> untuk menandai data penting otomatis.</li>
-                <li>Gunakan <b>Pivot Table</b> untuk meringkas laporan ribuan baris.</li>
-                <li>Selalu gunakan <b>Absolute Reference ($)</b> agar rumus tidak berantakan saat di-copy.</li>
-            </ul>
+            <h2>Tips Menjadi Ahli Excel</h2>
+            <p>1. Selalu gunakan <b>Freeze Panes</b> untuk mengunci baris judul agar tidak hilang saat di-scroll.</p>
+            <p>2. Gunakan <b>Conditional Formatting</b> untuk menandai data duplikat secara otomatis.</p>
+            <p>3. Pelajari <b>Pivot Table</b> untuk meringkas laporan ribuan data dalam hitungan detik.</p>
         </div>
     </div>
 
-    <footer>© 2026 Master Excel Learning Center - FH UHN Portal</footer>
+    <footer>© 2026 Excel Master Portal - All Rights Reserved</footer>
 </div>
 
 <script>
-    // FUNGSI NAVIGASI (INSTAN)
+    // FUNGSI NAVIGASI HALAMAN
     function showPage(pageId) {
-        // Sembunyikan semua halaman
         const sections = document.querySelectorAll('.section');
         sections.forEach(s => s.classList.remove('active'));
-        
-        // Tampilkan halaman terpilih
         document.getElementById(pageId).classList.add('active');
-        
-        // Tutup Sidebar
-        toggleMenu();
-        
-        // Scroll ke atas otomatis
+        toggleMenu(); // Tutup sidebar setelah memilih
         window.scrollTo(0,0);
     }
 
-    // FUNGSI SIDEBAR
+    // FUNGSI MENU SIDEBAR
     function toggleMenu() {
         document.getElementById('sidebar').classList.toggle('active');
         document.getElementById('overlay').classList.toggle('active');
     }
 
-    // FUNGSI TOGGLE VIDEO (Lazy Loading)
+    // FUNGSI TOGGLE VIDEO
     function toggleVideo(id) {
         const vBox = document.getElementById(id);
         if (vBox.style.display === "block") {
             vBox.style.display = "none";
-            // Matikan video saat ditutup (opsional agar suara hilang)
-            const iframe = vBox.querySelector('iframe');
-            const src = iframe.src;
-            iframe.src = src;
         } else {
             vBox.style.display = "block";
         }
