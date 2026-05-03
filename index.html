@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excel Pro Learning Portal</title>
+    <title>Master Excel Portal - All-in-One Learning</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,127 +12,68 @@
             --bg: #f3f4f6;
             --white: #ffffff;
             --text: #1f2937;
-            --sidebar-width: 260px;
+            --sidebar-width: 280px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
-        /* HEADER & HAMBURGER */
+        /* HEADER & NAVIGATION */
         header { 
-            background: var(--excel-green); 
-            color: white; 
-            padding: 15px 20px; 
-            display: flex; 
-            align-items: center; 
-            position: fixed; 
-            width: 100%; 
-            top: 0; 
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--excel-green); color: white; padding: 15px 20px; 
+            display: flex; align-items: center; position: fixed; 
+            width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-
-        .menu-btn {
-            font-size: 24px;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            margin-right: 15px;
-        }
-
+        .menu-btn { font-size: 24px; background: none; border: none; color: white; cursor: pointer; margin-right: 15px; }
         header h1 { font-size: 18px; font-weight: 800; }
 
-        /* SIDEBAR NAV */
         .sidebar {
-            position: fixed;
-            left: calc(-1 * var(--sidebar-width));
-            top: 0;
-            height: 100%;
-            width: var(--sidebar-width);
-            background: var(--excel-dark);
-            color: white;
-            transition: 0.3s;
-            z-index: 1100;
-            padding-top: 60px;
+            position: fixed; left: -280px; top: 0; height: 100%; width: var(--sidebar-width);
+            background: var(--excel-dark); color: white; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            z-index: 1100; padding-top: 60px;
         }
-
         .sidebar.active { left: 0; }
-
-        .sidebar a {
-            display: block;
-            padding: 15px 25px;
-            color: #cbd5e1;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            transition: 0.2s;
-        }
-
+        .sidebar a { display: block; padding: 15px 25px; color: #cbd5e1; text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.2s; }
         .sidebar a:hover { background: var(--excel-green); color: white; }
-
-        .overlay {
-            position: fixed;
-            display: none;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1050;
-        }
-
+        
+        .overlay { position: fixed; display: none; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050; top: 0; }
         .overlay.active { display: block; }
 
-        /* CONTENT */
-        .main-content { padding: 80px 20px 40px; max-width: 900px; margin: 0 auto; }
-        .section { display: none; animation: fadeIn 0.4s ease; }
+        /* MAIN CONTENT AREA */
+        .main-content { max-width: 900px; margin: 0 auto; padding: 80px 20px 40px; }
+        .section { display: none; animation: slideUp 0.4s ease-out; }
         .section.active { display: block; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .card { background: var(--white); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .card h2 { color: var(--excel-green); font-size: 18px; margin-bottom: 15px; }
+        .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #e5e7eb; }
+        h2 { color: var(--excel-green); margin-bottom: 15px; font-size: 20px; border-left: 5px solid var(--excel-green); padding-left: 15px; }
+        p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
 
-        /* SHORTCUT & VIDEO GRID */
-        .shortcut-item {
-            border: 1px solid #e5e7eb;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+        /* UI ELEMENTS GRID */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0; }
+        .grid-item { background: #f9fafb; padding: 15px; border-radius: 10px; border: 1px solid #e5e7eb; }
+        .grid-item b { color: var(--excel-green); display: block; margin-bottom: 5px; }
 
-        .keys { font-weight: 800; color: var(--excel-green); background: #ecfdf5; padding: 5px 10px; border-radius: 5px; display: inline-block; }
+        /* TUTORIAL BOX (SHORTCUTS & RUMUS) */
+        .tutorial-item { border: 1px solid #e5e7eb; padding: 15px; border-radius: 12px; margin-bottom: 15px; background: #fff; }
+        .keys { font-weight: 800; color: var(--excel-green); background: #ecfdf5; padding: 3px 8px; border-radius: 4px; }
         
-        .video-container {
-            display: none;
-            margin-top: 10px;
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
+        .btn-vid { 
+            display: inline-block; margin-top: 10px; padding: 8px 15px; 
+            background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 8px; 
+            font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.2s;
         }
+        .btn-vid:hover { background: #e5e7eb; border-color: #9ca3af; }
 
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-        .btn-tutorial {
-            background: #f3f4f6;
-            border: 1px solid #d1d5db;
-            padding: 8px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 700;
-            text-align: center;
-            transition: 0.2s;
+        .video-box { 
+            display: none; margin-top: 15px; position: relative; 
+            padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; 
+            background: #000;
         }
+        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .btn-tutorial:hover { background: #e5e7eb; }
-
-        footer { text-align: center; font-size: 11px; color: #94a3b8; margin-top: 20px; }
-
+        footer { text-align: center; padding: 30px; font-size: 11px; color: #94a3b8; }
     </style>
 </head>
 <body>
@@ -141,103 +82,136 @@
 
 <header>
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    <h1>Excel Master</h1>
+    <h1>Excel Master Class</h1>
 </header>
 
 <nav class="sidebar" id="sidebar">
-    <a href="#" onclick="showSection('home')">🏠 Halaman Utama</a>
-    <a href="#" onclick="showSection('rumus')">🧮 Rumus Utama</a>
-    <a href="#" onclick="showSection('shortcuts')">⌨️ Shortcuts & Video</a>
-    <a href="#" onclick="showSection('about')">ℹ️ Tentang Web</a>
+    <a href="#" onclick="showPage('home')">🏠 Halaman Utama</a>
+    <a href="#" onclick="showPage('rumus')">🧮 Rumus & Fungsi</a>
+    <a href="#" onclick="showPage('shortcut')">⌨️ Shortcut Keyboard</a>
+    <a href="#" onclick="showPage('tips')">💡 Tips & Trik</a>
 </nav>
 
 <div class="main-content">
     
     <div id="home" class="section active">
         <div class="card">
-            <h2>Selamat Datang!</h2>
-            <p>Pilih menu di kiri atas untuk mulai belajar Excel dengan video tutorial interaktif.</p>
+            <h2>Pengenalan Microsoft Excel</h2>
+            <p>
+                <b>Microsoft Excel</b> adalah aplikasi <i>spreadsheet</i> atau lembar kerja elektronik yang paling populer di dunia. Secara fungsional, Excel digunakan untuk mengolah data angka menggunakan baris dan kolom. 
+            </p>
+            <p>
+                Dalam jurnal teknologi, Excel sering disebut sebagai alat pengolah data <i>grid-based</i> yang memungkinkan pengguna melakukan perhitungan matematis, statistika, hingga analisis data finansial secara otomatis melalui sistem formula.
+            </p>
         </div>
+
         <div class="card">
-            <h2>Materi Populer</h2>
-            <p>1. Dasar Cell & Range<br>2. Pengenalan Ribbon<br>3. Cara Memasukkan Data</p>
+            <h2>Komponen Utama Antarmuka</h2>
+            <div class="grid">
+                <div class="grid-item"><b>Ribbon Menu</b>Pusat kendali fitur (Home, Insert, Page Layout).</div>
+                <div class="grid-item"><b>Formula Bar</b>Tempat menuliskan dan mengedit rumus/data.</div>
+                <div class="grid-item"><b>Worksheet</b>Area sel (A1, B1, dst) tempat data diolah.</div>
+                <div class="grid-item"><b>Workbook</b>Satu file Excel yang bisa berisi banyak Sheet.</div>
+            </div>
         </div>
     </div>
 
     <div id="rumus" class="section">
         <div class="card">
-            <h2>Rumus Wajib Kerja</h2>
-            <div class="shortcut-item">
-                <p><strong>VLOOKUP:</strong> Mencari data di tabel referensi.</p>
-                <button class="btn-tutorial" onclick="toggleVideo('vid-vlookup')">🎥 Lihat Cara Pakai</button>
-                <div id="vid-vlookup" class="video-container">
+            <h2>Kumpulan Rumus Populer</h2>
+            
+            <div class="tutorial-item">
+                <p><b>Rumus VLOOKUP</b></p>
+                <p style="font-size: 13px; color: #666;">Digunakan untuk mencari data di tabel referensi secara vertikal.</p>
+                <button class="btn-vid" onclick="toggleVideo('v-vlookup')">🎥 Lihat Tutorial VLOOKUP</button>
+                <div id="v-vlookup" class="video-box">
                     <iframe src="https://www.youtube.com/embed/fA9V_Z-7fIs" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="shortcut-item">
-                <p><strong>IF:</strong> Logika Benar atau Salah.</p>
-                <button class="btn-tutorial" onclick="toggleVideo('vid-if')">🎥 Lihat Cara Pakai</button>
-                <div id="vid-if" class="video-container">
+
+            <div class="tutorial-item">
+                <p><b>Rumus IF (Logika)</b></p>
+                <p style="font-size: 13px; color: #666;">Memberikan hasil berdasarkan kondisi tertentu (Contoh: Lulus/Gagal).</p>
+                <button class="btn-vid" onclick="toggleVideo('v-if')">🎥 Lihat Tutorial IF</button>
+                <div id="v-if" class="video-box">
                     <iframe src="https://www.youtube.com/embed/D35t8T09uY4" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="shortcuts" class="section">
+    <div id="shortcut" class="section">
         <div class="card">
-            <h2>Shortcuts + Tutorial</h2>
+            <h2>Shortcut Keyboard (Video)</h2>
             
-            <div class="shortcut-item">
+            <div class="tutorial-item">
                 <p><span class="keys">ALT + =</span> (Auto Sum)</p>
-                <p style="font-size: 13px;">Menjumlahkan angka secara kilat.</p>
-                <button class="btn-tutorial" onclick="toggleVideo('vid-sum')">🎥 Tutorial Shortcut</button>
-                <div id="vid-sum" class="video-container">
+                <p style="font-size: 13px; color: #666;">Menjumlahkan ribuan angka dalam 1 detik.</p>
+                <button class="btn-vid" onclick="toggleVideo('s-sum')">🎥 Tutorial Shortcut</button>
+                <div id="s-sum" class="video-box">
                     <iframe src="https://www.youtube.com/embed/A8U5Z1p_N58" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="shortcut-item">
-                <p><span class="keys">CTRL + T</span> (Create Table)</p>
-                <p style="font-size: 13px;">Mengubah data menjadi tabel profesional.</p>
-                <button class="btn-tutorial" onclick="toggleVideo('vid-table')">🎥 Tutorial Shortcut</button>
-                <div id="vid-table" class="video-container">
+            <div class="tutorial-item">
+                <p><span class="keys">CTRL + T</span> (Tabel Otomatis)</p>
+                <p style="font-size: 13px; color: #666;">Mengubah kumpulan data menjadi tabel rapi & profesional.</p>
+                <button class="btn-vid" onclick="toggleVideo('s-table')">🎥 Tutorial Shortcut</button>
+                <div id="s-table" class="video-box">
                     <iframe src="https://www.youtube.com/embed/8K87-p2V_Hw" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
-
         </div>
     </div>
 
-    <div id="about" class="section">
+    <div id="tips" class="section">
         <div class="card">
-            <h2>Tentang Portal</h2>
-            <p>Website ini dibuat khusus untuk mempermudah pembelajaran Excel dengan akses video langsung tanpa harus keluar halaman.</p>
+            <h2>Tips Mahir Excel</h2>
+            <ul>
+                <li>Gunakan <b>Conditional Formatting</b> untuk menandai data penting otomatis.</li>
+                <li>Gunakan <b>Pivot Table</b> untuk meringkas laporan ribuan baris.</li>
+                <li>Selalu gunakan <b>Absolute Reference ($)</b> agar rumus tidak berantakan saat di-copy.</li>
+            </ul>
         </div>
     </div>
 
-    <footer>© 2026 Master Excel - FH UHN Portal</footer>
+    <footer>© 2026 Master Excel Learning Center - FH UHN Portal</footer>
 </div>
 
 <script>
+    // FUNGSI NAVIGASI (INSTAN)
+    function showPage(pageId) {
+        // Sembunyikan semua halaman
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(s => s.classList.remove('active'));
+        
+        // Tampilkan halaman terpilih
+        document.getElementById(pageId).classList.add('active');
+        
+        // Tutup Sidebar
+        toggleMenu();
+        
+        // Scroll ke atas otomatis
+        window.scrollTo(0,0);
+    }
+
+    // FUNGSI SIDEBAR
     function toggleMenu() {
         document.getElementById('sidebar').classList.toggle('active');
         document.getElementById('overlay').classList.toggle('active');
     }
 
-    function showSection(id) {
-        let sections = document.getElementsByClassName('section');
-        for (let s of sections) { s.classList.remove('active'); }
-        document.getElementById(id).classList.add('active');
-        toggleMenu(); // Tutup sidebar setelah pilih menu
-    }
-
+    // FUNGSI TOGGLE VIDEO (Lazy Loading)
     function toggleVideo(id) {
-        let vid = document.getElementById(id);
-        if (vid.style.display === "block") {
-            vid.style.display = "none";
+        const vBox = document.getElementById(id);
+        if (vBox.style.display === "block") {
+            vBox.style.display = "none";
+            // Matikan video saat ditutup (opsional agar suara hilang)
+            const iframe = vBox.querySelector('iframe');
+            const src = iframe.src;
+            iframe.src = src;
         } else {
-            vid.style.display = "block";
+            vBox.style.display = "block";
         }
     }
 </script>
