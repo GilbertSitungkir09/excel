@@ -3,72 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Excel Portal - Halaman Utama</title>
+    <title>Master Excel Portal - Belajar Mandiri Lengkap</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --excel-green: #217346; --excel-dark: #103822; --bg: #f3f4f6; --white: #ffffff; --text: #1f2937; --sidebar-width: 280px; }
+        :root {
+            --excel-green: #217346;
+            --excel-dark: #103822;
+            --bg: #f3f4f6;
+            --white: #ffffff;
+            --text: #1f2937;
+            --sidebar-width: 280px;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; padding-top: 60px; }
-        header { background: var(--excel-green); color: white; padding: 15px 20px; display: flex; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; padding-top: 60px; }
+
+        header { 
+            background: var(--excel-green); color: white; padding: 15px 20px; 
+            display: flex; align-items: center; position: fixed; 
+            width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
         .menu-btn { font-size: 24px; background: none; border: none; color: white; cursor: pointer; margin-right: 15px; }
-        .sidebar { position: fixed; left: -280px; top: 0; height: 100%; width: var(--sidebar-width); background: var(--excel-dark); color: white; transition: 0.3s; z-index: 1100; padding-top: 60px; }
+        header h1 { font-size: 18px; font-weight: 800; }
+
+        .sidebar {
+            position: fixed; left: -280px; top: 0; height: 100%; width: var(--sidebar-width);
+            background: var(--excel-dark); color: white; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            z-index: 1100; padding-top: 60px;
+        }
         .sidebar.active { left: 0; }
         .sidebar a { display: block; padding: 15px 25px; color: #cbd5e1; text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .sidebar a:hover { background: var(--excel-green); color: white; }
-        .overlay { position: fixed; display: none; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050; top: 0; }
+        
+        .overlay { position: fixed; display: none; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050; top: 0; left: 0; }
         .overlay.active { display: block; }
+
         .main-content { max-width: 1000px; margin: 0 auto; padding: 20px; }
         .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #e5e7eb; }
         h2 { color: var(--excel-green); margin-bottom: 15px; font-size: 20px; border-left: 5px solid var(--excel-green); padding-left: 15px; }
-        h3 { color: var(--excel-dark); margin: 15px 0; font-size: 17px; }
-        p { margin-bottom: 15px; text-align: justify; }
+        h3 { color: var(--excel-dark); margin: 20px 0 10px 0; font-size: 17px; }
+        
+        p { margin-bottom: 15px; text-align: justify; font-size: 14.5px; }
+        
         .grid-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 15px 0; }
         .info-box { background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .info-box b { color: var(--excel-green); display: block; margin-bottom: 5px; }
+
         footer { text-align: center; padding: 30px; font-size: 11px; color: #94a3b8; }
     </style>
 </head>
 <body>
-    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-    <header>
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-        <h1>Excel Master Class</h1>
-    </header>
-    <nav class="sidebar" id="sidebar">
-        <a href="index.html">🏠 Halaman Utama</a>
-        <a href="rumus.html">🧮 Kamus Rumus & Fungsi</a>
-        <a href="shortcut.html">⌨️ Shortcut Keyboard</a>
-    </nav>
-    <div class="main-content">
-        <div class="card">
-            <h2>1. Apa Itu Microsoft Excel?</h2>
-            <p>Microsoft excel merupakan bagian dari Microsoft office yang berfungsi untuk pengolahan data dalam bentuk angka maupun perhitungan. Tampilan dari Microsoft excel ini berupa spreadsheet sehingga memudahkan penggunanya untuk mengoperasikannya.</p>
-            <p>Aplikasi Microsoft excel ini, merupakan pengolah data secara otomatis yang dapat berupa penghitungan dasar, penggunaan rumus-rumus, pemakaian fungsi, pembuatan grafik, pengolahan data dan table, serta manajemen data. Namun, dalam pemakaian fungsi anda harus paham betul arti dari fungsi tersebut serta logika excelnya.</p>
-        </div>
-        <div class="card">
-            <h2>2. Sejarah Microsoft Excel</h2>
-            <p>Excel pertama kali hadir pada tahun 1985 dan dibuat oleh Doug Klunder. Fakta uniknya, Excel secara perdana dirilis tanpa memuat nama ‘Microsoft.’ Melainkan hanya Excel saja. Munculnya Excel ternyata mendapat banyak komplain dari berbagai perusahaan yang memiliki produk dengan nama serupa. Sesaat setelahnya, Microsoft langsung mengubahnya menjadi ‘Microsoft Excel.’</p>
-            <p>Excel berbentuk spreadsheet dan biasa disebut ‘Multiplan.’ Doug Klunder memiliki tekad untuk membuat temuan yang lebih canggih dari dari Lotus 1-2-3. Pada tahun pertamanya, Excel hanya didistribusikan untuk Macintosh (Mac). Dua tahun setelahnya, tepatnya pada November 1987, Microsoft merilis Excel versi Windows 2.0.</p>
-            <h3>Pembaharuan Windows (1987-2016):</h3>
-            <div class="grid-info">
-                <div class="info-box">Excel 2 s/d Excel 95</div>
-                <div class="info-box">Excel 97 s/d Excel 2003</div>
-                <div class="info-box">Excel 2007 s/d Excel 2016</div>
-            </div>
-            <p style="font-size: 11px;">Sumber: Ghina Aulia (Katadata.co.id)</p>
-        </div>
-        <div class="card">
-            <h2>3. Tampilan & Istilah Dasar</h2>
-            <div class="grid-info">
-                <div class="info-box"><b>Ribbon & Toolbar</b>: Menu perintah dan akses cepat.</div>
-                <div class="info-box"><b>Worksheet & Workbook</b>: Lembar kerja dan file utama.</div>
-                <div class="info-box"><b>Cell & Range</b>: Kotak input dan kumpulan sel.</div>
-                <div class="info-box"><b>Formula Bar</b>: Tempat edit rumus aktif.</div>
-            </div>
-        </div>
-        <footer>© 2026 Master Excel Portal</footer>
+
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<header>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <h1>Excel Master Class</h1>
+</header>
+
+<nav class="sidebar" id="sidebar">
+    <a href="index.html">🏠 Halaman Utama</a>
+    <a href="rumus.html">🧮 Kamus Rumus & Fungsi</a>
+    <a href="shortcut.html">⌨️ Shortcut Keyboard</a>
+</nav>
+
+<div class="main-content">
+    
+    <div class="card">
+        <h2>1. Apa Itu Microsoft Excel?</h2>
+        <p>Microsoft excel merupakan bagian dari Microsoft office yang berfungsi untuk pengolahan data dalam bentuk angka maupun perhitungan. Tampilan dari Microsoft excel ini berupa spreadsheet sehingga memudahkan penggunanya untuk mengoperasikannya.</p>
+        <p>Aplikasi Microsoft excel ini, merupakan pengolah data secara otomatis yang dapat berupa penghitungan dasar, penggunaan rumus-rumus, pemakaian fungsi, pembuatan grafik, pengolahan data dan table, serta manajemen data. Namun, dalam pemakaian fungsi anda harus paham betul arti dari fungsi tersebut serta logika excelnya. Karena jika salah dalam pemakaian fungsi, dapat menyebabkan kesalahan sewaktu membaca data.</p>
     </div>
-    <script>
-        function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
-    </script>
+
+    <div class="card">
+        <h2>2. Sejarah Microsoft Excel</h2>
+        <p>Excel pertama kali hadir pada tahun 1985 dan dibuat oleh Doug Klunder. Fakta uniknya, Excel secara perdana dirilis tanpa memuat nama ‘Microsoft,’ melainkan hanya Excel saja. Munculnya Excel ternyata mendapat banyak komplain dari berbagai perusahaan yang memiliki produk dengan nama serupa. Sesaat setelahnya, Microsoft langsung mengubahnya menjadi ‘Microsoft Excel’. Nama tersebut masih digunakan hingga sekarang. Excel berbentuk spreadsheet dan biasa disebut ‘Multiplan’. Diketahui bahwa saat itu Excel sudah memiliki saingan, yaitu Lotus 1-2-3. Namun, Doug Klunder memiliki tekad untuk membuat temuan yang lebih canggih dari dari Lotus 1-2-3.</p>
+        <p>Pada tahun pertamanya, Excel hanya didistribusikan untuk perangkat dengan sistem operasi Macintosh atau yang sekarang lebih akrab dengan sebutan ‘Mac’. Tidak lain adalah komputer personal keluaran Apple. Dua tahun setelahnya, tepatnya pada November 1987, Microsoft merilis Excel untuk versi Windows dengan nama Excel Versi 2.0. Pasalnya, saat itu Lotus 1-2-3 terlambat didistribusikan untuk Windows karena masih menggunakan MS-DOS. Kelalaian Lotus 1-2-3 menjadi kesempatan emas untuk Microsoft Excel. Benar saja, setelah itu Excel berhasil merebut pasar perangkat lunak untuk spreadsheet. Dilansir dari situs Kelas Excel, software ini pertama kali termasuk di bundel Microsoft Office pada tahun 1993. Dilakukan pembaharuan dari segi tampilan untuk Microsoft Word dan Microsoft PowerPoint agar sesuai dengan Microsoft Excel.</p>
+        <p>Tepat pada 1993, Microsoft Excel sudah dibekali bahasa pemrograman Visual Basic for Applications (VBA). Diketahui bahwa VBA-lah yang menjadi tonggak pertama Excel memiliki fitur rumus-rumus yang bisa digunakan secara otomatis dan akurat. VBA adalah turunan basa Visual Basic kembangan Microsoft. Semakin berkembang, Microsoft juga menambahkan teknologi integrated development environment (IDE) di dalam VBA tersebut. Diketahui bahwa IDE membuat programmer lebih mudah dalam melakukan pemrograman. VBA berhasil membuat membawa fungsi otomasi. Sayangnya hal tersebut justru membuat keamanan Excel terancam. Saat itu, Excel gencar terkena virus makro. Sejak 1987, diketahui bahwa Microsoft Excel sudah melakukan banyak pembaharuan. Tercatat hingga tahun 2016, sudah terdapat 13 versi Windows dan Mac.</p>
+    </div>
+
+    <div class="card">
+        <h2>3. Mengenal Tampilan Excel</h2>
+        <p>Berikut adalah elemen-elemen utama yang membentuk antarmuka Microsoft Excel:</p>
+        <div class="grid-info">
+            <div class="info-box"><b>Ribbon</b>Kumpulan tab menu (Home, Insert, dll) yang berisi tool atau perintah.</div>
+            <div class="info-box"><b>Toolbar</b>Kumpulan tombol untuk akses cepat ke perintah tertentu.</div>
+            <div class="info-box"><b>Worksheet</b>Lembar kerja tunggal di dalam Excel yang terdiri dari sel.</div>
+            <div class="info-box"><b>Workbook</b>File Excel yang dapat menampung satu atau lebih Worksheet.</div>
+            <div class="info-box"><b>Rows</b>Baris horisontal yang diwakili oleh angka (1, 2, 3...).</div>
+            <div class="info-box"><b>Columns</b>Kolom vertikal yang diwakili oleh huruf (A, B, C...).</div>
+            <div class="info-box"><b>Cell</b>Pertemuan antara baris dan kolom (Contoh: A1).</div>
+            <div class="info-box"><b>Formula Bar</b>Tempat untuk melihat, mengetik, atau mengedit data/rumus di sel aktif.</div>
+            <div class="info-box"><b>Sheet Tabs</b>Tab di bagian bawah untuk berpindah antar lembar kerja.</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>4. Istilah Dasar</h2>
+        <div class="grid-info">
+            <div class="info-box"><b>Cell</b>Satuan terkecil di worksheet tempat menginput data.</div>
+            <div class="info-box"><b>Range</b>Sekumpulan sel yang dipilih secara bersamaan (Contoh: A1:B10).</div>
+            <div class="info-box"><b>Formula</b>Persamaan matematis untuk menghitung nilai (Diawali tanda =).</div>
+            <div class="info-box"><b>Function</b>Rumus siap pakai dari Excel (Contoh: SUM, AVERAGE).</div>
+            <div class="info-box"><b>Autofill</b>Fitur untuk mengisi data secara otomatis berdasarkan pola.</div>
+            <div class="info-box"><b>Formatting</b>Mengatur tampilan data (Warna, Huruf, Border).</div>
+        </div>
+    </div>
+
+    <footer>© 2026 Master Excel Portal</footer>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('overlay').classList.toggle('active');
+    }
+</script>
+
 </body>
 </html>
