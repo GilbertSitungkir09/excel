@@ -48,22 +48,17 @@
         h2 { color: var(--excel-green); margin-bottom: 15px; font-size: 20px; border-left: 5px solid var(--excel-green); padding-left: 15px; }
         h3 { color: var(--excel-dark); margin: 15px 0 10px 0; font-size: 17px; }
         
-        p { margin-bottom: 10px; font-size: 14.5px; }
+        p { margin-bottom: 15px; font-size: 14.5px; text-align: justify; }
         ul, ol { margin-left: 20px; margin-bottom: 15px; font-size: 14px; }
         li { margin-bottom: 5px; }
 
         .hero { background: var(--excel-green); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 25px; }
         .hero h2 { color: white; border: none; padding: 0; font-size: 24px; }
-        .cta-container { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
-        .btn-cta { padding: 10px 20px; border-radius: 8px; border: none; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 13px; }
-        .btn-primary { background: white; color: var(--excel-green); }
-        .btn-outline { background: transparent; color: white; border: 2px solid white; }
 
         .grid-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
         .info-box { background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; }
         .info-box b { color: var(--excel-green); display: block; margin-bottom: 5px; }
 
-        /* TABEL PRAKTEK */
         .excel-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; }
         .excel-table th, .excel-table td { border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 14px; }
         .excel-table th { background: #f1f1f1; font-weight: bold; width: 50px; }
@@ -75,6 +70,7 @@
         .video-box.shorts { padding-bottom: 177.77%; max-width: 350px; margin: 15px auto; }
         .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+        .source-tag { font-size: 10px; color: #94a3b8; display: block; margin-top: 10px; font-style: italic; }
         footer { text-align: center; padding: 30px; font-size: 11px; color: #94a3b8; }
     </style>
 </head>
@@ -96,79 +92,106 @@
 
 <div class="main-content">
     
-    <!-- HALAMAN UTAMA (MATERI LENGKAP) -->
+    <!-- HALAMAN UTAMA -->
     <div id="home" class="section active">
         
         <div class="hero">
             <h2>Excel Learning Center</h2>
             <p>“Microsoft Excel adalah alat pengolah data paling populer di dunia yang membantu jutaan orang bekerja lebih cepat, lebih akurat, dan lebih profesional.”</p>
-            <div class="cta-container">
-                <button class="btn-cta btn-primary" onclick="showPage('home')">Mulai dari Dasar</button>
-                <button class="btn-cta btn-outline" onclick="showPage('praktek')">Pelajari Interface</button>
-            </div>
         </div>
 
         <div class="card">
             <h2>1. Apa Itu Microsoft Excel?</h2>
-            <p>Microsoft Excel adalah program aplikasi lembar kerja (spreadsheet) yang dikembangkan oleh Microsoft untuk Windows, macOS, Android, dan iOS.</p>
-            <h3>Sejarah Singkat</h3>
-            <p>Awalnya dirilis pada tahun 1985 (untuk Mac) dan 1987 (untuk Windows), Excel menjadi standar industri setelah mengalahkan pesaingnya seperti Lotus 1-2-3.</p>
-            <h3>Fungsi Utama</h3>
+            <p>
+                Microsoft excel merupakan bagian dari Microsoft office yang berfungsi untuk pengolahan data dalam bentuk angka maupun perhitungan. Tampilan dari Microsoft excel ini berupa spreadsheet sehingga memudahkan penggunanya untuk mengoperasikannya.
+            </p>
+            <p>
+                Aplikasi Microsoft excel ini, merupakan pengolah data secara otomatis yang dapat berupa penghitungan dasar, penggunaan rumus-rumus, pemakaian fungsi, pembuatan grafik, pengolahan data dan table, serta manajemen data. Namun, dalam pemakaian fungsi anda harus paham betul arti dari fungsi tersebut serta logika excelnya. Karena jika salah dalam pemakaian fungsi, dapat menyebabkan kesalahan sewaktu membaca data.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>2. Sejarah Microsoft Excel</h2>
+            <p>
+                Excel pertama kali hadir pada tahun 1985 dan dibuat oleh Doug Klunder. Fakta uniknya, Excel secara perdana dirilis tanpa memuat nama ‘Microsoft.’ Melainkan hanya Excel saja. Munculnya Excel ternyata mendapat banyak komplain dari berbagai perusahaan yang memiliki produk dengan nama serupa. Sesaat setelahnya, Microsoft langsung mengubahnya menjadi ‘Microsoft Excel.’ Nama tersebut masih digunakan hingga sekarang. Excel berbentuk spreadsheet dan biasa disebut ‘Multiplan.’ Diketahui bahwa saat itu Excel sudah memiliki saingan, yaitu Lotus 1-2-3. Namun, Doug Klunder memiliki tekad untuk membuat temuan yang lebih canggih dari dari Lotus 1-2-3.
+            </p>
+            <p>
+                Pada tahun pertamanya, Excel hanya didistribusikan untuk perangkat dengan sistem operasi Macintosh atau yang sekarang lebih akrab dengan sebutan ‘Mac.’ Tidak lain adalah komputer personal keluaran Apple. Dua tahun setelahnya, tepatnya pada November 1985, Microsoft merilis Excel untuk versi Windows dengan nama Excel Versi 2.0. Pasalnya, saat itu Lotus 1-2-3 terlambat didistribusikan untuk Windows karena masih menggunakan MS-DOS. Kelalaian Lotus 1-2-3 menjadi kesempatan emas untuk Microsoft Excel.
+            </p>
+            <p>
+                Benar saja, setelah itu Excel berhasil merebut pasar perangkat lunak untuk spreadsheet. Dilansir dari situs Kelas Excel, software ini pertama kali termasuk di bundel Microsoft Office pada tahun 1993. Dilakukan pembaharuan dari segi tampilan untuk Microsoft Word dan Microsoft PowerPoint agar sesuai dengan Microsoft Excel. Tepat pada 1993, Microsoft Excel sudah dibekali bahasa pemrograman Visual Basic for Applications (VBA). Diketahui bahwa VBA-lah yang menjadi tonggak pertama Excel memiliki fitur rumus-rumus yang bisa digunakan secara otomatis dan akurat.
+            </p>
+            <p>
+                VBA adalah turunan basa Visual Basic kembangan Microsoft. Semakin berkembang, Microsoft juga menambahkan teknologi integrated development environment (IDE) di dalam VBA tersebut. Diketahui bahwa IDE membuat programmer lebih mudah dalam melakukan pemrograman. VBA berhasil membuat membawa fungsi otomasi. Sayangnya hal tersebut justru membuat keamanan Excel terancam. Saat itu, Excel gencar terkena virus makro.
+            </p>
+            <span class="source-tag">Sumber: Ghina Aulia (Katadata.co.id)</span>
+        </div>
+
+        <div class="card">
+            <h2>3. Perkembangan Versi Excel</h2>
             <div class="grid-info">
-                <div class="info-box"><b>📊 Pengolahan Data</b>Menyimpan dan menyortir ribuan informasi secara rapi.</div>
-                <div class="info-box"><b>🔢 Perhitungan Otomatis</b>Menghitung angka mulai dari penjumlahan sederhana hingga kalkulasi statistik rumit.</div>
-                <div class="info-box"><b>📈 Visualisasi Grafik</b>Mengubah kumpulan angka menjadi grafik yang mudah dipahami.</div>
+                <div class="info-box">
+                    <b>Excel untuk Windows</b>
+                    <ol style="font-size: 11px;">
+                        <li>Excel 2 – 1987</li>
+                        <li>Excel 3 – 1990</li>
+                        <li>Excel 4 – 1992</li>
+                        <li>Excel 5 – 1993</li>
+                        <li>Excel 95 – 1995</li>
+                        <li>Excel 97 – 1997</li>
+                        <li>Excel 2000 – 2000</li>
+                        <li>Excel 2002 – 2002</li>
+                        <li>Excel 2003 – 2003</li>
+                        <li>Excel 2007 – 2007</li>
+                        <li>Excel 2012 – 2012</li>
+                        <li>Excel 2013 – 2013</li>
+                        <li>Excel 2016 – 2016</li>
+                    </ol>
+                </div>
+                <div class="info-box">
+                    <b>Excel untuk Mac</b>
+                    <ol style="font-size: 11px;">
+                        <li>Excel 1 – 1985</li>
+                        <li>Excel 1.5 – 1988</li>
+                        <li>Excel 2 – 1989</li>
+                        <li>Excel 3 – 1990</li>
+                        <li>Excel 4 – 1992</li>
+                        <li>Excel 5 – 1993</li>
+                        <li>Excel 98 – 1998</li>
+                        <li>Excel 2000 – 2000</li>
+                        <li>Excel 2001 – 2001</li>
+                        <li>Excel 2004 – 2004</li>
+                        <li>Excel 2008 – 2008</li>
+                        <li>Excel 2011 – 2011</li>
+                        <li>Excel 2016 – 2016</li>
+                    </ol>
+                </div>
+            </div>
+            <p style="margin-top:15px; font-size: 13px;">
+                Sampai sekarang, Microsoft Excel masih banyak digunakan untuk mengolah data. Perlu diketahui bahwa sekarang bundel yang tersebar bernama <b>Microsoft 365</b>. Di dalamnya terdapat Word, PowerPoint, Outlook, Teams, OneNote dan Excel. Sekarang rentetan perangkat lunak tersebut tidak lagi menggunakan embel-embel ‘Microsoft.’
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>4. Mengapa Belajar Excel Penting?</h2>
+            <div class="grid-info">
+                <div class="info-box"><b>🏢 Dunia Kerja</b>Skill wajib administrasi di hampir semua bidang.</div>
+                <div class="info-box"><b>📈 Bisnis & UMKM</b>Membantu pencatatan keuangan dan laporan laba rugi.</div>
+                <div class="info-box"><b>💰 Keuangan Pribadi</b>Sangat efisien untuk mencatat pengeluaran harian.</div>
+                <div class="info-box"><b>⚡ Produktivitas</b>Menyelesaikan ribuan data dalam hitungan menit.</div>
             </div>
         </div>
 
         <div class="card">
-            <h2>2. Mengapa Belajar Excel Penting?</h2>
-            <ul>
-                <li><b>Skill Wajib Dunia Kerja:</b> Hampir semua profesi administrasi membutuhkan kemampuan Excel.</li>
-                <li><b>Meningkatkan Produktivitas:</b> Tugas yang biasanya memakan waktu berjam-jam bisa selesai dalam menit dengan rumus.</li>
-                <li><b>Analisis Data Bisnis:</b> Membantu UMKM maupun perusahaan besar mengambil keputusan berdasarkan angka.</li>
-                <li><b>Manajemen Keuangan:</b> Sangat berguna untuk mencatat pengeluaran pribadi maupun laporan laba rugi.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>3. Mengenal Tampilan (Interface)</h2>
-            <p>Memahami area kerja adalah langkah awal untuk menjadi ahli:</p>
+            <h2>5. Mengenal Tampilan (Interface)</h2>
             <div class="grid-info">
-                <div class="info-box"><b>Ribbon</b>Panel atas yang berisi tab menu (Home, Insert, dll).</div>
-                <div class="info-box"><b>Worksheet</b>Lembar kerja utama yang terdiri dari sel-sel.</div>
-                <div class="info-box"><b>Formula Bar</b>Tempat melihat dan mengetik rumus yang ada di sel.</div>
-                <div class="info-box"><b>Rows & Columns</b>Baris (angka) dan Kolom (huruf).</div>
-                <div class="info-box"><b>Cell</b>Pertemuan antara baris dan kolom (Contoh: A1).</div>
+                <div class="info-box"><b>Ribbon</b>Panel tab menu berisi semua perintah utama.</div>
+                <div class="info-box"><b>Worksheet</b>Lembar kerja utama (A1, B2, dst).</div>
+                <div class="info-box"><b>Formula Bar</b>Tempat melihat/mengetik rumus otomatis.</div>
+                <div class="info-box"><b>Cell</b>Pertemuan antara baris dan kolom.</div>
             </div>
         </div>
 
-        <div class="card">
-            <h2>4. Kelebihan & Kekurangan</h2>
-            <h3>Kelebihan</h3>
-            <ul>
-                <li>Mudah digunakan oleh pemula namun sangat kuat bagi ahli.</li>
-                <li>Ketersediaan ribuan rumus dan fungsi bawaan.</li>
-                <li>Tersedia banyak template gratis.</li>
-            </ul>
-            <h3>Kekurangan</h3>
-            <ul>
-                <li>Kurang optimal jika digunakan sebagai database raksasa.</li>
-                <li>Rentan terjadi <i>human error</i> jika salah mengetik rumus.</li>
-                <li>Membutuhkan pemahaman logika yang kuat untuk tingkat lanjut.</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>5. Roadmap Belajar</h2>
-            <ol>
-                <li><b>Pengenalan:</b> Navigasi dan istilah dasar (Cell, Range).</li>
-                <li><b>Dasar:</b> Input data, Formatting, dan Autofill.</li>
-                <li><b>Rumus:</b> SUM, AVERAGE, MIN, MAX, dan COUNT.</li>
-                <li><b>Management:</b> Sorting, Filtering, dan Table.</li>
-                <li><b>Advanced:</b> VLOOKUP, IF bertingkat, dan Pivot Table.</li>
-            </ol>
-        </div>
     </div>
 
     <!-- RUANG PRAKTEK -->
@@ -209,7 +232,7 @@
             <h2>Shortcuts Keyboard</h2>
             <div class="tutorial-item">
                 <p><b>ALT + =</b> (Auto Sum)</p>
-                <button class="btn-vid" onclick="toggleVideo('s-sum')">🎥 Lihat Shorts</button>
+                <button class="btn-vid" onclick="toggleVideo('s-sum')">🎥 Lihat Video Shorts</button>
                 <div id="s-sum" class="video-box shorts">
                     <iframe src="https://www.youtube.com/embed/m67OXXvoB7s" frameborder="0" allowfullscreen></iframe>
                 </div>
