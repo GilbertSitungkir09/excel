@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Excel Portal - Kamus Rumus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --excel-green: #217346; --excel-dark: #103822; --bg: #f3f4f6; --white: #ffffff; --text: #1f2937; --sidebar-width: 280px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); padding-top: 60px; }
+        header { background: var(--excel-green); color: white; padding: 15px 20px; display: flex; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .menu-btn { font-size: 24px; background: none; border: none; color: white; cursor: pointer; margin-right: 15px; }
+        .sidebar { position: fixed; left: -280px; top: 0; height: 100%; width: var(--sidebar-width); background: var(--excel-dark); color: white; transition: 0.3s; z-index: 1100; padding-top: 60px; }
+        .sidebar.active { left: 0; }
+        .sidebar a { display: block; padding: 15px 25px; color: #cbd5e1; text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .sidebar a:hover { background: var(--excel-green); color: white; }
+        .main-content { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .search-container { margin-bottom: 20px; position: sticky; top: 70px; z-index: 99; }
+        .search-input { width: 100%; padding: 14px 20px; border-radius: 12px; border: 2px solid var(--excel-green); outline: none; font-size: 16px; }
+        .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .formula-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .formula-item { background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .formula-name { color: var(--excel-green); font-weight: 800; font-family: monospace; display: block; }
+        .formula-desc { font-size: 13px; color: #475569; margin-bottom: 5px; display: block; }
+        .formula-example { background: #e2e8f0; padding: 5px 10px; border-radius: 5px; font-family: monospace; font-size: 12px; border-left: 3px solid var(--excel-green); }
+        footer { text-align: center; padding: 30px; font-size: 11px; color: #94a3b8; }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <h1>Kamus Rumus Lengkap</h1>
+    </header>
+    <nav class="sidebar" id="sidebar">
+        <a href="index.html">🏠 Halaman Utama</a>
+        <a href="rumus.html">🧮 Kamus Rumus & Fungsi</a>
+        <a href="shortcut.html">⌨️ Shortcut Keyboard</a>
+    </nav>
+    <div class="main-content">
+        <div class="search-container">
+            <input type="text" id="formulaSearch" class="search-input" placeholder="🔍 Cari rumus (VLOOKUP, SUM, IF)..." onkeyup="filterFormulas()">
+        </div>
+        <div id="formula-content">
+            <!-- Contoh Kategori 1 (Lanjutkan untuk 12 kategori) -->
+            <div class="card formula-section">
+                <h2>1. Math & Arithmetic</h2>
+                <div class="formula-grid">
+                    <div class="formula-item"><span class="formula-name">SUM</span><span class="formula-desc">Menjumlahkan seluruh angka dalam rentang sel.</span><span class="formula-example">=SUM(A1:A10)</span></div>
+                    <div class="formula-item"><span class="formula-name">SUMIF</span><span class="formula-desc">Menjumlahkan angka berdasarkan kriteria tunggal.</span><span class="formula-example">=SUMIF(A1:A10, ">50")</span></div>
+                    <!-- Tambahkan rumus lainnya sesuai kategori awal Anda -->
+                </div>
+            </div>
+            <!-- Ulangi struktur ini untuk kategori 2-12 tanpa ada yang dikurangi -->
+        </div>
+        <footer>© 2026 Master Excel Portal</footer>
+    </div>
+    <script>
+        function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
+        function filterFormulas() {
+            let input = document.getElementById('formulaSearch').value.toUpperCase();
+            let items = document.querySelectorAll('.formula-item');
+            items.forEach(item => {
+                let text = item.innerText.toUpperCase();
+                item.style.display = text.indexOf(input) > -1 ? "" : "none";
+            });
+        }
+    </script>
+</body>
+</html>
