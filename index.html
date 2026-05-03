@@ -46,13 +46,28 @@
 
         .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #e5e7eb; }
         h2 { color: var(--excel-green); margin-bottom: 15px; font-size: 20px; border-left: 5px solid var(--excel-green); padding-left: 15px; }
+        h3 { color: var(--excel-dark); margin: 15px 0 10px 0; font-size: 17px; }
+        
+        p { margin-bottom: 10px; font-size: 14.5px; }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; font-size: 14px; }
+        li { margin-bottom: 5px; }
 
-        /* TABEL PRAKTEK INTERAKTIF */
+        .hero { background: var(--excel-green); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 25px; }
+        .hero h2 { color: white; border: none; padding: 0; font-size: 24px; }
+        .cta-container { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
+        .btn-cta { padding: 10px 20px; border-radius: 8px; border: none; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 13px; }
+        .btn-primary { background: white; color: var(--excel-green); }
+        .btn-outline { background: transparent; color: white; border: 2px solid white; }
+
+        .grid-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .info-box { background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .info-box b { color: var(--excel-green); display: block; margin-bottom: 5px; }
+
+        /* TABEL PRAKTEK */
         .excel-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; }
         .excel-table th, .excel-table td { border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 14px; }
         .excel-table th { background: #f1f1f1; font-weight: bold; width: 50px; }
         .excel-table td input { width: 100%; border: none; outline: none; text-align: center; font-family: inherit; font-size: 14px; background: transparent; }
-        .excel-table td input:focus { background: #e8f5e9; }
 
         .tutorial-item { border: 1px solid #e5e7eb; padding: 15px; border-radius: 12px; margin-bottom: 15px; background: #fff; }
         .btn-vid { display: inline-block; margin-top: 10px; padding: 8px 15px; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; }
@@ -74,54 +89,112 @@
 
 <nav class="sidebar" id="sidebar">
     <a href="#" onclick="showPage('home')">🏠 Halaman Utama</a>
-    <a href="#" onclick="showPage('praktek')">✍️ Ruang Praktek (Baru)</a>
+    <a href="#" onclick="showPage('praktek')">✍️ Ruang Praktek</a>
     <a href="#" onclick="showPage('rumus')">🧮 Rumus & Fungsi</a>
     <a href="#" onclick="showPage('shortcut')">⌨️ Shortcut Keyboard</a>
 </nav>
 
 <div class="main-content">
     
+    <!-- HALAMAN UTAMA (MATERI LENGKAP) -->
     <div id="home" class="section active">
+        
+        <div class="hero">
+            <h2>Excel Learning Center</h2>
+            <p>“Microsoft Excel adalah alat pengolah data paling populer di dunia yang membantu jutaan orang bekerja lebih cepat, lebih akurat, dan lebih profesional.”</p>
+            <div class="cta-container">
+                <button class="btn-cta btn-primary" onclick="showPage('home')">Mulai dari Dasar</button>
+                <button class="btn-cta btn-outline" onclick="showPage('praktek')">Pelajari Interface</button>
+            </div>
+        </div>
+
         <div class="card">
-            <h2>Selamat Datang</h2>
-            <p>Portal ini membantu Anda menguasai Microsoft Excel dari dasar. Sekarang Anda bisa langsung mencoba simulasi tabel di menu <b>Ruang Praktek</b>.</p>
+            <h2>1. Apa Itu Microsoft Excel?</h2>
+            <p>Microsoft Excel adalah program aplikasi lembar kerja (spreadsheet) yang dikembangkan oleh Microsoft untuk Windows, macOS, Android, dan iOS.</p>
+            <h3>Sejarah Singkat</h3>
+            <p>Awalnya dirilis pada tahun 1985 (untuk Mac) dan 1987 (untuk Windows), Excel menjadi standar industri setelah mengalahkan pesaingnya seperti Lotus 1-2-3.</p>
+            <h3>Fungsi Utama</h3>
+            <div class="grid-info">
+                <div class="info-box"><b>📊 Pengolahan Data</b>Menyimpan dan menyortir ribuan informasi secara rapi.</div>
+                <div class="info-box"><b>🔢 Perhitungan Otomatis</b>Menghitung angka mulai dari penjumlahan sederhana hingga kalkulasi statistik rumit.</div>
+                <div class="info-box"><b>📈 Visualisasi Grafik</b>Mengubah kumpulan angka menjadi grafik yang mudah dipahami.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>2. Mengapa Belajar Excel Penting?</h2>
+            <ul>
+                <li><b>Skill Wajib Dunia Kerja:</b> Hampir semua profesi administrasi membutuhkan kemampuan Excel.</li>
+                <li><b>Meningkatkan Produktivitas:</b> Tugas yang biasanya memakan waktu berjam-jam bisa selesai dalam menit dengan rumus.</li>
+                <li><b>Analisis Data Bisnis:</b> Membantu UMKM maupun perusahaan besar mengambil keputusan berdasarkan angka.</li>
+                <li><b>Manajemen Keuangan:</b> Sangat berguna untuk mencatat pengeluaran pribadi maupun laporan laba rugi.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>3. Mengenal Tampilan (Interface)</h2>
+            <p>Memahami area kerja adalah langkah awal untuk menjadi ahli:</p>
+            <div class="grid-info">
+                <div class="info-box"><b>Ribbon</b>Panel atas yang berisi tab menu (Home, Insert, dll).</div>
+                <div class="info-box"><b>Worksheet</b>Lembar kerja utama yang terdiri dari sel-sel.</div>
+                <div class="info-box"><b>Formula Bar</b>Tempat melihat dan mengetik rumus yang ada di sel.</div>
+                <div class="info-box"><b>Rows & Columns</b>Baris (angka) dan Kolom (huruf).</div>
+                <div class="info-box"><b>Cell</b>Pertemuan antara baris dan kolom (Contoh: A1).</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>4. Kelebihan & Kekurangan</h2>
+            <h3>Kelebihan</h3>
+            <ul>
+                <li>Mudah digunakan oleh pemula namun sangat kuat bagi ahli.</li>
+                <li>Ketersediaan ribuan rumus dan fungsi bawaan.</li>
+                <li>Tersedia banyak template gratis.</li>
+            </ul>
+            <h3>Kekurangan</h3>
+            <ul>
+                <li>Kurang optimal jika digunakan sebagai database raksasa.</li>
+                <li>Rentan terjadi <i>human error</i> jika salah mengetik rumus.</li>
+                <li>Membutuhkan pemahaman logika yang kuat untuk tingkat lanjut.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>5. Roadmap Belajar</h2>
+            <ol>
+                <li><b>Pengenalan:</b> Navigasi dan istilah dasar (Cell, Range).</li>
+                <li><b>Dasar:</b> Input data, Formatting, dan Autofill.</li>
+                <li><b>Rumus:</b> SUM, AVERAGE, MIN, MAX, dan COUNT.</li>
+                <li><b>Management:</b> Sorting, Filtering, dan Table.</li>
+                <li><b>Advanced:</b> VLOOKUP, IF bertingkat, dan Pivot Table.</li>
+            </ol>
         </div>
     </div>
 
+    <!-- RUANG PRAKTEK -->
     <div id="praktek" class="section">
         <div class="card">
             <h2>Simulasi Excel Interaktif</h2>
-            <p>Silakan isi kotak-kotak di bawah ini. Anda bisa mengetik angka atau teks langsung di dalam tabel ini untuk simulasi pengisian data.</p>
-            
+            <p>Pahami struktur kolom (A, B, C) dan baris (1, 2, 3) di bawah ini:</p>
             <div style="overflow-x: auto;">
                 <table class="excel-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>A</th>
-                            <th>B</th>
-                            <th>C</th>
-                            <th>D</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead>
                     <tbody>
                         <tr><th>1</th><td><input type="text" placeholder="No"></td><td><input type="text" placeholder="Nama"></td><td><input type="text" placeholder="Nilai"></td><td><input type="text" placeholder="Status"></td></tr>
                         <tr><th>2</th><td><input type="text" value="1"></td><td><input type="text" value="Andi"></td><td><input type="text" value="85"></td><td><input type="text" value="Lulus"></td></tr>
                         <tr><th>3</th><td><input type="text" value="2"></td><td><input type="text" value="Budi"></td><td><input type="text" value="60"></td><td><input type="text" value="Gagal"></td></tr>
-                        <tr><th>4</th><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><th>5</th><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
                     </tbody>
                 </table>
             </div>
-            <p style="font-size: 11px; color: #666; margin-top: 15px;">*Catatan: Tabel ini adalah simulasi tampilan. Untuk perhitungan rumus sungguhan, gunakan aplikasi Microsoft Excel di PC Anda.</p>
         </div>
     </div>
 
+    <!-- RUMUS -->
     <div id="rumus" class="section">
         <div class="card">
             <h2>Rumus Wajib Kerja</h2>
             <div class="tutorial-item">
-                <p><b>VLOOKUP</b></p>
+                <p><b>Fungsi VLOOKUP</b> (Mencari Data Vertikal)</p>
                 <button class="btn-vid" onclick="toggleVideo('v-vlookup')">🎥 Lihat Tutorial</button>
                 <div id="v-vlookup" class="video-box">
                     <iframe src="https://www.youtube.com/embed/fA9V_Z-7fIs" frameborder="0" allowfullscreen></iframe>
@@ -130,9 +203,10 @@
         </div>
     </div>
 
+    <!-- SHORTCUT -->
     <div id="shortcut" class="section">
         <div class="card">
-            <h2>Shortcuts Terpopuler</h2>
+            <h2>Shortcuts Keyboard</h2>
             <div class="tutorial-item">
                 <p><b>ALT + =</b> (Auto Sum)</p>
                 <button class="btn-vid" onclick="toggleVideo('s-sum')">🎥 Lihat Shorts</button>
@@ -143,7 +217,7 @@
         </div>
     </div>
 
-    <footer>© 2026 Excel Master Portal - FH UHN</footer>
+    <footer>© 2026 Excel Master Portal - Fakultas Hukum UHN</footer>
 </div>
 
 <script>
@@ -155,13 +229,15 @@
     }
 
     function toggleMenu() {
-        document.getElementById('sidebar').classList.toggle('active');
-        document.getElementById('overlay').classList.toggle('active');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
     }
 
     function toggleVideo(id) {
         const vBox = document.getElementById(id);
-        vBox.style.display = vBox.style.display === "block" ? "none" : "block";
+        vBox.style.display = (vBox.style.display === "block") ? "none" : "block";
     }
 </script>
 
