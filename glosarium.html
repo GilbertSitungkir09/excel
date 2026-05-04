@@ -1,1 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosarium Excel - Belajar Excel</title>
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9534373671983631" crossorigin="anonymous"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --excel-green: #217346;
+            --excel-dark: #103822;
+            --bg: #f3f4f6;
+            --white: #ffffff;
+            --text: #1f2937;
+            --sidebar-width: 280px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; padding-top: 60px; }
+
+        /* HEADER & SIDEBAR */
+        header { 
+            background: var(--excel-green); color: white; padding: 10px 20px; 
+            display: flex; align-items: center; position: fixed; 
+            width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 50px;
+        }
+        header h1 { font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+        .menu-btn { font-size: 22px; background: none; border: none; color: white; cursor: pointer; margin-right: 15px; }
+
+        .sidebar {
+            position: fixed; left: -280px; top: 0; height: 100%; width: var(--sidebar-width);
+            background: var(--excel-dark); color: white; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            z-index: 1100; padding-top: 10px;
+        }
+        .sidebar.active { left: 0; }
+        .sidebar-header { display: flex; justify-content: flex-end; padding: 10px 20px; }
+        .close-btn { background: none; border: none; color: #cbd5e1; font-size: 30px; cursor: pointer; line-height: 1; }
+        .sidebar a { display: block; padding: 15px 25px; color: #cbd5e1; text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; }
+        .sidebar a:hover { background: var(--excel-green); color: white; }
+        .overlay { position: fixed; display: none; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050; top: 0; left: 0; }
+        .overlay.active { display: block; }
+
+        /* MAIN CONTENT */
+        .main-content { max-width: 1100px; margin: 0 auto; padding: 15px; }
+        .card { background: var(--white); padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; border: 1px solid #e5e7eb; }
+        h2 { color: var(--excel-green); font-size: 18px; font-weight: 700; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; margin-bottom: 20px; }
+
+        /* SEARCH BAR */
+        .search-container { margin-bottom: 20px; position: sticky; top: 50px; z-index: 900; background: var(--bg); padding: 10px 0; }
+        .search-input { width: 100%; padding: 14px 45px 14px 20px; border-radius: 10px; border: 2px solid var(--excel-green); outline: none; font-size: 15px; font-weight: 600; box-shadow: 0 4px 10px rgba(33, 115, 70, 0.1); }
+        .clear-search-btn {
+            position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
+            background: none; border: none; font-size: 26px; color: #94a3b8; cursor: pointer; display: none;
+        }
+
+        /* GLOSSARY LIST */
+        .glossary-item { margin-bottom: 20px; padding: 15px; border-radius: 10px; background: #f8fafc; border-left: 5px solid var(--excel-green); }
+        .glossary-term { font-weight: 800; color: var(--excel-dark); font-size: 16px; display: block; margin-bottom: 5px; }
+        .glossary-def { font-size: 14px; color: #475569; }
+
+        .hidden { display: none !important; }
+        footer { text-align: center; padding: 30px; font-size: 11px; color: #94a3b8; }
+    </style>
+</head>
+<body>
+
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<header>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <h1>GLOSARIUM EXCEL</h1>
+</header>
+
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <button class="close-btn" onclick="toggleMenu()">&times;</button>
+    </div>
+    <a href="index.html">🏠 Halaman Utama</a>
+    <a href="rumus.html">🧮 Kamus Rumus & Fungsi</a>
+    <a href="shortcut.html">⌨️ Shortcut Keyboard</a>
+    <a href="glosarium.html">📖 Glosarium Excel</a>
+    <a href="tentang.html">ℹ️ Tentang Kami</a>
+</nav>
+
+<div class="main-content">
+    
+    <div class="search-container">
+        <div style="position: relative; width: 100%;">
+            <input type="text" id="glossarySearch" class="search-input" placeholder="🔍 Cari istilah (misal: Sel, Workbook, Pivot)..." oninput="filterGlossary()">
+            <button id="clearBtnGlossary" class="clear-search-btn" onclick="clearSearchGlossary()">&times;</button>
+        </div>
+    </div>
+
+    <div class="card glossary-section">
+        <h2>Daftar Istilah Excel</h2>
+        
+        <div id="glossaryList">
+            <div class="glossary-item">
+                <span class="glossary-term">Alamat (Address)</span>
+                <p class="glossary-def">Jalur lokasi sebuah file, halaman web, atau rentang sel tertentu dalam Excel.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Argumen</span>
+                <p class="glossary-def">Nilai yang dimasukkan ke dalam fungsi agar fungsi tersebut bisa melakukan perhitungan (misal: angka atau referensi sel).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Array</span>
+                <p class="glossary-def">Sekelompok data yang disusun dalam baris dan kolom untuk diolah dengan satu rumus sekaligus.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="glossary-term">Batas (Border)</span>
+                <p class="glossary-def">Garis dekoratif yang diberikan pada pinggiran sel atau objek untuk memperjelas tampilan data.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Buku Kerja (Workbook)</span>
+                <p class="glossary-def">File utama Excel yang Anda buat. Satu buku kerja bisa berisi banyak lembar kerja (Sheet).</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="glossary-term">Catatan (Note/Comment)</span>
+                <p class="glossary-def">Pesan tambahan yang disisipkan ke dalam sel untuk memberi keterangan tanpa mengubah isi data sel tersebut.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="glossary-term">Filter</span>
+                <p class="glossary-def">Fitur untuk menyaring dan menampilkan baris data tertentu saja yang memenuhi kriteria yang Anda inginkan.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Format Bersyarat (Conditional Formatting)</span>
+                <p class="glossary-def">Pemberian warna atau gaya pada sel secara otomatis jika sel tersebut memenuhi aturan tertentu (misal: warna merah jika nilai < 70).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Fungsi (Function)</span>
+                <p class="glossary-def">Rumus siap pakai yang sudah disediakan Excel untuk mempermudah perhitungan (contoh: SUM, AVERAGE).</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="glossary-term">Gagang Isian (Fill Handle)</span>
+                <p class="glossary-def">Kotak kecil di sudut kanan bawah sel aktif yang digunakan untuk menarik/menyalin data atau rumus ke sel lain secara otomatis.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="glossary-term">Kolom (Column)</span>
+                <p class="glossary-def">Deretan sel yang mengarah secara vertikal (ke bawah) dan ditandai dengan huruf (A, B, C, dst).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Konstanta</span>
+                <p class="glossary-def">Nilai tetap yang tidak berubah karena tidak mengandung rumus atau perhitungan.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="glossary-term">Legenda (Legend)</span>
+                <p class="glossary-def">Kotak keterangan pada bagan/grafik yang menjelaskan arti warna atau pola data.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Lembar Kerja (Worksheet)</span>
+                <p class="glossary-def">Halaman tunggal di dalam file Excel tempat Anda mengetik dan mengolah data.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="glossary-term">PivotTable</span>
+                <p class="glossary-def">Fitur interaktif untuk meringkas, menganalisis, dan mengelompokkan data dalam jumlah besar dengan cepat.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="glossary-term">Range (Rentang)</span>
+                <p class="glossary-def">Kumpulan dua sel atau lebih yang dipilih secara bersamaan (misal: A1 sampai B10).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Referensi Sel</span>
+                <p class="glossary-def">Identitas atau "nama" sel berdasarkan koordinatnya, seperti sel di kolom B baris 3 disebut B3.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Rumus (Formula)</span>
+                <p class="glossary-def">Urutan perhitungan yang Anda buat sendiri di dalam sel, selalu diawali dengan tanda sama dengan (=).</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="glossary-term">Sel (Cell)</span>
+                <p class="glossary-def">Kotak tunggal tempat memasukkan data, yang merupakan titik temu antara Baris dan Kolom.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Sel Aktif</span>
+                <p class="glossary-def">Sel yang sedang dipilih (ditandai dengan garis tebal) dan siap untuk diketikkan data.</p>
+            </div>
+
+            <div class="glossary-item">
+                <span class="glossary-term">Validasi Data</span>
+                <p class="glossary-def">Fitur untuk membatasi jenis data apa yang boleh dimasukkan ke dalam sel (misal: hanya boleh angka saja).</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>© 2026 Master Excel Portal</footer>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('overlay').classList.toggle('active');
+    }
+
+    function clearSearchGlossary() {
+        let inputField = document.getElementById('glossarySearch');
+        inputField.value = ''; 
+        filterGlossary(); 
+        inputField.focus(); 
+    }
+
+    function filterGlossary() {
+        let input = document.getElementById('glossarySearch').value.toUpperCase();
+        let items = document.querySelectorAll('.glossary-item');
+        let clearBtn = document.getElementById('clearBtnGlossary');
+
+        // Munculkan/Sembunyikan tombol X
+        if (input.length > 0) {
+            clearBtn.style.display = 'block';
+        } else {
+            clearBtn.style.display = 'none';
+        }
+
+        items.forEach(item => {
+            let term = item.querySelector('.glossary-term').innerText.toUpperCase();
+            let def = item.querySelector('.glossary-def').innerText.toUpperCase();
+            
+            if (term.indexOf(input) > -1 || def.indexOf(input) > -1) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
