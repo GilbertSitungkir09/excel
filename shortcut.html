@@ -99,9 +99,12 @@
 <div class="main-content">
     
     <!-- PENCARIAN SHORTCUT -->
-    <div class="search-container">
-        <input type="text" id="shortcutSearch" class="search-input" placeholder="🔍 Cari tombol (misal: CTRL) atau fungsi (misal: jumlah)..." onkeyup="filterShortcuts()">
-    </div>
+        <div class="search-container">
+        <div style="position: relative; width: 100%;">
+            <input type="text" id="shortcutSearch" class="search-input" placeholder="🔍 Cari tombol (misal: CTRL) atau fungsi (misal: jumlah)..." oninput="filterShortcuts()">
+            <button id="clearBtn" class="clear-search-btn" onclick="clearSearch()" style="display: none;">&times;</button>
+        </div>
+        </div>
 
     <!-- KATEGORI: UMUM & EDITING -->
     <div class="card shortcut-section">
