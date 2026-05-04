@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master Excel Portal - Shortcut Keyboard</title>
 
-    <!-- Kode Google Ads -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9534373671983631" crossorigin="anonymous"></script>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -56,7 +55,26 @@
 
         /* SEARCH BAR */
         .search-container { margin-bottom: 20px; position: sticky; top: 50px; z-index: 900; background: var(--bg); padding: 10px 0; }
-        .search-input { width: 100%; padding: 14px 20px; border-radius: 10px; border: 2px solid var(--excel-green); outline: none; font-size: 15px; font-weight: 600; box-shadow: 0 4px 10px rgba(33, 115, 70, 0.1); }
+        .search-input { width: 100%; padding: 14px 45px 14px 20px; border-radius: 10px; border: 2px solid var(--excel-green); outline: none; font-size: 15px; font-weight: 600; box-shadow: 0 4px 10px rgba(33, 115, 70, 0.1); }
+        
+        /* TOMBOL CLEAR SEARCH */
+        .clear-search-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 26px;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            outline: none;
+            transition: 0.2s;
+            display: none; /* Sembunyi secara default */
+        }
+        .clear-search-btn:hover { color: var(--excel-green); }
 
         /* SHORTCUT GRID & KBD STYLING */
         .shortcut-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
@@ -98,15 +116,13 @@
 
 <div class="main-content">
     
-    <!-- PENCARIAN SHORTCUT -->
-        <div class="search-container">
+    <div class="search-container">
         <div style="position: relative; width: 100%;">
             <input type="text" id="shortcutSearch" class="search-input" placeholder="🔍 Cari tombol (misal: CTRL) atau fungsi (misal: jumlah)..." oninput="filterShortcuts()">
-            <button id="clearBtn" class="clear-search-btn" onclick="clearSearch()" style="display: none;">&times;</button>
+            <button id="clearBtnShortcut" class="clear-search-btn" onclick="clearSearchShortcut()">&times;</button>
         </div>
-        </div>
+    </div>
 
-    <!-- KATEGORI: UMUM & EDITING -->
     <div class="card shortcut-section">
         <h2>🛠️ Umum & Pengeditan Dasar</h2>
         <div class="shortcut-grid">
@@ -185,7 +201,6 @@
         </div>
     </div>
 
-    <!-- KATEGORI: NAVIGASI RIBBON -->
     <div class="card shortcut-section">
         <h2>📑 Navigasi Tab (Ribbon)</h2>
         <div class="shortcut-grid">
@@ -240,7 +255,6 @@
         </div>
     </div>
 
-    <!-- KATEGORI: FORMATTING -->
     <div class="card shortcut-section">
         <h2>🎨 Formatting (Pemformatan)</h2>
         <div class="shortcut-grid">
@@ -323,7 +337,6 @@
         </div>
     </div>
 
-    <!-- KATEGORI: NAVIGASI SHEET & MANIPULASI DATA -->
     <div class="card shortcut-section">
         <h2>🧭 Navigasi & Manipulasi Data</h2>
         <div class="shortcut-grid">
@@ -471,10 +484,24 @@
         document.getElementById('overlay').classList.toggle('active');
     }
 
+    function clearSearchShortcut() {
+        let inputField = document.getElementById('shortcutSearch');
+        inputField.value = ''; 
+        filterShortcuts(); 
+        inputField.focus(); 
+    }
+
     function filterShortcuts() {
         let input = document.getElementById('shortcutSearch').value.toUpperCase();
         let items = document.querySelectorAll('.shortcut-item');
         let sections = document.querySelectorAll('.shortcut-section');
+        let clearBtn = document.getElementById('clearBtnShortcut');
+
+        if (input.length > 0) {
+            clearBtn.style.display = 'block';
+        } else {
+            clearBtn.style.display = 'none';
+        }
 
         items.forEach(item => {
             let keys = item.querySelector('.shortcut-keys').innerText.toUpperCase();
