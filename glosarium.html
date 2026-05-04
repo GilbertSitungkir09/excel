@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glosarium Excel - Belajar Excel</title>
+    <title>Glosarium Lengkap Excel - Belajar Excel</title>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9534373671983631" crossorigin="anonymous"></script>
     
@@ -21,7 +21,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; padding-top: 60px; }
 
-        /* HEADER & SIDEBAR */
         header { 
             background: var(--excel-green); color: white; padding: 10px 20px; 
             display: flex; align-items: center; position: fixed; 
@@ -44,24 +43,23 @@
         .overlay { position: fixed; display: none; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050; top: 0; left: 0; }
         .overlay.active { display: block; }
 
-        /* MAIN CONTENT */
         .main-content { max-width: 1100px; margin: 0 auto; padding: 15px; }
         .card { background: var(--white); padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; border: 1px solid #e5e7eb; }
         h2 { color: var(--excel-green); font-size: 18px; font-weight: 700; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; margin-bottom: 20px; }
 
-        /* SEARCH BAR */
         .search-container { margin-bottom: 20px; position: sticky; top: 50px; z-index: 900; background: var(--bg); padding: 10px 0; }
         .search-input { width: 100%; padding: 14px 45px 14px 20px; border-radius: 10px; border: 2px solid var(--excel-green); outline: none; font-size: 15px; font-weight: 600; box-shadow: 0 4px 10px rgba(33, 115, 70, 0.1); }
         .clear-search-btn {
             position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
-            background: none; border: none; font-size: 26px; color: #94a3b8; cursor: pointer; display: none;
+            background: none; border: none; font-size: 26px; color: #94a3b8; cursor: pointer; display: none; line-height: 1;
         }
 
-        /* GLOSSARY LIST */
-        .glossary-item { margin-bottom: 20px; padding: 15px; border-radius: 10px; background: #f8fafc; border-left: 5px solid var(--excel-green); }
+        .glossary-item { margin-bottom: 15px; padding: 15px; border-radius: 10px; background: #f8fafc; border-left: 5px solid var(--excel-green); transition: 0.2s; }
+        .glossary-item:hover { background: #f1f5f9; }
         .glossary-term { font-weight: 800; color: var(--excel-dark); font-size: 16px; display: block; margin-bottom: 5px; }
-        .glossary-def { font-size: 14px; color: #475569; }
+        .glossary-def { font-size: 14px; color: #475569; text-align: justify; }
 
+        .alphabet-header { background: var(--excel-dark); color: white; padding: 5px 15px; border-radius: 5px; margin: 20px 0 10px 0; font-weight: bold; display: inline-block; }
         .hidden { display: none !important; }
         footer { text-align: center; padding: 30px; font-size: 11px; color: #94a3b8; }
     </style>
@@ -72,7 +70,7 @@
 
 <header>
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    <h1>GLOSARIUM EXCEL</h1>
+    <h1>GLOSARIUM EXCEL LENGKAP</h1>
 </header>
 
 <nav class="sidebar" id="sidebar">
@@ -90,108 +88,505 @@
     
     <div class="search-container">
         <div style="position: relative; width: 100%;">
-            <input type="text" id="glossarySearch" class="search-input" placeholder="🔍 Cari istilah (misal: Sel, Workbook, Pivot)..." oninput="filterGlossary()">
+            <input type="text" id="glossarySearch" class="search-input" placeholder="🔍 Cari istilah Excel..." oninput="filterGlossary()">
             <button id="clearBtnGlossary" class="clear-search-btn" onclick="clearSearchGlossary()">&times;</button>
         </div>
     </div>
 
-    <div class="card glossary-section">
-        <h2>Daftar Istilah Excel</h2>
-        
+    <div class="card">
         <div id="glossaryList">
+            
+            <div class="alphabet-header">3D</div>
             <div class="glossary-item">
-                <span class="glossary-term">Alamat (Address)</span>
-                <p class="glossary-def">Jalur lokasi sebuah file, halaman web, atau rentang sel tertentu dalam Excel.</p>
+                <span class="glossary-term">Referensi 3-D</span>
+                <p class="glossary-def">Referensi ke rentang yang mencakup dua atau beberapa lembar kerja dalam satu buku kerja.</p>
             </div>
             <div class="glossary-item">
-                <span class="glossary-term">Argumen</span>
-                <p class="glossary-def">Nilai yang dimasukkan ke dalam fungsi agar fungsi tersebut bisa melakukan perhitungan (misal: angka atau referensi sel).</p>
-            </div>
-            <div class="glossary-item">
-                <span class="glossary-term">Array</span>
-                <p class="glossary-def">Sekelompok data yang disusun dalam baris dan kolom untuk diolah dengan satu rumus sekaligus.</p>
+                <span class="glossary-term">Dinding dan Lantai 3-D</span>
+                <p class="glossary-def">Area di sekeliling bagan 3D yang memberikan dimensi. Terdiri dari dua dinding dan satu lantai di dalam area plot.</p>
             </div>
 
+            <div class="alphabet-header">A</div>
             <div class="glossary-item">
-                <span class="glossary-term">Batas (Border)</span>
-                <p class="glossary-def">Garis dekoratif yang diberikan pada pinggiran sel atau objek untuk memperjelas tampilan data.</p>
-            </div>
-            <div class="glossary-item">
-                <span class="glossary-term">Buku Kerja (Workbook)</span>
-                <p class="glossary-def">File utama Excel yang Anda buat. Satu buku kerja bisa berisi banyak lembar kerja (Sheet).</p>
-            </div>
-
-            <div class="glossary-item">
-                <span class="glossary-term">Catatan (Note/Comment)</span>
-                <p class="glossary-def">Pesan tambahan yang disisipkan ke dalam sel untuk memberi keterangan tanpa mengubah isi data sel tersebut.</p>
-            </div>
-
-            <div class="glossary-item">
-                <span class="glossary-term">Filter</span>
-                <p class="glossary-def">Fitur untuk menyaring dan menampilkan baris data tertentu saja yang memenuhi kriteria yang Anda inginkan.</p>
-            </div>
-            <div class="glossary-item">
-                <span class="glossary-term">Format Bersyarat (Conditional Formatting)</span>
-                <p class="glossary-def">Pemberian warna atau gaya pada sel secara otomatis jika sel tersebut memenuhi aturan tertentu (misal: warna merah jika nilai < 70).</p>
-            </div>
-            <div class="glossary-item">
-                <span class="glossary-term">Fungsi (Function)</span>
-                <p class="glossary-def">Rumus siap pakai yang sudah disediakan Excel untuk mempermudah perhitungan (contoh: SUM, AVERAGE).</p>
-            </div>
-
-            <div class="glossary-item">
-                <span class="glossary-term">Gagang Isian (Fill Handle)</span>
-                <p class="glossary-def">Kotak kecil di sudut kanan bawah sel aktif yang digunakan untuk menarik/menyalin data atau rumus ke sel lain secara otomatis.</p>
-            </div>
-
-            <div class="glossary-item">
-                <span class="glossary-term">Kolom (Column)</span>
-                <p class="glossary-def">Deretan sel yang mengarah secara vertikal (ke bawah) dan ditandai dengan huruf (A, B, C, dst).</p>
-            </div>
-            <div class="glossary-item">
-                <span class="glossary-term">Konstanta</span>
-                <p class="glossary-def">Nilai tetap yang tidak berubah karena tidak mengandung rumus atau perhitungan.</p>
-            </div>
-
-            <div class="glossary-item">
-                <span class="glossary-term">Legenda (Legend)</span>
-                <p class="glossary-def">Kotak keterangan pada bagan/grafik yang menjelaskan arti warna atau pola data.</p>
-            </div>
-            <div class="glossary-item">
-                <span class="glossary-term">Lembar Kerja (Worksheet)</span>
-                <p class="glossary-def">Halaman tunggal di dalam file Excel tempat Anda mengetik dan mengolah data.</p>
-            </div>
-
-            <div class="glossary-item">
-                <span class="glossary-term">PivotTable</span>
-                <p class="glossary-def">Fitur interaktif untuk meringkas, menganalisis, dan mengelompokkan data dalam jumlah besar dengan cepat.</p>
-            </div>
-
-            <div class="glossary-item">
-                <span class="glossary-term">Range (Rentang)</span>
-                <p class="glossary-def">Kumpulan dua sel atau lebih yang dipilih secara bersamaan (misal: A1 sampai B10).</p>
-            </div>
-            <div class="glossary-item">
-                <span class="glossary-term">Referensi Sel</span>
-                <p class="glossary-def">Identitas atau "nama" sel berdasarkan koordinatnya, seperti sel di kolom B baris 3 disebut B3.</p>
-            </div>
-            <div class="glossary-item">
-                <span class="glossary-term">Rumus (Formula)</span>
-                <p class="glossary-def">Urutan perhitungan yang Anda buat sendiri di dalam sel, selalu diawali dengan tanda sama dengan (=).</p>
-            </div>
-
-            <div class="glossary-item">
-                <span class="glossary-term">Sel (Cell)</span>
-                <p class="glossary-def">Kotak tunggal tempat memasukkan data, yang merupakan titik temu antara Baris dan Kolom.</p>
+                <span class="glossary-term">Mengaktifkan</span>
+                <p class="glossary-def">Memilih lembar kerja atau bagan agar menjadi aktif. Klik tab lembar untuk mengaktifkannya.</p>
             </div>
             <div class="glossary-item">
                 <span class="glossary-term">Sel Aktif</span>
-                <p class="glossary-def">Sel yang sedang dipilih (ditandai dengan garis tebal) dan siap untuk diketikkan data.</p>
+                <p class="glossary-def">Sel yang sedang dipilih untuk memasukkan data. Hanya ada satu sel aktif dalam satu waktu, ditandai batas garis tebal.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Lembar Aktif</span>
+                <p class="glossary-def">Lembar yang sedang dikerjakan. Nama pada tab lembar aktif biasanya ditebalkan.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Alamat</span>
+                <p class="glossary-def">Jalur ke objek, dokumen, file, atau halaman web (URL).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Folder Startup Alternatif</span>
+                <p class="glossary-def">Folder tambahan tempat menyimpan file yang ingin dibuka otomatis saat Excel dimulai.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Argumen</span>
+                <p class="glossary-def">Nilai (angka, teks, atau referensi sel) yang digunakan fungsi untuk melakukan penghitungan.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Array</span>
+                <p class="glossary-def">Sekelompok argumen atau hasil yang disusun dalam baris dan kolom yang diolah oleh satu rumus.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Rumus Array</span>
+                <p class="glossary-def">Rumus yang melakukan beberapa penghitungan pada kumpulan nilai. Dimasukkan dengan CTRL+SHIFT+ENTER.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">PivotTable Terkait</span>
+                <p class="glossary-def">PivotTable yang menyediakan data sumber ke PivotChart secara otomatis.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Format Otomatis</span>
+                <p class="glossary-def">Kumpulan format bawaan (font, pola, perataan) yang bisa diterapkan ke rentang data.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Sumbu (Axis)</span>
+                <p class="glossary-def">Garis bingkai referensi bagan. Sumbu-y (vertikal) berisi data, Sumbu-x (horizontal) berisi kategori.</p>
             </div>
 
+            <div class="alphabet-header">B</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Alamat Dasar</span>
+                <p class="glossary-def">Jalur relatif yang digunakan Excel untuk tujuan hyperlink.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Batas (Border)</span>
+                <p class="glossary-def">Garis dekoratif pada sel atau objek untuk menekankan atau mengelompokkan item.</p>
+            </div>
+
+            <div class="alphabet-header">C</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Kolom Terhitung</span>
+                <p class="glossary-def">Dalam tabel Excel, kolom yang menggunakan satu rumus otomatis untuk setiap baris.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Bidang Terhitung (Database/Pivot)</span>
+                <p class="glossary-def">Bidang hasil ekspresi/rumus, bukan data murni dari database sumber.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Item Terhitung</span>
+                <p class="glossary-def">Item dalam bidang PivotTable yang menggunakan rumus buatan sendiri.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Sumbu Kategori</span>
+                <p class="glossary-def">Sumbu bagan yang mewakili kategori (teks) seperti Qtr1, Qtr2.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Bidang Kategori</span>
+                <p class="glossary-def">Bidang yang muncul sebagai label pada sumbu kategori di PivotChart.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Sel (Cell)</span>
+                <p class="glossary-def">Kotak irisan antara baris dan kolom tempat memasukkan informasi.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Referensi Sel</span>
+                <p class="glossary-def">Koordinat sel pada lembar kerja (Contoh: B3).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Sertifikasi Otoritas</span>
+                <p class="glossary-def">Organisasi yang menyediakan sertifikat digital untuk menandatangani makro/dokumen.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Riwayat Perubahan</span>
+                <p class="glossary-def">Informasi tentang pengeditan sebelumnya dalam buku kerja bersama.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Area Bagan</span>
+                <p class="glossary-def">Seluruh elemen yang ada di dalam sebuah bagan.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Lembar Bagan</span>
+                <p class="glossary-def">Lembar kerja khusus yang hanya berisi bagan saja.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Bidang Kolom</span>
+                <p class="glossary-def">Bidang berorientasi kolom dalam PivotTable.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Judul Kolom</span>
+                <p class="glossary-def">Area di atas kolom yang berisi huruf (A, B, C) atau nama bidang.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Kriteria Perbandingan</span>
+                <p class="glossary-def">Kondisi pencarian data (Contoh: ">300").</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Operator Perbandingan</span>
+                <p class="glossary-def">Tanda untuk membandingkan nilai (=, >, <, >=, <=, <>).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Format Bersyarat</span>
+                <p class="glossary-def">Format yang diterapkan otomatis jika kondisi tertentu benar (Contoh: sel jadi merah jika nilai rendah).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Tabel Konsolidasi</span>
+                <p class="glossary-def">Tabel hasil gabungan dari beberapa area sumber data.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Konstanta</span>
+                <p class="glossary-def">Nilai tetap yang tidak dihitung (Contoh: angka 210 atau teks).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Batasan (Constraint)</span>
+                <p class="glossary-def">Batasan masalah dalam fitur Solver.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Area Salin</span>
+                <p class="glossary-def">Sel yang dipilih untuk disalin/dipindahkan, ditandai garis bergerak.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Kriteria</span>
+                <p class="glossary-def">Kondisi yang membatasi rekaman data dalam kueri.</p>
+            </div>
+            <div class="alphabet-header">D</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Formulir Data</span>
+                <p class="glossary-def">Kotak dialog untuk menambah atau menghapus rekaman data satu per satu.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Label Data</span>
+                <p class="glossary-def">Informasi tambahan pada penanda data di bagan.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Penanda Data</span>
+                <p class="glossary-def">Simbol (batang, titik) dalam bagan yang mewakili satu titik data.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Titik Data</span>
+                <p class="glossary-def">Nilai individual yang diplot dalam bagan.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Kawasan Data</span>
+                <p class="glossary-def">Rentang sel berisi data yang dibatasi sel kosong.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Seri Data</span>
+                <p class="glossary-def">Kumpulan titik data terkait yang diplot dalam bagan.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Sumber Data</span>
+                <p class="glossary-def">Informasi untuk menyambungkan Excel ke database luar.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Tabel Data</span>
+                <p class="glossary-def">Rentang sel yang memperlihatkan hasil variasi rumus (tabel satu/dua input).</p>
+            </div>
             <div class="glossary-item">
                 <span class="glossary-term">Validasi Data</span>
-                <p class="glossary-def">Fitur untuk membatasi jenis data apa yang boleh dimasukkan ke dalam sel (misal: hanya boleh angka saja).</p>
+                <p class="glossary-def">Fitur untuk membatasi data apa yang boleh dimasukkan ke dalam sel.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Database</span>
+                <p class="glossary-def">Kumpulan data terkait yang dikategorikan dalam tabel dan bidang.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Tanggungan (Dependent)</span>
+                <p class="glossary-def">Sel berisi rumus yang merujuk ke sel lain.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Area Tujuan</span>
+                <p class="glossary-def">Rentang sel hasil konsolidasi data.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Data Detail</span>
+                <p class="glossary-def">Baris atau kolom yang dijumlahkan dalam kerangka subtotal.</p>
+            </div>
+
+            <div class="alphabet-header">E</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Bagan yang Disematkan</span>
+                <p class="glossary-def">Bagan yang diletakkan langsung di dalam lembar kerja.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Bilah Kesalahan (Error Bar)</span>
+                <p class="glossary-def">Tanda pada bagan yang menunjukkan potensi ketidakpastian data.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Add-in Excel</span>
+                <p class="glossary-def">Komponen tambahan untuk menambah perintah atau fungsi khusus di Excel.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Tabel Excel</span>
+                <p class="glossary-def">Fitur untuk menata dan memformat data di lembar kerja secara profesional.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Ekspresi</span>
+                <p class="glossary-def">Kombinasi operator dan fungsi yang menghasilkan satu nilai.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Data Eksternal</span>
+                <p class="glossary-def">Data yang disimpan di luar file Excel (seperti SQL Server atau web).</p>
+            </div>
+
+            <div class="alphabet-header">F</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Bidang (Field)</span>
+                <p class="glossary-def">Kategori informasi dalam database atau PivotTable (dinyatakan sebagai kolom).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Gagang Isian (Fill Handle)</span>
+                <p class="glossary-def">Persegi hitam kecil di sudut kanan bawah sel aktif untuk menarik data.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Filter</span>
+                <p class="glossary-def">Menampilkan hanya baris yang memenuhi kondisi tertentu.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Font</span>
+                <p class="glossary-def">Desain grafik karakter huruf dan angka.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Rumus (Formula)</span>
+                <p class="glossary-def">Urutan nilai dan fungsi yang menghasilkan nilai baru, diawali tanda (=).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Bilah Rumus (Formula Bar)</span>
+                <p class="glossary-def">Bilah di atas jendela untuk memasukkan atau mengedit rumus sel.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Fungsi</span>
+                <p class="glossary-def">Rumus siap pakai (seperti SUM, AVERAGE) untuk perhitungan kompleks.</p>
+            </div>
+
+            <div class="alphabet-header">G</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Pencarian Tujuan (Goal Seek)</span>
+                <p class="glossary-def">Metode menemukan nilai input yang tepat untuk mencapai hasil rumus yang diinginkan.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Grid</span>
+                <p class="glossary-def">Garis-garis irisan untuk meratakan objek.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Grup</span>
+                <p class="glossary-def">Baris atau kolom detail yang digabungkan dalam kerangka/PivotTable.</p>
+            </div>
+
+            <div class="alphabet-header">H</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Garis Tinggi-Rendah</span>
+                <p class="glossary-def">Garis dalam bagan saham yang menunjukkan nilai tertinggi dan terendah.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Hentian Halaman (Page Break)</span>
+                <p class="glossary-def">Pembagi lembar kerja menjadi halaman terpisah untuk dicetak.</p>
+            </div>
+
+            <div class="alphabet-header">I</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Irisan Implisit</span>
+                <p class="glossary-def">Referensi rentang sel yang dihitung otomatis sebagai sel tunggal.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Indeks</span>
+                <p class="glossary-def">Komponen database untuk mempercepat pencarian data.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Sel Input</span>
+                <p class="glossary-def">Sel tempat nilai input tabel data diganti.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Menyisipkan Baris</span>
+                <p class="glossary-def">Baris khusus (tanda bintang) dalam tabel Excel untuk entri data.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Item</span>
+                <p class="glossary-def">Subkategori bidang di PivotTable (Contoh: "Januari" dalam bidang "Bulan").</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Perulangan (Iteration)</span>
+                <p class="glossary-def">Penghitungan berulang hingga kondisi numerik tertentu terpenuhi.</p>
+            </div>
+
+            <div class="alphabet-header">J</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Gabungkan (Join)</span>
+                <p class="glossary-def">Koneksi antar tabel database untuk menampilkan rekaman terkait sebagai satu kesatuan.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Meratakan (Justify)</span>
+                <p class="glossary-def">Mengatur teks agar rata kiri dan rata kanan secara seimbang.</p>
+            </div>
+
+            <div class="alphabet-header">L</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Legenda</span>
+                <p class="glossary-def">Kotak keterangan warna atau pola data dalam bagan.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Sel yang Digabungkan (Merged Cell)</span>
+                <p class="glossary-def">Satu sel besar hasil gabungan beberapa sel.</p>
+            </div>
+
+            <div class="alphabet-header">M</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Rata-rata Bergerak (Moving Average)</span>
+                <p class="glossary-def">Urutan rata-rata untuk memperhalus fluktuasi pola data dalam bagan.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Memindahkan Batas</span>
+                <p class="glossary-def">Garis putus-putus bergerak di sekitar sel yang sedang di-copy/cut.</p>
+            </div>
+
+            <div class="alphabet-header">N</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Nama</span>
+                <p class="glossary-def">Kata yang mewakili sel/rentang agar rumus lebih mudah dibaca (Contoh: "Total").</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Kotak Nama (Name Box)</span>
+                <p class="glossary-def">Kotak di kiri bilah rumus untuk identifikasi sel atau memberi nama rentang.</p>
+            </div>
+
+            <div class="alphabet-header">O</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Operand</span>
+                <p class="glossary-def">Item di sisi operator dalam rumus (bisa angka, sel, atau fungsi).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Operator</span>
+                <p class="glossary-def">Simbol penghitungan (+, -, *, /) atau perbandingan.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Kerangka (Outline)</span>
+                <p class="glossary-def">Data lembar kerja yang dikelompokkan baris/kolomnya untuk ringkasan.</p>
+            </div>
+
+            <div class="alphabet-header">P</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Parameter</span>
+                <p class="glossary-def">Nilai kriteria dalam kueri untuk mengambil hasil yang berbeda.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Kata Sandi (Password)</span>
+                <p class="glossary-def">Kunci untuk memproteksi lembar kerja atau buku kerja.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Area Pivot</span>
+                <p class="glossary-def">Area tempat menyeret bidang untuk mengatur tata letak PivotTable.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">PivotTable</span>
+                <p class="glossary-def">Laporan interaktif untuk meringkas dan menganalisis data dalam jumlah besar.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Preseden</span>
+                <p class="glossary-def">Sel yang dirujuk oleh rumus di sel lain (sumber data bagi sel dependen).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Area Cetak</span>
+                <p class="glossary-def">Rentang sel tertentu yang ditetapkan untuk dicetak saja.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Proteksi</span>
+                <p class="glossary-def">Pengaturan untuk mencegah pengguna mengubah elemen tertentu dalam file.</p>
+            </div>
+
+            <div class="alphabet-header">Q</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Kueri (Query)</span>
+                <p class="glossary-def">Cara untuk menemukan rekaman data berdasarkan pertanyaan/kriteria tertentu.</p>
+            </div>
+
+            <div class="alphabet-header">R</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Range (Rentang)</span>
+                <p class="glossary-def">Dua atau lebih sel pada lembar kerja (berdekatan atau tidak).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Baca-Saja (Read-Only)</span>
+                <p class="glossary-def">File yang bisa dibaca/disalin tapi tidak bisa diubah.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Rekaman (Record)</span>
+                <p class="glossary-def">Satu baris lengkap informasi dalam tabel atau database.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Refresh</span>
+                <p class="glossary-def">Memperbarui data agar sesuai dengan versi terbaru di database sumber.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Referensi Relatif</span>
+                <p class="glossary-def">Alamat sel yang menyesuaikan otomatis saat rumus disalin (Contoh: A1).</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Skenario</span>
+                <p class="glossary-def">Sekumpulan nilai input untuk melihat berbagai kemungkinan hasil rumus.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Scroll Lock</span>
+                <p class="glossary-def">Kondisi di mana tombol panah menggulir layar, bukan pindah sel aktif.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Urutan (Sort)</span>
+                <p class="glossary-def">Menyusun data secara naik (A ke Z) atau turun (Z ke A).</p>
+            </div>
+
+            <div class="alphabet-header">T</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Templat</span>
+                <p class="glossary-def">File buku kerja standar yang digunakan sebagai dasar pembuatan file serupa.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Kotak Teks</span>
+                <p class="glossary-def">Objek persegi untuk mengetikkan teks tambahan di lembar kerja.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Tanda Centang (Tick Mark)</span>
+                <p class="glossary-def">Garis kecil pada sumbu bagan untuk skala pengukuran.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Garis Tren (Trendline)</span>
+                <p class="glossary-def">Garis grafik untuk menunjukkan arah atau pola data (naik/turun).</p>
+            </div>
+
+            <div class="alphabet-header">U</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Bilah Atas-Bawah</span>
+                <p class="glossary-def">Batang bagan yang menunjukkan selisih titik data seri pertama dan terakhir.</p>
+            </div>
+
+            <div class="alphabet-header">V</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Nilai (Value)</span>
+                <p class="glossary-def">Input berupa teks, angka, atau tanggal yang mengisi sebuah sel.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Vertex</span>
+                <p class="glossary-def">Titik hitam yang bisa diseret pada ujung garis Bentuk Otomatis.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Tampilan (View)</span>
+                <p class="glossary-def">Sekumpulan pengaturan tampilan layar dan cetak yang diberi nama.</p>
+            </div>
+
+            <div class="alphabet-header">W</div>
+            <div class="glossary-item">
+                <span class="glossary-term">Buku Kerja (Workbook)</span>
+                <p class="glossary-def">File Excel yang berisi satu atau beberapa lembar kerja.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Lembar Kerja (Worksheet)</span>
+                <p class="glossary-def">Halaman utama tempat bekerja yang terdiri dari baris dan kolom.</p>
+            </div>
+            <div class="glossary-item">
+                <span class="glossary-term">Membungkus (Wrap)</span>
+                <p class="glossary-def">Memecah baris teks secara otomatis agar pas di dalam lebar sel.</p>
+            </div>
+
+            <div class="alphabet-header">X</div>
+            <div class="glossary-item">
+                <span class="glossary-term">XML</span>
+                <p class="glossary-def">Bahasa penanda yang memungkinkan pembuatan tag kustom untuk menata informasi.</p>
             </div>
         </div>
     </div>
@@ -215,9 +610,9 @@
     function filterGlossary() {
         let input = document.getElementById('glossarySearch').value.toUpperCase();
         let items = document.querySelectorAll('.glossary-item');
+        let alphabetHeaders = document.querySelectorAll('.alphabet-header');
         let clearBtn = document.getElementById('clearBtnGlossary');
 
-        // Munculkan/Sembunyikan tombol X
         if (input.length > 0) {
             clearBtn.style.display = 'block';
         } else {
@@ -227,11 +622,27 @@
         items.forEach(item => {
             let term = item.querySelector('.glossary-term').innerText.toUpperCase();
             let def = item.querySelector('.glossary-def').innerText.toUpperCase();
-            
             if (term.indexOf(input) > -1 || def.indexOf(input) > -1) {
                 item.classList.remove('hidden');
             } else {
                 item.classList.add('hidden');
+            }
+        });
+
+        alphabetHeaders.forEach(header => {
+            let nextElement = header.nextElementSibling;
+            let hasVisibleItem = false;
+            while (nextElement && nextElement.classList.contains('glossary-item')) {
+                if (!nextElement.classList.contains('hidden')) {
+                    hasVisibleItem = true;
+                    break;
+                }
+                nextElement = nextElement.nextElementSibling;
+            }
+            if (hasVisibleItem) {
+                header.classList.remove('hidden');
+            } else {
+                header.classList.add('hidden');
             }
         });
     }
