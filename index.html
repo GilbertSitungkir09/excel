@@ -54,8 +54,6 @@
             cursor: pointer;
             line-height: 1;
         }
-        .close-btn:hover { color: white; }
-
         .sidebar a { 
             display: block; 
             padding: 15px 25px; 
@@ -74,8 +72,6 @@
         .card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #e5e7eb; }
         
         h2 { color: var(--excel-green); margin-bottom: 15px; font-size: 18px; border-left: 5px solid var(--excel-green); padding-left: 15px; text-transform: uppercase; }
-        h3 { color: var(--excel-dark); margin: 20px 0 10px 0; font-size: 16px; font-weight: 700; }
-        
         p { margin-bottom: 15px; text-align: justify; font-size: 14px; color: #374151; }
         
         .grid-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 15px 0; }
@@ -110,39 +106,41 @@
     <div class="card">
         <h2>1. Apa Itu Microsoft Excel?</h2>
         <p>Microsoft excel merupakan bagian dari Microsoft office yang berfungsi untuk pengolahan data dalam bentuk angka maupun perhitungan. Tampilan dari Microsoft excel ini berupa spreadsheet sehingga memudahkan penggunanya untuk mengoperasikannya.</p>
-        <p>Aplikasi Microsoft excel ini, merupakan pengolah data secara otomatis yang dapat berupa penghitungan dasar, penggunaan rumus-rumus, pemakaian fungsi, pembuatan grafik, pengolahan data dan table, serta manajemen data.</p>
+        <p>Aplikasi Microsoft excel ini, merupakan pengolah data secara otomatis yang dapat berupa penghitungan dasar, penggunaan rumus-rumus, pemakaian fungsi, pembuatan grafik, pengolahan data dan table, serta manajemen data. Namun, dalam pemakaian fungsi anda harus paham betul arti dari fungsi tersebut serta logika excelnya. Karena jika salah dalam pemakaian fungsi, dapat menyebabkan kesalahan sewaktu membaca data.</p>
     </div>
 
     <div class="card">
         <h2>2. Sejarah Microsoft Excel</h2>
-        <p>Excel pertama kali hadir pada tahun 1985 dan dibuat oleh Doug Klunder. Fakta uniknya, Excel secara perdana dirilis tanpa memuat nama ‘Microsoft,’ melainkan hanya Excel saja. Munculnya Excel ternyata mendapat banyak komplain dari berbagai perusahaan yang memiliki produk dengan nama serupa.</p>
-        <p>Tepat pada 1993, Microsoft Excel sudah dibekali bahasa pemrograman Visual Basic for Applications (VBA). Sejak 1987, tercatat hingga tahun 2016, sudah terdapat 13 versi Windows dan Mac.</p>
+        <p>Excel pertama kali hadir pada tahun 1985 dan dibuat oleh Doug Klunder. Fakta uniknya, Excel secara perdana dirilis tanpa memuat nama ‘Microsoft,’ melainkan hanya Excel saja. Munculnya Excel ternyata mendapat banyak komplain dari berbagai perusahaan yang memiliki produk dengan nama serupa. Sesaat setelahnya, Microsoft langsung mengubahnya menjadi ‘Microsoft Excel.’ Nama tersebut masih digunakan hingga sekarang.</p>
+        <p>Excel berbentuk spreadsheet dan biasa disebut ‘Multiplan’. Diketahui bahwa saat itu Excel sudah memiliki saingan, yaitu Lotus 1-2-3. Namun, Doug Klunder memiliki tekad untuk membuat temuan yang lebih canggih dari dari Lotus 1-2-3.</p>
+        <p>Pada tahun pertamanya, Excel hanya didistribusikan untuk perangkat dengan sistem operasi Macintosh atau yang sekarang lebih akrab dengan sebutan ‘Mac’. Tidak lain adalah komputer personal keluaran Apple. Dua tahun setelahnya, tepatnya pada November 1987, Microsoft merilis Excel untuk versi Windows dengan nama Excel Versi 2.0.</p>
+        <p>Tepat pada 1993, Microsoft Excel sudah dibekali bahasa pemrograman Visual Basic for Applications (VBA). Diketahui bahwa VBA-lah yang menjadi tonggak pertama Excel memiliki fitur rumus-rumus yang bisa digunakan secara otomatis dan akurat. Sejak 1987, tercatat hingga tahun 2016, sudah terdapat 13 versi Windows dan Mac.</p>
     </div>
 
     <div class="card">
         <h2>3. Mengenal Tampilan Excel</h2>
         <div class="grid-info">
-            <div class="info-box"><b>Ribbon</b>Kumpulan tab menu (Home, Insert, dll) yang berisi tool atau perintah.</div>
-            <div class="info-box"><b>Toolbar</b>Kumpulan tombol untuk akses cepat ke perintah tertentu.</div>
-            <div class="info-box"><b>Worksheet</b>Lembar kerja tunggal di dalam Excel yang terdiri dari sel.</div>
-            <div class="info-box"><b>Workbook</b>File Excel yang dapat menampung satu atau lebih Worksheet.</div>
-            <div class="info-box"><b>Rows</b>Baris horisontal yang diwakili oleh angka (1, 2, 3...).</div>
-            <div class="info-box"><b>Columns</b>Kolom vertikal yang diwakili oleh huruf (A, B, C...).</div>
-            <div class="info-box"><b>Cell</b>Pertemuan antara baris dan kolom (Contoh: A1).</div>
-            <div class="info-box"><b>Formula Bar</b>Tempat untuk melihat, mengetik, atau mengedit data/rumus di sel aktif.</div>
-            <div class="info-box"><b>Sheet Tabs</b>Tab di bagian bawah untuk berpindah antar lembar kerja.</div>
+            <div class="info-box"><b>Ribbon</b>Kumpulan tab menu (Home, Insert, dll) yang berisi tool atau perintah yang dikelompokkan berdasarkan fungsinya.</div>
+            <div class="info-box"><b>Toolbar</b>Kumpulan tombol untuk akses cepat ke perintah tertentu yang paling sering digunakan pengguna.</div>
+            <div class="info-box"><b>Worksheet</b>Lembar kerja tunggal di dalam Excel yang terdiri dari sel-sel untuk mengolah data.</div>
+            <div class="info-box"><b>Workbook</b>File utama Excel yang dapat menampung satu atau lebih Worksheet di dalamnya.</div>
+            <div class="info-box"><b>Rows (Baris)</b>Baris horisontal yang diwakili oleh angka mulai dari 1 sampai 1.048.576.</div>
+            <div class="info-box"><b>Columns (Kolom)</b>Kolom vertikal yang diwakili oleh huruf mulai dari A sampai XFD.</div>
+            <div class="info-box"><b>Cell (Sel)</b>Unit terkecil sebagai pertemuan antara baris dan kolom (Contoh: A1).</div>
+            <div class="info-box"><b>Formula Bar</b>Kotak tempat untuk melihat, mengetik, atau mengedit data maupun rumus di sel aktif.</div>
+            <div class="info-box"><b>Sheet Tabs</b>Tab navigasi di bagian bawah untuk berpindah antar lembar kerja dengan cepat.</div>
         </div>
     </div>
 
     <div class="card">
-        <h2>4. Istilah Dasar</h2>
+        <h2>4. Istilah Dasar dalam Pengolahan Data</h2>
         <div class="grid-info">
-            <div class="info-box"><b>Cell</b>Satuan terkecil di worksheet tempat menginput data.</div>
-            <div class="info-box"><b>Range</b>Sekumpulan sel yang dipilih secara bersamaan (Contoh: A1:B10).</div>
-            <div class="info-box"><b>Formula</b>Persamaan matematis untuk menghitung nilai (Diawali tanda =).</div>
-            <div class="info-box"><b>Function</b>Rumus siap pakai dari Excel (Contoh: SUM, AVERAGE).</div>
-            <div class="info-box"><b>Autofill</b>Fitur untuk mengisi data secara otomatis berdasarkan pola.</div>
-            <div class="info-box"><b>Formatting</b>Mengatur tampilan data (Warna, Huruf, Border).</div>
+            <div class="info-box"><b>Cell</b>Satuan terkecil di worksheet tempat Anda menginput data secara manual maupun otomatis.</div>
+            <div class="info-box"><b>Range</b>Sekumpulan sel yang dipilih secara bersamaan untuk diberikan instruksi yang sama (Contoh: A1:B10).</div>
+            <div class="info-box"><b>Formula</b>Persamaan matematis untuk menghitung nilai yang selalu diawali dengan tanda sama dengan (=).</div>
+            <div class="info-box"><b>Function</b>Rumus siap pakai yang sudah disediakan oleh Excel untuk mempermudah perhitungan berat (Contoh: SUM, AVERAGE).</div>
+            <div class="info-box"><b>Autofill</b>Fitur cerdas untuk mengisi data secara otomatis berdasarkan pola yang sudah ada sebelumnya.</div>
+            <div class="info-box"><b>Formatting</b>Proses mengatur tampilan data agar lebih rapi, seperti memberi warna, mengubah jenis huruf, atau memberi border.</div>
         </div>
     </div>
 
